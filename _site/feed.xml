@@ -1,4 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-14T17:44:53+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Software Architecture Fundamentals - 2</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 2" /><published>2018-10-14T16:40:00+01:00</published><updated>2018-10-14T16:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-14T17:56:26+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Software Architecture Fundamentals - 4 - Architecting for change</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-4.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 4 - Architecting for change" /><published>2018-10-14T17:46:00+01:00</published><updated>2018-10-14T17:46:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-4</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-4.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
+
+&lt;p&gt;Business in constant change&lt;/p&gt;
+
+&lt;p&gt;Technologies in constant change&lt;/p&gt;
+
+&lt;p&gt;Architectural agility&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Technique 1 : Reduce dependencies&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Use a Messaging/Bus/Adapters/Architectural Pattern to reduce dependencies&lt;/p&gt;
+
+&lt;p&gt;Components can evolve independently&lt;/p&gt;
+
+&lt;p&gt;Downsides : Solution becomes more complex, performance goes down.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Technique 2 : Standards&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Industry Standards&lt;/p&gt;
+
+&lt;p&gt;Corporate Standards&lt;/p&gt;
+
+&lt;p&gt;De-facto Standards&lt;/p&gt;
+
+&lt;p&gt;Large resource pool, although be wary of average resources, requires good hiring practices.&lt;/p&gt;
+
+&lt;p&gt;Better integration&lt;/p&gt;
+
+&lt;p&gt;Feasibility (in budget)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Technique 3 : Product agnostic approach&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Avoid vendor lock-in using anti-corruption layers&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Technique 4 : Domain specific architecture&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Generic architecture is difficult to change&lt;/p&gt;
+
+&lt;p&gt;Limits scope -&amp;gt; drivers, requirements, business direction, industry trends&lt;/p&gt;
+
+&lt;p&gt;Trading -&amp;gt; high performance architecture&lt;/p&gt;
+
+&lt;p&gt;Insurance –&amp;gt; Shared?&lt;/p&gt;
+
+&lt;p&gt;Business goals, requirements, drivers and industry trends should drive architecture.&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.</summary></entry><entry><title type="html">Software Architecture Fundamentals - 4 - Architecting for change</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 4 - Architecting for change" /><published>2018-10-14T17:46:00+01:00</published><updated>2018-10-14T17:46:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
+
+&lt;p&gt;Business in constant change&lt;/p&gt;
+
+&lt;p&gt;Technologies in constant change&lt;/p&gt;
+
+&lt;p&gt;Architectural agility&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Technique 1 : Reduce dependencies&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Use a Messaging/Bus/Adapters/Architectural Pattern to reduce dependencies&lt;/p&gt;
+
+&lt;p&gt;Components can evolve independently&lt;/p&gt;
+
+&lt;p&gt;Downsides : Solution becomes more complex, performance goes down.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Technique 2 : Standards&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Industry Standards&lt;/p&gt;
+
+&lt;p&gt;Corporate Standards&lt;/p&gt;
+
+&lt;p&gt;De-facto Standards&lt;/p&gt;
+
+&lt;p&gt;Large resource pool, although be wary of average resources, requires good hiring practices.&lt;/p&gt;
+
+&lt;p&gt;Better integration&lt;/p&gt;
+
+&lt;p&gt;Feasibility (in budget)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Technique 3 : Product agnostic approach&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Avoid vendor lock-in using anti-corruption layers&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Technique 4 : Domain specific architecture&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Generic architecture is difficult to change&lt;/p&gt;
+
+&lt;p&gt;Limits scope -&amp;gt; drivers, requirements, business direction, industry trends&lt;/p&gt;
+
+&lt;p&gt;Trading -&amp;gt; high performance architecture&lt;/p&gt;
+
+&lt;p&gt;Insurance –&amp;gt; Shared?&lt;/p&gt;
+
+&lt;p&gt;Business goals, requirements, drivers and industry trends should drive architecture.&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.</summary></entry><entry><title type="html">Software Architecture Fundamentals - 2</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 2" /><published>2018-10-14T16:40:00+01:00</published><updated>2018-10-14T16:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Continuous Delivery&lt;/strong&gt;&lt;/p&gt;
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-14T13:40:16+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Blogging using Github</title><link href="http://localhost:4000/jekyll/update/2018/10/14/Blogging-using-Github.html" rel="alternate" type="text/html" title="Blogging using Github " /><published>2018-10-14T12:18:50+01:00</published><updated>2018-10-14T12:18:50+01:00</updated><id>http://localhost:4000/jekyll/update/2018/10/14/Blogging-using-Github</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2018/10/14/Blogging-using-Github.html">&lt;p&gt;This blog uses Github to serve the blog posts.&lt;/p&gt;
+
+&lt;p&gt;For this, first I had to update gnupg, rvm and ruby and then install jekyll.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew upgrade gnupg                                    &lt;span class=&quot;c&quot;&gt;# update gnu pg&lt;/span&gt;
+curl &lt;span class=&quot;nt&quot;&gt;-sSL&lt;/span&gt; https://rvm.io/mpapis.asc  | gpg &lt;span class=&quot;nt&quot;&gt;--import&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;# get key&lt;/span&gt;
+rvm get stable &lt;span class=&quot;nt&quot;&gt;--auto-dotfiles&lt;/span&gt;                        &lt;span class=&quot;c&quot;&gt;# update rvm&lt;/span&gt;
+rvm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;ruby 2.5.1                                &lt;span class=&quot;c&quot;&gt;# install ruby&lt;/span&gt;
+gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jekyll bundler                            &lt;span class=&quot;c&quot;&gt;# install jekyll&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Then create the blog and serve locally&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;jekyll new myblog                                     &lt;span class=&quot;c&quot;&gt;# create blog&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;myblog                                             &lt;span class=&quot;c&quot;&gt;# go to blog directory&lt;/span&gt;
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve                              &lt;span class=&quot;c&quot;&gt;# serve locally&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Information on &lt;a href=&quot;https://pages.github.com/&quot;&gt;Github pages&lt;/a&gt;
+Information on &lt;a href=&quot;https://jekyllrb.com/docs/&quot;&gt;Jekyll docs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Information on &lt;a href=&quot;https://rvm.io/&quot;&gt;rvm&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">This blog uses Github to serve the blog posts.</summary></entry></feed>

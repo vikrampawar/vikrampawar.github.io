@@ -2,7 +2,7 @@
 layout: post
 title:  "Blogging using Github "
 date:   2018-10-14 12:18:50 +0100
-categories: jekyll update
+categories: Github blogging
 ---
 This blog uses Github to serve the blog posts.
 

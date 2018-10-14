@@ -1,4 +1,85 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-14T16:39:12+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Software Architecture Fundamentals - 1</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 1" /><published>2018-10-14T14:40:00+01:00</published><updated>2018-10-14T14:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-14T17:20:40+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Software Architecture Fundamentals - 2</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 2" /><published>2018-10-14T16:40:00+01:00</published><updated>2018-10-14T16:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2.html">&lt;p&gt;&lt;strong&gt;Continuous Delivery&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;XP &amp;amp; TDD practices&lt;/p&gt;
+
+&lt;p&gt;Integrate once everyday&lt;/p&gt;
+
+&lt;p&gt;Early and often&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Continuous Integration&lt;/em&gt; :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tests on commit.&lt;/li&gt;
+  &lt;li&gt;Production readiness on code change.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Continuous Deployment/Delivery&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Software always deployable.&lt;/li&gt;
+  &lt;li&gt;Production readiness on configuration change.&lt;/li&gt;
+  &lt;li&gt;Reliable deployments&lt;/li&gt;
+  &lt;li&gt;Release on business needs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Pre-requisites&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Configuration management&lt;/li&gt;
+  &lt;li&gt;Automated testing&lt;/li&gt;
+  &lt;li&gt;Configuration Integration - deployment pipelines&lt;/li&gt;
+  &lt;li&gt;E2E in production like environments.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Deployments self-serviced&lt;/p&gt;
+
+&lt;p&gt;Pull vs Push systems&lt;/p&gt;
+
+&lt;p&gt;Pull - manual - Continuous delivery
+Push - automated - Continuous deployment&lt;/p&gt;
+
+&lt;p&gt;Why =&amp;gt; Responsiveness to business&lt;/p&gt;
+
+&lt;p&gt;Goal =&amp;gt; Cycle time shorter&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Shorter time cycles leads to&lt;/em&gt; :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What-if scenarios&lt;/li&gt;
+  &lt;li&gt;More releases which can be business differentiator&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Engineering sophistication is required&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Production-like&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Increases confidence in production readiness&lt;/li&gt;
+  &lt;li&gt;Environments become production-like.&lt;/li&gt;
+  &lt;li&gt;Faster feedback&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Repeatable reliable process for releasing software&lt;/p&gt;
+
+&lt;p&gt;Provisioning boxes with devops&lt;/p&gt;
+
+&lt;p&gt;Deployments and database migrations&lt;/p&gt;
+
+&lt;p&gt;Try to automate everything.&lt;/p&gt;
+
+&lt;p&gt;Separate things that can be automated with those that cannot be.&lt;/p&gt;
+
+&lt;p&gt;Keep everything in version control&lt;/p&gt;
+
+&lt;p&gt;Developer machines images can be used - Puppet/Chef. Check &lt;a href=&quot;https://github.com/boxen&quot;&gt;boxen&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If it hurts, do it more often.&lt;/p&gt;
+
+&lt;p&gt;Bring the pain forward&lt;/p&gt;
+
+&lt;p&gt;Everyone responsible for delivery - dev, dba, qa, ops&lt;/p&gt;
+
+&lt;p&gt;Check
+&lt;a href=&quot;https://www.amazon.co.uk/Things-Every-Software-Architect-Should/dp/059652269X&quot;&gt;97 Things Every Architect Should Know&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Continuous Delivery</summary></entry><entry><title type="html">Software Architecture Fundamentals - 1</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 1" /><published>2018-10-14T14:40:00+01:00</published><updated>2018-10-14T14:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online.&lt;/p&gt;
 
 &lt;p&gt;Choice of technology should not drive architecture&lt;/p&gt;
 

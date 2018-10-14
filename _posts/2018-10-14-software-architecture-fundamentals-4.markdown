@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Software Architecture Fundamentals - 4 - Architecting for change"
+title:  "Software Architecture Fundamentals - 4 : Architecting for change"
 date:   2018-10-14 17:46:00 +0100
 categories: architecture
 ---

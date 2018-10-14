@@ -255,6 +255,7 @@ good for pattern for large, complex, heterogeneous businesses that have a large 
 
 
 [Wikipedia (Event Driven Architecture )] [wiki]
+
 [Creating an Effective SOA Service Taxonomy] [taxonomy]
 
 

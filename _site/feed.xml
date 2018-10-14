@@ -1,4 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-14T22:05:36+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Software Architecture Fundamentals - 5 : Architecture patterns</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 5 : Architecture patterns" /><published>2018-10-14T17:58:00+01:00</published><updated>2018-10-14T17:58:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-14T22:37:34+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Software Architecture Fundamentals - 6 : Architecture patterns 2</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 6 : Architecture patterns 2" /><published>2018-10-14T22:11:00+01:00</published><updated>2018-10-14T22:11:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6.html">&lt;h1 id=&quot;pipeline-architecture-pattern&quot;&gt;Pipeline architecture pattern&lt;/h1&gt;
+
+&lt;p&gt;a.k.a pipes and filter architecture&lt;/p&gt;
+
+&lt;p&gt;roots from OS&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;pipes&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Connects different filters and transfers data&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;pipe         filter         pipe
+&lt;span class=&quot;nt&quot;&gt;------&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; transformation] &lt;span class=&quot;nt&quot;&gt;-------&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;uni-directional only&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;usually  point-point for high performance, but could be message-based for scalability&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;payload can be any type (text, bytes, object)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;filters&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Receives data, does something on it and pushes it on to the next filter&lt;/p&gt;
+
+&lt;p&gt;self-contained and independent from other filters&lt;/p&gt;
+
+&lt;p&gt;perform one single very specific task&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;4 different filter types
+             producer    &lt;span class=&quot;nt&quot;&gt;-----pipe-------&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; starting point, outbound only
+  &lt;span class=&quot;nt&quot;&gt;--pipe--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;  transformer &lt;span class=&quot;nt&quot;&gt;-----pipe-------&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; input, processing, output     
+  &lt;span class=&quot;nt&quot;&gt;--pipe--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;  tester      - - &lt;span class=&quot;nt&quot;&gt;-pipe-&lt;/span&gt; - - -&amp;gt; input, discard or pass-thru
+  &lt;span class=&quot;nt&quot;&gt;--pipe--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;  consumer                      ending point, inbound only       
+
+example
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;input reader&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;P&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; data--&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;converter&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Tr&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--xml&lt;/span&gt; data--&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;reducer&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Tr&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; 
+                                                                             |
+                 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;input processor&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;C&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt;&amp;lt;&lt;span class=&quot;nt&quot;&gt;--validator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Te&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;scoped xml data] &amp;lt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">Pipeline architecture pattern</summary></entry><entry><title type="html">Software Architecture Fundamentals - 5 : Architecture patterns</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 5 : Architecture patterns" /><published>2018-10-14T17:58:00+01:00</published><updated>2018-10-14T17:58:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
 
 &lt;p&gt;History of Patterns movement&lt;/p&gt;
 
@@ -210,8 +253,9 @@ IS           WriteAuditTrail&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;em&gt;References&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Event-driven_architecture&quot;&gt;Wikipedia (Event Driven Architecture )&lt;/a&gt;
-&lt;a href=&quot;https://soa.sys-con.com/node/738704&quot;&gt;Creating an Effective SOA Service Taxonomy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Event-driven_architecture&quot;&gt;Wikipedia (Event Driven Architecture )&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://soa.sys-con.com/node/738704&quot;&gt;Creating an Effective SOA Service Taxonomy&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Don’t forget it’s all about data&lt;/p&gt;
 

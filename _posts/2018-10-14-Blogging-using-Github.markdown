@@ -25,7 +25,8 @@ bundle exec jekyll serve                              # serve locally
 {% endhighlight %}
 
 
-Information on [Github pages][gpages]
+Information on [Github pages][gpages].
+
 Information on [Jekyll docs][jdocs]. 
 
 Information on [rvm][rvm] 

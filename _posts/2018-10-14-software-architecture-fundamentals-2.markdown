@@ -5,6 +5,8 @@ date:   2018-10-14 16:40:00 +0100
 categories: architecture
 ---
 
+Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.
+
 **Continuous Delivery**
 
 XP & TDD practices

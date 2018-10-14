@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-14T17:20:40+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Software Architecture Fundamentals - 2</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 2" /><published>2018-10-14T16:40:00+01:00</published><updated>2018-10-14T16:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2.html">&lt;p&gt;&lt;strong&gt;Continuous Delivery&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-14T17:44:53+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Software Architecture Fundamentals - 2</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 2" /><published>2018-10-14T16:40:00+01:00</published><updated>2018-10-14T16:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Continuous Delivery&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;XP &amp;amp; TDD practices&lt;/p&gt;
 
@@ -79,7 +81,107 @@ Push - automated - Continuous deployment&lt;/p&gt;
 &lt;p&gt;Everyone responsible for delivery - dev, dba, qa, ops&lt;/p&gt;
 
 &lt;p&gt;Check
-&lt;a href=&quot;https://www.amazon.co.uk/Things-Every-Software-Architect-Should/dp/059652269X&quot;&gt;97 Things Every Architect Should Know&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Continuous Delivery</summary></entry><entry><title type="html">Software Architecture Fundamentals - 1</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 1" /><published>2018-10-14T14:40:00+01:00</published><updated>2018-10-14T14:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online.&lt;/p&gt;
+&lt;a href=&quot;https://www.amazon.co.uk/Things-Every-Software-Architect-Should/dp/059652269X&quot;&gt;97 Things Every Architect Should Know&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.</summary></entry><entry><title type="html">Software Architecture Fundamentals - 3</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-3.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 3" /><published>2018-10-14T16:40:00+01:00</published><updated>2018-10-14T16:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-3</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-3.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Architecture Soft Skills&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Requires leadership. The 3Cs.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Communication&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Effectively communicate ideas, concepts, issues and solutions with stake holders - developers, qa, devops, business&lt;/p&gt;
+
+&lt;p&gt;Explain on white board rather than writing documents&lt;/p&gt;
+
+&lt;p&gt;Explain complex technical topics to non technical people&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Colloboration&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Solicit ideas&lt;/p&gt;
+
+&lt;p&gt;Get feedback early and often&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Clarity&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Articulate architectural solution in clear concise terms as applicable to the stake holder&lt;/p&gt;
+
+&lt;p&gt;Translation skills business requirements to architecture are important&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Techincal knowledge&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Knowledge pyramid&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Top - The stuff you know. Need to maintain.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Middle - The stuff you know, you don’t know.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Bottom - The stuff you don’t know, you don’t know.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;More of top leads to more depth&lt;/p&gt;
+
+&lt;p&gt;More of middle leads to more breadth.&lt;/p&gt;
+
+&lt;p&gt;Architect should aim to increase breadth, reduce bottom.&lt;/p&gt;
+
+&lt;p&gt;Multi-platform knowledge, otherwise Architect would have a narrow focus. Hammer analogy.&lt;/p&gt;
+
+&lt;p&gt;To increase breadth, read books, infoq, attend conferences, see videos.&lt;/p&gt;
+
+&lt;p&gt;Aim to increase business domain knowledge.&lt;/p&gt;
+
+&lt;p&gt;Know the trends and issues.&lt;/p&gt;
+
+&lt;p&gt;Gain trust by speaking the business language.&lt;/p&gt;
+
+&lt;p&gt;Use appropriate methodology and strategy&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Understanding large codebases&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Metrics&lt;/p&gt;
+
+&lt;p&gt;Cyclometric complexity&lt;/p&gt;
+
+&lt;p&gt;C&amp;amp;K&lt;/p&gt;
+
+&lt;p&gt;Source monitor&lt;/p&gt;
+
+&lt;p&gt;Heat maps (Cruise control)&lt;/p&gt;
+
+&lt;p&gt;panopticode&lt;/p&gt;
+
+&lt;p&gt;Code coverage&lt;/p&gt;
+
+&lt;p&gt;Size and complexity pyramid (inCode)&lt;/p&gt;
+
+&lt;p&gt;Toxicity chart&lt;/p&gt;
+
+&lt;p&gt;X-Ray : Eclipse plugin, a probe&lt;/p&gt;
+
+&lt;p&gt;Proximity alert&lt;/p&gt;
+
+&lt;p&gt;Codecity&lt;/p&gt;
+
+&lt;p&gt;Signal to noise&lt;/p&gt;
+
+&lt;p&gt;No ‘1 true metric’&lt;/p&gt;
+
+&lt;p&gt;metrics gathered and ignored&lt;/p&gt;
+
+&lt;p&gt;inaction/over action&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Hawthorne effect&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Initial assessment - More light leads to more productivity. Later finding proved that light had on affect, but the act of measuring productivity had increased productivity.&lt;/p&gt;
+
+&lt;p&gt;Essential vs accidental complexity&lt;/p&gt;
+
+&lt;p&gt;Probes vs Radiators&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.</summary></entry><entry><title type="html">Software Architecture Fundamentals - 1</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 1" /><published>2018-10-14T14:40:00+01:00</published><updated>2018-10-14T14:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online.&lt;/p&gt;
 
 &lt;p&gt;Choice of technology should not drive architecture&lt;/p&gt;
 

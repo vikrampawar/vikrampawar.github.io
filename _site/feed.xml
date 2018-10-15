@@ -1,4 +1,86 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-15T21:04:36+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Basic key concepts</title><link href="http://localhost:4000/cryptography/security/keys/2018/10/15/basic-key-concepts.html" rel="alternate" type="text/html" title="Basic key concepts" /><published>2018-10-15T20:15:00+01:00</published><updated>2018-10-15T20:15:00+01:00</updated><id>http://localhost:4000/cryptography/security/keys/2018/10/15/basic-key-concepts</id><content type="html" xml:base="http://localhost:4000/cryptography/security/keys/2018/10/15/basic-key-concepts.html">&lt;h2 id=&quot;cryptography&quot;&gt;Cryptography&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-15T22:30:43+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Microservices - Chapter 1</title><link href="http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1.html" rel="alternate" type="text/html" title="Microservices - Chapter 1" /><published>2018-10-15T22:15:00+01:00</published><updated>2018-10-15T22:15:00+01:00</updated><id>http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1</id><content type="html" xml:base="http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1.html">&lt;p&gt;Notes from Microservices - Oreilly, chapter 1&lt;/p&gt;
+
+&lt;h2 id=&quot;what-are-microservices&quot;&gt;What are microservices?&lt;/h2&gt;
+
+&lt;p&gt;Domain driven design Eric evans&lt;/p&gt;
+
+&lt;p&gt;Continuous deployment&lt;/p&gt;
+
+&lt;p&gt;Hexagonal architecture Alistair Cockburn’s&lt;/p&gt;
+
+&lt;p&gt;Virtualization platforms&lt;/p&gt;
+
+&lt;p&gt;Small teams&lt;/p&gt;
+
+&lt;p&gt;Systems at scale&lt;/p&gt;
+
+&lt;h2 id=&quot;small-and-focussed-on-doing-one-thing-well&quot;&gt;Small and focussed on doing one thing well&lt;/h2&gt;
+
+&lt;p&gt;Robert C Martin Single responsibility principle. Keep things that change for the same reason together and separate those things that change for different reasons.&lt;/p&gt;
+
+&lt;p&gt;Service boundaries align with business boundaries&lt;/p&gt;
+
+&lt;p&gt;How small?&lt;/p&gt;
+
+&lt;h2 id=&quot;autonomous&quot;&gt;Autonomous&lt;/h2&gt;
+
+&lt;p&gt;Communication between services via network calls.&lt;/p&gt;
+
+&lt;p&gt;Avoid tight coupling and allow separation of services&lt;/p&gt;
+
+&lt;h2 id=&quot;key-benefits&quot;&gt;Key benefits&lt;/h2&gt;
+
+&lt;h1 id=&quot;technology-heterogeneity&quot;&gt;Technology heterogeneity&lt;/h1&gt;
+
+&lt;p&gt;Netflix and Twitter use JVM&lt;/p&gt;
+
+&lt;h1 id=&quot;resilience&quot;&gt;Resilience&lt;/h1&gt;
+
+&lt;p&gt;Service boundary becomes a bulkhead - problem is isolated it’s not cascaded.&lt;/p&gt;
+
+&lt;h1 id=&quot;scaling&quot;&gt;Scaling&lt;/h1&gt;
+
+&lt;p&gt;Scale only the required services - cost saving.&lt;/p&gt;
+
+&lt;p&gt;Gilt online fasion retailer embraces microservices.&lt;/p&gt;
+
+&lt;h1 id=&quot;ease-of-deployment&quot;&gt;Ease of deployment&lt;/h1&gt;
+
+&lt;p&gt;Smaller change, easy identification of issues and rollback.&lt;/p&gt;
+
+&lt;h1 id=&quot;organizational-alignment&quot;&gt;Organizational alignment&lt;/h1&gt;
+
+&lt;p&gt;Smaller teams&lt;/p&gt;
+
+&lt;h1 id=&quot;composability&quot;&gt;Composability&lt;/h1&gt;
+
+&lt;h1 id=&quot;optimizing-for-replaceability&quot;&gt;Optimizing for Replaceability&lt;/h1&gt;
+
+&lt;p&gt;Rewrite services.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-about-service-oriented-architecture&quot;&gt;What about Service-Oriented Architecture&lt;/h2&gt;
+
+&lt;p&gt;SOA not practical&lt;/p&gt;
+
+&lt;h2 id=&quot;other-decompositional-techniques&quot;&gt;Other decompositional techniques&lt;/h2&gt;
+
+&lt;h1 id=&quot;shared-libraries&quot;&gt;Shared libraries&lt;/h1&gt;
+
+&lt;p&gt;No technological heterogeneity.&lt;/p&gt;
+
+&lt;p&gt;Different parts cannot be scaled.&lt;/p&gt;
+
+&lt;p&gt;Reduced ability to deploy in isolation.&lt;/p&gt;
+
+&lt;h1 id=&quot;modules&quot;&gt;Modules&lt;/h1&gt;
+
+&lt;p&gt;OSGI - Open source gateway initiative&lt;/p&gt;
+
+&lt;p&gt;Java doesn’t have modules?!&lt;/p&gt;
+
+&lt;p&gt;Erland has modules&lt;/p&gt;
+
+&lt;p&gt;Modular decomposition within process boundary doesn’t happen in practice.&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from Microservices - Oreilly, chapter 1</summary></entry><entry><title type="html">Basic cryptography concepts</title><link href="http://localhost:4000/cryptography/security/keys/2018/10/15/basic-key-concepts.html" rel="alternate" type="text/html" title="Basic cryptography concepts" /><published>2018-10-15T20:15:00+01:00</published><updated>2018-10-15T20:15:00+01:00</updated><id>http://localhost:4000/cryptography/security/keys/2018/10/15/basic-key-concepts</id><content type="html" xml:base="http://localhost:4000/cryptography/security/keys/2018/10/15/basic-key-concepts.html">&lt;h2 id=&quot;cryptography&quot;&gt;Cryptography&lt;/h2&gt;
 
 &lt;p&gt;Notes from &lt;em&gt;Understanding the digital world&lt;/em&gt;&lt;/p&gt;
 
@@ -42,6 +124,35 @@ Advanced encryption standard - AES&lt;/p&gt;
 &lt;p&gt;Is slow. So used in step 1, then symmetric key used for next step which is orders of magnitude quicker.&lt;/p&gt;
 
 &lt;p&gt;For digital signing, A would encrypt using A’s private key. It’s to show that the content has come from A and not others. It’s not for encryption as it can be decrypted using A’s public key. To encrypt, A will first encrypt using B’s public key and then sign by encrypting with A’s private key. B decrypts with A’s public key to verify it’s from A and then decrypts using B’s private key to see the contents.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;public key encryption possibilities&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;A&lt;/th&gt;
+      &lt;th&gt;B&lt;/th&gt;
+      &lt;th&gt;Goal&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Encrypt by B’s public key&lt;/td&gt;
+      &lt;td&gt;Decrypt by B’s private key&lt;/td&gt;
+      &lt;td&gt;A encrypts A’s text&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Encrypt by A’s private key&lt;/td&gt;
+      &lt;td&gt;Decrypt by A’s public key&lt;/td&gt;
+      &lt;td&gt;A signs A’s text&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Encrypt by A’s private key and encrypt by B’s public key&lt;/td&gt;
+      &lt;td&gt;Decrypt by A’s public key and decrypt by B’s private key&lt;/td&gt;
+      &lt;td&gt;A signs A’s text and encrypts&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;p&gt;&lt;em&gt;Forward secrecy&lt;/em&gt; : Each message encrypted with one time password.&lt;/p&gt;
 

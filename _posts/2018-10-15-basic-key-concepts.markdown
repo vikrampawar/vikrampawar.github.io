@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Basic key concepts"
+title:  "Basic cryptography concepts"
 date:   2018-10-15 20:15:00 +0100
 categories: cryptography security keys
 ---
@@ -51,6 +51,14 @@ Is slow. So used in step 1, then symmetric key used for next step which is order
 
 For digital signing, A would encrypt using A's private key. It's to show that the content has come from A and not others. It's not for encryption as it can be decrypted using A's public key. To encrypt, A will first encrypt using B's public key and then sign by encrypting with A's private key. B decrypts with A's public key to verify it's from A and then decrypts using B's private key to see the contents.
 
+**public key encryption possibilities** 
+
+|A                                                       | B                                                       | Goal                         | 
+|--------------------------------------------------------|---------------------------------------------------------|------------------------------|
+|Encrypt by B's public key                               | Decrypt by B's private key                              | A encrypts A's text          |
+|Encrypt by A's private key                              | Decrypt by A's public key                               | A signs A's text             |
+|Encrypt by A's private key and encrypt by B's public key| Decrypt by A's public key and decrypt by B's private key| A signs A's text and encrypts| 
+
 _Forward secrecy_ : Each message encrypted with one time password. 
 
 RSA algorithm generates large > 500 digit composite which is a product of equal sized primes and uses these to create the public and private keys. The prime numbers are required to decrypt the messages.  
@@ -61,13 +69,6 @@ A fixed-length sequence of bits, the digest or hash is generated from text. It's
 
 Message digest algorithms - MD5 (128 bit), SHA (160 bits), SHA-2 & SHA-3 (224-512 bits)   
 Servers prove identity by presenting a certificate issued by a certificate authority.
-
-
-
-
-
-
-
 
 
 

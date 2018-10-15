@@ -1,4 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-14T22:37:34+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Software Architecture Fundamentals - 6 : Architecture patterns 2</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 6 : Architecture patterns 2" /><published>2018-10-14T22:11:00+01:00</published><updated>2018-10-14T22:11:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6.html">&lt;h1 id=&quot;pipeline-architecture-pattern&quot;&gt;Pipeline architecture pattern&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-15T21:04:36+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Basic key concepts</title><link href="http://localhost:4000/cryptography/security/keys/2018/10/15/basic-key-concepts.html" rel="alternate" type="text/html" title="Basic key concepts" /><published>2018-10-15T20:15:00+01:00</published><updated>2018-10-15T20:15:00+01:00</updated><id>http://localhost:4000/cryptography/security/keys/2018/10/15/basic-key-concepts</id><content type="html" xml:base="http://localhost:4000/cryptography/security/keys/2018/10/15/basic-key-concepts.html">&lt;h2 id=&quot;cryptography&quot;&gt;Cryptography&lt;/h2&gt;
+
+&lt;p&gt;Notes from &lt;em&gt;Understanding the digital world&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Caesar cipher shifts letters by 3 positions&lt;/p&gt;
+
+&lt;p&gt;The rot13 algorithm shifts letters by 13 positions.&lt;/p&gt;
+
+&lt;p&gt;Mary, Queen of Scots beheaded in 1587 as her code was cracked.&lt;/p&gt;
+
+&lt;p&gt;To keep contents private, the contents are scrambled which is called encryption. This is done using a secret which is called a &lt;em&gt;key&lt;/em&gt;. The key is then used to unscramble or decrypt the contents.&lt;/p&gt;
+
+&lt;p&gt;Frequency analysis is used to crack substitution cyphers as the above.&lt;/p&gt;
+
+&lt;p&gt;Security by obscurity never works.&lt;/p&gt;
+
+&lt;h1 id=&quot;secret-key-cryptography&quot;&gt;Secret-key cryptography&lt;/h1&gt;
+
+&lt;p&gt;This is aka symmetric-key cryptography.&lt;/p&gt;
+
+&lt;p&gt;The key is secret and it used for encryption and decryption.&lt;/p&gt;
+
+&lt;p&gt;Data encryption standard - DES
+Advanced encryption standard - AES&lt;/p&gt;
+
+&lt;p&gt;Key distribution is a problem, as each party must have it.&lt;/p&gt;
+
+&lt;p&gt;Key proliferation is a problem as a new one is needed for each new party.&lt;/p&gt;
+
+&lt;h1 id=&quot;public-key-cryptography&quot;&gt;Public-key cryptography&lt;/h1&gt;
+
+&lt;p&gt;Each person has a pair - private key and public key. Message encrypted by one can be decrypted by other and vice-versa.&lt;/p&gt;
+
+&lt;p&gt;A encrypts using B’s public key. B decrypts using corresponding private key.&lt;/p&gt;
+
+&lt;p&gt;B encrypts using A’s public key. A decrypts using corresponding private key.&lt;/p&gt;
+
+&lt;p&gt;No shared secrets - no distribution problem.&lt;/p&gt;
+
+&lt;p&gt;Browser generates temporary symmetric key, encrypts using server’s public key. Server decrypts using it’s private key. Then the browser and server can use symmetric key for further exchanges.&lt;/p&gt;
+
+&lt;p&gt;Is slow. So used in step 1, then symmetric key used for next step which is orders of magnitude quicker.&lt;/p&gt;
+
+&lt;p&gt;For digital signing, A would encrypt using A’s private key. It’s to show that the content has come from A and not others. It’s not for encryption as it can be decrypted using A’s public key. To encrypt, A will first encrypt using B’s public key and then sign by encrypting with A’s private key. B decrypts with A’s public key to verify it’s from A and then decrypts using B’s private key to see the contents.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Forward secrecy&lt;/em&gt; : Each message encrypted with one time password.&lt;/p&gt;
+
+&lt;p&gt;RSA algorithm generates large &amp;gt; 500 digit composite which is a product of equal sized primes and uses these to create the public and private keys. The prime numbers are required to decrypt the messages.&lt;/p&gt;
+
+&lt;p&gt;Is slow. Message digest or cryptographic hash is a faster method of indirect signing.&lt;/p&gt;
+
+&lt;p&gt;A fixed-length sequence of bits, the digest or hash is generated from text. It’s computationally infeasible to generate a text that has the same digest. A slight change in text will change half the bits in the digest.&lt;/p&gt;
+
+&lt;p&gt;Message digest algorithms - MD5 (128 bit), SHA (160 bits), SHA-2 &amp;amp; SHA-3 (224-512 bits) &lt;br /&gt;
+Servers prove identity by presenting a certificate issued by a certificate authority.&lt;/p&gt;</content><author><name></name></author><summary type="html">Cryptography</summary></entry><entry><title type="html">Software Architecture Fundamentals - 6 : Architecture patterns 2</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 6 : Architecture patterns 2" /><published>2018-10-14T22:11:00+01:00</published><updated>2018-10-14T22:11:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6.html">&lt;h1 id=&quot;pipeline-architecture-pattern&quot;&gt;Pipeline architecture pattern&lt;/h1&gt;
 
 &lt;p&gt;a.k.a pipes and filter architecture&lt;/p&gt;
 
@@ -23,6 +77,12 @@
   &lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;p&gt;useful for smaller deterministic systems with a distinct processing flow&lt;/p&gt;
+
+&lt;p&gt;filters can easily be added and removed&lt;/p&gt;
+
+&lt;p&gt;provides for high level of decoupling&lt;/p&gt;
+
 &lt;p&gt;&lt;strong&gt;filters&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Receives data, does something on it and pushes it on to the next filter&lt;/p&gt;
@@ -41,7 +101,23 @@ example
 
 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;input reader&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;P&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; data--&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;converter&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Tr&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--xml&lt;/span&gt; data--&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;reducer&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Tr&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; 
                                                                              |
-                 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;input processor&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;C&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt;&amp;lt;&lt;span class=&quot;nt&quot;&gt;--validator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Te&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;scoped xml data] &amp;lt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">Pipeline architecture pattern</summary></entry><entry><title type="html">Software Architecture Fundamentals - 5 : Architecture patterns</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 5 : Architecture patterns" /><published>2018-10-14T17:58:00+01:00</published><updated>2018-10-14T17:58:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
+                 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;input processor&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;C&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt;&amp;lt;&lt;span class=&quot;nt&quot;&gt;--validator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Te&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;scoped xml data] &amp;lt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;pipeline vs event-driven&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;pipeline&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;synchronous data filtering&lt;/li&gt;
+  &lt;li&gt;single target&lt;/li&gt;
+  &lt;li&gt;simple single purpose filters&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;event-driven&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;asynchronous event processing&lt;/li&gt;
+  &lt;li&gt;multiple targets for events&lt;/li&gt;
+  &lt;li&gt;complex multi-purpose processors&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Pipeline architecture pattern</summary></entry><entry><title type="html">Software Architecture Fundamentals - 5 : Architecture patterns</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 5 : Architecture patterns" /><published>2018-10-14T17:58:00+01:00</published><updated>2018-10-14T17:58:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
 
 &lt;p&gt;History of Patterns movement&lt;/p&gt;
 

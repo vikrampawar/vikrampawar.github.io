@@ -27,6 +27,12 @@ pipe         filter         pipe
 
 3. payload can be any type (text, bytes, object)
 
+useful for smaller deterministic systems with a distinct processing flow
+
+filters can easily be added and removed
+
+provides for high level of decoupling
+
 **filters**
 
 Receives data, does something on it and pushes it on to the next filter
@@ -50,6 +56,19 @@ example
 
 
 {%endhighlight%}
+
+
+**pipeline vs event-driven**
+
+pipeline 
+* synchronous data filtering 
+* single target
+* simple single purpose filters
+
+event-driven
+* asynchronous event processing
+* multiple targets for events
+* complex multi-purpose processors
 
 
 

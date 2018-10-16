@@ -1,4 +1,116 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-16T08:07:37+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Microservices - Chapter 1</title><link href="http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1.html" rel="alternate" type="text/html" title="Microservices - Chapter 1" /><published>2018-10-15T22:15:00+01:00</published><updated>2018-10-15T22:15:00+01:00</updated><id>http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1</id><content type="html" xml:base="http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1.html">&lt;p&gt;Notes from Microservices - Oreilly, chapter 1&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-16T22:39:30+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Software Architecture Fundamentals - 7 : Architecture Anti-patterns 1</title><link href="http://localhost:4000/anti-patterns/2018/10/16/software-architecture-fundamentals-8.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 7 : Architecture Anti-patterns 1" /><published>2018-10-16T22:00:00+01:00</published><updated>2018-10-16T22:00:00+01:00</updated><id>http://localhost:4000/anti-patterns/2018/10/16/software-architecture-fundamentals-8</id><content type="html" xml:base="http://localhost:4000/anti-patterns/2018/10/16/software-architecture-fundamentals-8.html">&lt;h2 id=&quot;architecture-anti-patterns&quot;&gt;Architecture Anti-patterns&lt;/h2&gt;
+
+&lt;p&gt;More Anti-patterns than patterns&lt;/p&gt;
+
+&lt;p&gt;We repeatedly do that produces negative results&lt;/p&gt;
+
+&lt;h2 id=&quot;architecture-by-implication&quot;&gt;Architecture by implication&lt;/h2&gt;
+
+&lt;p&gt;Systems lacking clearly documented&lt;/p&gt;
+
+&lt;p&gt;What architecture pattern are you using?&lt;/p&gt;
+
+&lt;p&gt;What client model is most appropriate?&lt;/p&gt;
+
+&lt;p&gt;Does the hardware or os matter?&lt;/p&gt;
+
+&lt;p&gt;How do you handle component integration?&lt;/p&gt;
+
+&lt;p&gt;What communication protocols will you used?&lt;/p&gt;
+
+&lt;p&gt;Is the solutions even feasible given the skills, budget and time?&lt;/p&gt;
+
+&lt;p&gt;How secure does the system need to be?&lt;/p&gt;
+
+&lt;p&gt;Does the system need to scale?&lt;/p&gt;
+
+&lt;p&gt;How much performance is needed from the system?&lt;/p&gt;
+
+&lt;p&gt;How available the system needs to be?&lt;/p&gt;
+
+&lt;p&gt;Maintainability?&lt;/p&gt;
+
+&lt;p&gt;Be careful about over-confidence&lt;/p&gt;
+
+&lt;p&gt;Remember that agile methodologies are not a substitute for creating an architecture.&lt;/p&gt;
+
+&lt;h2 id=&quot;covering-your-assets&quot;&gt;Covering your assets&lt;/h2&gt;
+
+&lt;p&gt;Continuing to document and present alternatives without ever making an architecture decision&lt;/p&gt;
+
+&lt;p&gt;Architect has to present alternatives, clearly articulate the pros and cons of each, and recommend the best solution for the situation&lt;/p&gt;
+
+&lt;h2 id=&quot;witches-brew--design-by-committee&quot;&gt;Witches brew / Design by committee&lt;/h2&gt;
+
+&lt;p&gt;Architectures are designed by groups resulting in a complex mixture of ideas and lack of clear vision&lt;/p&gt;
+
+&lt;h2 id=&quot;gold-plating&quot;&gt;Gold plating&lt;/h2&gt;
+
+&lt;p&gt;Continuing to define the architecture well past the point which the extra effort is adding any value&lt;/p&gt;
+
+&lt;p&gt;Too many details hide the core principles and standards&lt;/p&gt;
+
+&lt;p&gt;Commonly leads to the analysis paralysis anti-pattern&lt;/p&gt;
+
+&lt;p&gt;increases costs, adds no value&lt;/p&gt;
+
+&lt;p&gt;No big-picture, difficult to understand&lt;/p&gt;
+
+&lt;h2 id=&quot;vendor-king&quot;&gt;Vendor king&lt;/h2&gt;
+
+&lt;p&gt;product-dependent architecture&lt;/p&gt;
+
+&lt;p&gt;Vendor app as a service, use message bus&lt;/p&gt;
+
+&lt;h2 id=&quot;bing-bang-architecture&quot;&gt;Bing bang architecture&lt;/h2&gt;
+
+&lt;p&gt;Defining at the beginning when we know little about the system&lt;/p&gt;
+
+&lt;p&gt;Architect only what is absolutely necessary. Let the architecture evolve&lt;/p&gt;
+
+&lt;p&gt;Don’t forget req, business etc change - so must architecture&lt;/p&gt;</content><author><name></name></author><summary type="html">Architecture Anti-patterns</summary></entry><entry><title type="html">Software Architecture Fundamentals - 7 : Design patterns</title><link href="http://localhost:4000/design/patterns/2018/10/16/software-architecture-fundamentals-7.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 7 : Design patterns" /><published>2018-10-16T21:50:00+01:00</published><updated>2018-10-16T21:50:00+01:00</updated><id>http://localhost:4000/design/patterns/2018/10/16/software-architecture-fundamentals-7</id><content type="html" xml:base="http://localhost:4000/design/patterns/2018/10/16/software-architecture-fundamentals-7.html">&lt;h2 id=&quot;strategy-pattern&quot;&gt;Strategy pattern&lt;/h2&gt;
+
+&lt;p&gt;Define a family of algorithm, encapsulate each one, and make them interchangeable&lt;/p&gt;
+
+&lt;h2 id=&quot;command-pattern&quot;&gt;Command pattern&lt;/h2&gt;
+
+&lt;p&gt;Encapsulate a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.&lt;/p&gt;
+
+&lt;p&gt;This is not required in a language that has closures, as the required block of code can be sent directly to the method.&lt;/p&gt;
+
+&lt;h2 id=&quot;good-and-bad-of-patterns&quot;&gt;Good and bad of patterns&lt;/h2&gt;
+
+&lt;p&gt;Good common vocabulary&lt;/p&gt;
+
+&lt;p&gt;Design guide&lt;/p&gt;
+
+&lt;p&gt;Terrible implementation guide&lt;/p&gt;
+
+&lt;p&gt;Not a panacea&lt;/p&gt;
+
+&lt;p&gt;Terrible religion&lt;/p&gt;
+
+&lt;p&gt;Combination of patterns are useful&lt;/p&gt;
+
+&lt;p&gt;You may not use patterns because it inhibits your creativity&lt;/p&gt;
+
+&lt;h2 id=&quot;patterns-today&quot;&gt;Patterns today&lt;/h2&gt;
+
+&lt;p&gt;Many “classic” GoF patterns encapsulated or deprecated by language evolution&lt;/p&gt;
+
+&lt;p&gt;Iterator Command&lt;/p&gt;
+
+&lt;p&gt;Paradigms beyond just object-orientation&lt;/p&gt;
+
+&lt;p&gt;Language dictates the patterns&lt;/p&gt;
+
+&lt;p&gt;OOP are large and coarse-grained - end up making data structures&lt;/p&gt;
+
+&lt;p&gt;blub developer&lt;/p&gt;
+
+&lt;p&gt;understand the idiomatic patterns for your language/platform&lt;/p&gt;
+
+&lt;p&gt;clarity vs obscurity&lt;/p&gt;</content><author><name></name></author><summary type="html">Strategy pattern</summary></entry><entry><title type="html">Microservices - Chapter 1</title><link href="http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1.html" rel="alternate" type="text/html" title="Microservices - Chapter 1" /><published>2018-10-15T22:15:00+01:00</published><updated>2018-10-15T22:15:00+01:00</updated><id>http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1</id><content type="html" xml:base="http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1.html">&lt;p&gt;Notes from Microservices - Oreilly, chapter 1&lt;/p&gt;
 
 &lt;h2 id=&quot;what-are-microservices&quot;&gt;What are microservices?&lt;/h2&gt;
 
@@ -557,90 +669,7 @@ IS           WriteAuditTrail&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Insurance –&amp;gt; Shared?&lt;/p&gt;
 
-&lt;p&gt;Business goals, requirements, drivers and industry trends should drive architecture.&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.</summary></entry><entry><title type="html">Software Architecture Fundamentals - 2</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 2" /><published>2018-10-14T16:40:00+01:00</published><updated>2018-10-14T16:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Continuous Delivery&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;XP &amp;amp; TDD practices&lt;/p&gt;
-
-&lt;p&gt;Integrate once everyday&lt;/p&gt;
-
-&lt;p&gt;Early and often&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Continuous Integration&lt;/em&gt; :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Tests on commit.&lt;/li&gt;
-  &lt;li&gt;Production readiness on code change.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;em&gt;Continuous Deployment/Delivery&lt;/em&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Software always deployable.&lt;/li&gt;
-  &lt;li&gt;Production readiness on configuration change.&lt;/li&gt;
-  &lt;li&gt;Reliable deployments&lt;/li&gt;
-  &lt;li&gt;Release on business needs&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;em&gt;Pre-requisites&lt;/em&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Configuration management&lt;/li&gt;
-  &lt;li&gt;Automated testing&lt;/li&gt;
-  &lt;li&gt;Configuration Integration - deployment pipelines&lt;/li&gt;
-  &lt;li&gt;E2E in production like environments.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Deployments self-serviced&lt;/p&gt;
-
-&lt;p&gt;Pull vs Push systems&lt;/p&gt;
-
-&lt;p&gt;Pull - manual - Continuous delivery
-Push - automated - Continuous deployment&lt;/p&gt;
-
-&lt;p&gt;Why =&amp;gt; Responsiveness to business&lt;/p&gt;
-
-&lt;p&gt;Goal =&amp;gt; Cycle time shorter&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Shorter time cycles leads to&lt;/em&gt; :&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;What-if scenarios&lt;/li&gt;
-  &lt;li&gt;More releases which can be business differentiator&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Engineering sophistication is required&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Production-like&lt;/em&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Increases confidence in production readiness&lt;/li&gt;
-  &lt;li&gt;Environments become production-like.&lt;/li&gt;
-  &lt;li&gt;Faster feedback&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Repeatable reliable process for releasing software&lt;/p&gt;
-
-&lt;p&gt;Provisioning boxes with devops&lt;/p&gt;
-
-&lt;p&gt;Deployments and database migrations&lt;/p&gt;
-
-&lt;p&gt;Try to automate everything.&lt;/p&gt;
-
-&lt;p&gt;Separate things that can be automated with those that cannot be.&lt;/p&gt;
-
-&lt;p&gt;Keep everything in version control&lt;/p&gt;
-
-&lt;p&gt;Developer machines images can be used - Puppet/Chef. Check &lt;a href=&quot;https://github.com/boxen&quot;&gt;boxen&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;If it hurts, do it more often.&lt;/p&gt;
-
-&lt;p&gt;Bring the pain forward&lt;/p&gt;
-
-&lt;p&gt;Everyone responsible for delivery - dev, dba, qa, ops&lt;/p&gt;
-
-&lt;p&gt;Check
-&lt;a href=&quot;https://www.amazon.co.uk/Things-Every-Software-Architect-Should/dp/059652269X&quot;&gt;97 Things Every Architect Should Know&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.</summary></entry><entry><title type="html">Software Architecture Fundamentals - 3</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-3.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 3" /><published>2018-10-14T16:40:00+01:00</published><updated>2018-10-14T16:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-3</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-3.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
+&lt;p&gt;Business goals, requirements, drivers and industry trends should drive architecture.&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.</summary></entry><entry><title type="html">Software Architecture Fundamentals - 3</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-3.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 3" /><published>2018-10-14T16:40:00+01:00</published><updated>2018-10-14T16:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-3</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-3.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Architecture Soft Skills&lt;/strong&gt;&lt;/p&gt;
 
@@ -740,7 +769,90 @@ Push - automated - Continuous deployment&lt;/p&gt;
 
 &lt;p&gt;Essential vs accidental complexity&lt;/p&gt;
 
-&lt;p&gt;Probes vs Radiators&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.</summary></entry><entry><title type="html">Software Architecture Fundamentals - 1</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 1" /><published>2018-10-14T14:40:00+01:00</published><updated>2018-10-14T14:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online.&lt;/p&gt;
+&lt;p&gt;Probes vs Radiators&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.</summary></entry><entry><title type="html">Software Architecture Fundamentals - 2</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 2" /><published>2018-10-14T16:40:00+01:00</published><updated>2018-10-14T16:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-2.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Continuous Delivery&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;XP &amp;amp; TDD practices&lt;/p&gt;
+
+&lt;p&gt;Integrate once everyday&lt;/p&gt;
+
+&lt;p&gt;Early and often&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Continuous Integration&lt;/em&gt; :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tests on commit.&lt;/li&gt;
+  &lt;li&gt;Production readiness on code change.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Continuous Deployment/Delivery&lt;/em&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Software always deployable.&lt;/li&gt;
+  &lt;li&gt;Production readiness on configuration change.&lt;/li&gt;
+  &lt;li&gt;Reliable deployments&lt;/li&gt;
+  &lt;li&gt;Release on business needs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Pre-requisites&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Configuration management&lt;/li&gt;
+  &lt;li&gt;Automated testing&lt;/li&gt;
+  &lt;li&gt;Configuration Integration - deployment pipelines&lt;/li&gt;
+  &lt;li&gt;E2E in production like environments.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Deployments self-serviced&lt;/p&gt;
+
+&lt;p&gt;Pull vs Push systems&lt;/p&gt;
+
+&lt;p&gt;Pull - manual - Continuous delivery
+Push - automated - Continuous deployment&lt;/p&gt;
+
+&lt;p&gt;Why =&amp;gt; Responsiveness to business&lt;/p&gt;
+
+&lt;p&gt;Goal =&amp;gt; Cycle time shorter&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Shorter time cycles leads to&lt;/em&gt; :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What-if scenarios&lt;/li&gt;
+  &lt;li&gt;More releases which can be business differentiator&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Engineering sophistication is required&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Production-like&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Increases confidence in production readiness&lt;/li&gt;
+  &lt;li&gt;Environments become production-like.&lt;/li&gt;
+  &lt;li&gt;Faster feedback&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Repeatable reliable process for releasing software&lt;/p&gt;
+
+&lt;p&gt;Provisioning boxes with devops&lt;/p&gt;
+
+&lt;p&gt;Deployments and database migrations&lt;/p&gt;
+
+&lt;p&gt;Try to automate everything.&lt;/p&gt;
+
+&lt;p&gt;Separate things that can be automated with those that cannot be.&lt;/p&gt;
+
+&lt;p&gt;Keep everything in version control&lt;/p&gt;
+
+&lt;p&gt;Developer machines images can be used - Puppet/Chef. Check &lt;a href=&quot;https://github.com/boxen&quot;&gt;boxen&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If it hurts, do it more often.&lt;/p&gt;
+
+&lt;p&gt;Bring the pain forward&lt;/p&gt;
+
+&lt;p&gt;Everyone responsible for delivery - dev, dba, qa, ops&lt;/p&gt;
+
+&lt;p&gt;Check
+&lt;a href=&quot;https://www.amazon.co.uk/Things-Every-Software-Architect-Should/dp/059652269X&quot;&gt;97 Things Every Architect Should Know&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.</summary></entry><entry><title type="html">Software Architecture Fundamentals - 1</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 1" /><published>2018-10-14T14:40:00+01:00</published><updated>2018-10-14T14:40:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-1.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online.&lt;/p&gt;
 
 &lt;p&gt;Choice of technology should not drive architecture&lt;/p&gt;
 
@@ -810,24 +922,4 @@ Push - automated - Continuous deployment&lt;/p&gt;
 
 &lt;p&gt;Business domain knowledge&lt;/p&gt;
 
-&lt;p&gt;Methodologies and strategies&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from the Software Architecture Fundamentals a video series on Safari books online.</summary></entry><entry><title type="html">Blogging using Github</title><link href="http://localhost:4000/github/blogging/2018/10/14/Blogging-using-Github.html" rel="alternate" type="text/html" title="Blogging using Github " /><published>2018-10-14T12:18:50+01:00</published><updated>2018-10-14T12:18:50+01:00</updated><id>http://localhost:4000/github/blogging/2018/10/14/Blogging-using-Github</id><content type="html" xml:base="http://localhost:4000/github/blogging/2018/10/14/Blogging-using-Github.html">&lt;p&gt;This blog uses Github to serve the blog posts.&lt;/p&gt;
-
-&lt;p&gt;For this, first I had to update gnupg, rvm and ruby and then install jekyll.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew upgrade gnupg                                    &lt;span class=&quot;c&quot;&gt;# update gnu pg&lt;/span&gt;
-curl &lt;span class=&quot;nt&quot;&gt;-sSL&lt;/span&gt; https://rvm.io/mpapis.asc  | gpg &lt;span class=&quot;nt&quot;&gt;--import&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;# get key&lt;/span&gt;
-rvm get stable &lt;span class=&quot;nt&quot;&gt;--auto-dotfiles&lt;/span&gt;                        &lt;span class=&quot;c&quot;&gt;# update rvm&lt;/span&gt;
-rvm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;ruby 2.5.1                                &lt;span class=&quot;c&quot;&gt;# install ruby&lt;/span&gt;
-gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jekyll bundler                            &lt;span class=&quot;c&quot;&gt;# install jekyll&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Then create the blog and serve locally&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;jekyll new myblog                                     &lt;span class=&quot;c&quot;&gt;# create blog&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;myblog                                             &lt;span class=&quot;c&quot;&gt;# go to blog directory&lt;/span&gt;
-bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve                              &lt;span class=&quot;c&quot;&gt;# serve locally&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Information on &lt;a href=&quot;https://pages.github.com/&quot;&gt;Github pages&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Information on &lt;a href=&quot;https://jekyllrb.com/docs/&quot;&gt;Jekyll docs&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Information on &lt;a href=&quot;https://rvm.io/&quot;&gt;rvm&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">This blog uses Github to serve the blog posts.</summary></entry></feed>
+&lt;p&gt;Methodologies and strategies&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from the Software Architecture Fundamentals a video series on Safari books online.</summary></entry></feed>

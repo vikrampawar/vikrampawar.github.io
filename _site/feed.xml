@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-15T22:30:43+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Microservices - Chapter 1</title><link href="http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1.html" rel="alternate" type="text/html" title="Microservices - Chapter 1" /><published>2018-10-15T22:15:00+01:00</published><updated>2018-10-15T22:15:00+01:00</updated><id>http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1</id><content type="html" xml:base="http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1.html">&lt;p&gt;Notes from Microservices - Oreilly, chapter 1&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-16T08:07:37+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Microservices - Chapter 1</title><link href="http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1.html" rel="alternate" type="text/html" title="Microservices - Chapter 1" /><published>2018-10-15T22:15:00+01:00</published><updated>2018-10-15T22:15:00+01:00</updated><id>http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1</id><content type="html" xml:base="http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1.html">&lt;p&gt;Notes from Microservices - Oreilly, chapter 1&lt;/p&gt;
 
 &lt;h2 id=&quot;what-are-microservices&quot;&gt;What are microservices?&lt;/h2&gt;
 
@@ -14,7 +14,7 @@
 
 &lt;p&gt;Systems at scale&lt;/p&gt;
 
-&lt;h2 id=&quot;small-and-focussed-on-doing-one-thing-well&quot;&gt;Small and focussed on doing one thing well&lt;/h2&gt;
+&lt;h2 id=&quot;small-and-focused-on-doing-one-thing-well&quot;&gt;Small and focused on doing one thing well&lt;/h2&gt;
 
 &lt;p&gt;Robert C Martin Single responsibility principle. Keep things that change for the same reason together and separate those things that change for different reasons.&lt;/p&gt;
 
@@ -163,13 +163,13 @@ Advanced encryption standard - AES&lt;/p&gt;
 &lt;p&gt;A fixed-length sequence of bits, the digest or hash is generated from text. It’s computationally infeasible to generate a text that has the same digest. A slight change in text will change half the bits in the digest.&lt;/p&gt;
 
 &lt;p&gt;Message digest algorithms - MD5 (128 bit), SHA (160 bits), SHA-2 &amp;amp; SHA-3 (224-512 bits) &lt;br /&gt;
-Servers prove identity by presenting a certificate issued by a certificate authority.&lt;/p&gt;</content><author><name></name></author><summary type="html">Cryptography</summary></entry><entry><title type="html">Software Architecture Fundamentals - 6 : Architecture patterns 2</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 6 : Architecture patterns 2" /><published>2018-10-14T22:11:00+01:00</published><updated>2018-10-14T22:11:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6.html">&lt;h1 id=&quot;pipeline-architecture-pattern&quot;&gt;Pipeline architecture pattern&lt;/h1&gt;
+Servers prove identity by presenting a certificate issued by a certificate authority.&lt;/p&gt;</content><author><name></name></author><summary type="html">Cryptography</summary></entry><entry><title type="html">Software Architecture Fundamentals - 6 : Architecture patterns 2</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 6 : Architecture patterns 2" /><published>2018-10-14T22:11:00+01:00</published><updated>2018-10-14T22:11:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6.html">&lt;h2 id=&quot;pipeline-architecture-pattern&quot;&gt;Pipeline architecture pattern&lt;/h2&gt;
 
 &lt;p&gt;a.k.a pipes and filter architecture&lt;/p&gt;
 
 &lt;p&gt;roots from OS&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;pipes&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&quot;pipes&quot;&gt;pipes&lt;/h1&gt;
 
 &lt;p&gt;Connects different filters and transfers data&lt;/p&gt;
 
@@ -194,7 +194,13 @@ Servers prove identity by presenting a certificate issued by a certificate autho
 
 &lt;p&gt;provides for high level of decoupling&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;filters&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;supports evolutionary design&lt;/p&gt;
+
+&lt;p&gt;able to easily adapt to changing requirements&lt;/p&gt;
+
+&lt;p&gt;can easily be incorporated into another pattern&lt;/p&gt;
+
+&lt;h1 id=&quot;filters&quot;&gt;filters&lt;/h1&gt;
 
 &lt;p&gt;Receives data, does something on it and pushes it on to the next filter&lt;/p&gt;
 
@@ -214,7 +220,7 @@ example
                                                                              |
                  &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;input processor&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;C&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt;&amp;lt;&lt;span class=&quot;nt&quot;&gt;--validator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Te&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;scoped xml data] &amp;lt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;strong&gt;pipeline vs event-driven&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&quot;pipeline-vs-event-driven&quot;&gt;pipeline vs event-driven&lt;/h1&gt;
 
 &lt;p&gt;pipeline&lt;/p&gt;
 &lt;ul&gt;
@@ -228,7 +234,68 @@ example
   &lt;li&gt;asynchronous event processing&lt;/li&gt;
   &lt;li&gt;multiple targets for events&lt;/li&gt;
   &lt;li&gt;complex multi-purpose processors&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">Pipeline architecture pattern</summary></entry><entry><title type="html">Software Architecture Fundamentals - 5 : Architecture patterns</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 5 : Architecture patterns" /><published>2018-10-14T17:58:00+01:00</published><updated>2018-10-14T17:58:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;microkernel-architecture&quot;&gt;Microkernel architecture&lt;/h2&gt;
+
+&lt;p&gt;architectural components&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;core system&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;minimal functionality to run the system&lt;/li&gt;
+  &lt;li&gt;general business rules and logic&lt;/li&gt;
+  &lt;li&gt;doesn’t contain customer processing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;plugin module&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;standalone independent module&lt;/li&gt;
+  &lt;li&gt;specific additional rules or logic&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Example: Eclipse&lt;/p&gt;
+
+&lt;p&gt;core : claims processing&lt;/p&gt;
+
+&lt;p&gt;plugins : CA, NY, GA etc&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;useful for systems that have custom processing or processing is susceptible to change&lt;/li&gt;
+  &lt;li&gt;plug-in modules can easily be added and removed&lt;/li&gt;
+  &lt;li&gt;supports evolutionary design&lt;/li&gt;
+  &lt;li&gt;easily adapts to change in requirements&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;space-based-architecture&quot;&gt;Space based architecture&lt;/h2&gt;
+
+&lt;h1 id=&quot;traditional-scaling&quot;&gt;Traditional scaling&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/scaling.jpeg&quot; alt=&quot;Scaling&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;space-scaling&quot;&gt;Space scaling&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/space.jpeg&quot; alt=&quot;Space&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;processing-unit&quot;&gt;Processing Unit&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/processing-unit.jpeg&quot; alt=&quot;Processing Unit&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;features&quot;&gt;Features&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;it’s all about variable scalability&lt;/li&gt;
+  &lt;li&gt;good for applications that have variable load or inconsistent peak times&lt;/li&gt;
+  &lt;li&gt;not a good fit for traditional large-scale relational database systems&lt;/li&gt;
+  &lt;li&gt;relatively complex and expensive pattern to implement&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;links&quot;&gt;Links&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Space-based_architecture&quot;&gt; Wikipedia Space based architecture&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Pipeline_(software)&quot;&gt;Pipeline software&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.enterpriseintegrationpatterns.com/patterns/messaging/PipesAndFilters.html&quot;&gt; EAI pipes and filters&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Pipeline architecture pattern</summary></entry><entry><title type="html">Software Architecture Fundamentals - 5 : Architecture patterns</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 5 : Architecture patterns" /><published>2018-10-14T17:58:00+01:00</published><updated>2018-10-14T17:58:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
 
 &lt;p&gt;History of Patterns movement&lt;/p&gt;
 

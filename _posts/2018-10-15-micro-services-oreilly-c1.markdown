@@ -22,7 +22,7 @@ Small teams
 
 Systems at scale
 
-## Small and focussed on doing one thing well
+## Small and focused on doing one thing well
 
 Robert C Martin Single responsibility principle. Keep things that change for the same reason together and separate those things that change for different reasons.
 

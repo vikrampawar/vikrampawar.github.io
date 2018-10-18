@@ -1,10 +1,59 @@
 ---
 layout: post
-title:  "Clojure - Basics"
+title:  "Clojure - Intermediate"
 date:   2018-10-18 19:00:00 +0100
 categories: lisp
 ---
 
-## Clojure
+### Clojure - Functions
 
-# Basic
+Everything around functions
+
+Multi-arity function can respond to different sets of arguments. Single-arity takes one set of arguments, multy-arity takes more than one set of arguments
+
+{% highlight clojure %}
+
+;; multi-arity function , two argument sets
+;; parameter expression has an extra ()
+(defn greet
+    ([person] (println "hello" person))            ; args set 1 'person'
+    ([greeting person] (println greeting person))) ; args set 2 'greeting' and 'person'
+(greet "vikram")           ; hello vikram
+(greet "morning" "vikram") ; morning vikram
+
+{% endhighlight %}
+
+To reduce redundancy, the function can call itself when its called with fewer arguments
+
+{% highlight clojure %}
+
+;; reduce redundancy
+;; all call the one with maximum arity
+
+(defn greet-reduce-redundancy
+    ([person] (greet-reduce-redundancy "hello" person)) ; elf 
+    ([greeting person] ( println greeting person)))
+
+(greet-reduce-redundancy "vikram")           ; hello vikram
+(greet-reduce-redundancy "morning" "vikram") ; morning vikram
+
+{% endhighlight %}
+
+Function that takes infinite arguments, uses &, called varargs or variadic functions, they have single argument set
+
+Variadic function has 
+
+{% highlight clojure %}
+
+(defn pig[& args]               ; takes many arguments, the space after & is mandatory
+   (println "Gobbled " args)    ; all arguments
+   (println (first args)))      ; first argument 
+(pig 1 2 3)    ; Gobbled (1 2 3), 1 
+
+; get the first argument
+(defn smart-pig [name & args]
+    (println name))
+(smart-pig 1 2 3 4) ; 1
+{% endhighlight %}
+
+

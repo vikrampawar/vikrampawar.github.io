@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "Clojure - Basics"
+date:   2018-10-18 19:00:00 +0100
+categories: lisp
+---
+
+## Clojure
+
+# Basic

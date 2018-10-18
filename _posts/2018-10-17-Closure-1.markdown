@@ -195,6 +195,8 @@ Set is membership. Element occurs once, either belongs or doesn't.
 ;; and or short-circuit
 (or true (println "Reached"))                ; true
 (or false (println "Reached"))               ; Reached, nil
+(and true "hello")                           ; hello   
+(and 1 2 nil 4)                              ; nil
 {% endhighlight %}
 
 Truthy - everything except false, nil and true

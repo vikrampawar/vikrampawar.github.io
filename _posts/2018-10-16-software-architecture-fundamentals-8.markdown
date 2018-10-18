@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Software Architecture Fundamentals - 7 : Architecture Anti-patterns 1"
+title:  "Software Architecture Fundamentals - 8 : Architecture Anti-patterns 1"
 date:   2018-10-16 22:00:00 +0100
 categories: anti-patterns
 ---

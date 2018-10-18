@@ -1,0 +1,282 @@
+---
+layout: post
+title:  "Clojure - Basics"
+date:   2018-10-17 21:00:00 +0100
+categories: lisp
+---
+
+## Clojure
+
+# Basic
+
+{% highlight clojure %}
+;; comment line
+(println "Hello, World")          ; prints 
+(str "add" "these" "tog")         ; concatenate
+(count "abcd")                    ; counts number of characters
+(println true false nil)          ; valid values
+(+ 1 2 3)                         ; add 1,2 and 3
+(+ 1,2,3)                         ; same, comma are whitespace
+(* 2 3 4)                         ; multiply 2, 3 and 4
+(- 10 2 3)                        ; 5
+(/ 8 3)                           ; gives ratio 8/3
+(quote 8 3)                       ; gives quotient 2
+(def x 2)                         ; assign 2 to x
+(def x (* 4 2))                   ; assign 8 to x
+(defn f[](+ 2))                   ; define function f
+(defn g[x y](+ x y 2)             ; take param x, y
+{% endhighlight %}
+
+Define functions before you use them
+
+Don't def and defn the same symbol
+
+# Vector and Lists
+
+{% highlight clojue %}
+;; vectors
+[ 1 2 3 4]              ; vector ordered collection of items
+[ "a" 1 true]           ; string number boolean
+(vector 1 2 3 4)        ; returns [1 2 3 4]
+(def items [1 2 3 4])   ; vector with 4 items
+items                   ; returns [1 2 3 4]
+(count items)           ; returns 4
+(first items)           ; returns 1
+(rest items)            ; returns sequence ( 2 3 4) not vector
+(rest (rest items))     ; returns (3 4)
+(rest [])               ; returns ()
+(rest [1])              ; returns ()
+(nth items 0)           ; returns 1 
+(items 0)               ; returns 1 
+(conj items 5)          ; conjunction returns [1 2 3 4 5] ; NOTE[]
+(cons 0 items)          ; construct returns ( 0 1 2 3 4 ) ; NOTE()
+{% endhighlight %}
+
+Data-structures are Immutable and persistent which means fast almost-same copies can be produced.
+
+{% highlight clojure %}
+;; lists
+'(1 2 3 4)              ; list ordered collection of items ; NOTE '
+()                      ; returns ()
+'()                     ; returns ()
+'(1 2 3 4 [v])          ; returns (1 2 3 4 [v])
+(list 1 2 3 4)          ; returns (1 2 3 4)
+(def litems '(1 2 3 4)) ; list with 4 items
+litems                  ; returns (1 2 3 4)
+(first litems)          ; returns 1
+(rest litems)           ; returns (2 3 4)
+(nth litems 0)          ; returns 1
+(litems 0)              ; ClassCastException!
+
+
+{% endhighlight %}  
+
+# Vector
+
+A continuous chunk of memory. 
+
+{% highlight bash %}
+# b contiguous to a, c contiguous to b ...
+[a][b][c]
+{% endhighlight %}
+
+Accessing last element is quick
+
+Adding an element at beginning involves reorg
+
+conj adds at the end
+
+More commonly used than lists.
+
+
+# List
+
+A linked linst. 
+
+{% highlight bash %}
+# a has pointer to b and a count, b has a pointer to c and count ...
+[a \*b count] [b \*c count] [c count]
+{% endhighlight %}
+
+Accessing last element is slow, going from one to another takes time
+
+Adding an element at beginning is easy, creating element and point to the first one in the original list.
+
+conj adds at the beginning
+
+# Map
+
+Map is a key value pair. Key can be string or keyword which starts with :
+
+
+{% highlight clojure %}
+;; maps with string keys
+{"a" 1 "b" 2}               ; prints {"a" 1, "b" 2},  map a to 1, b to 2
+(hash-map "a" 1 "b" 2)      ; same map
+(def m {"a" 1 "b" 2})       ; same map assigned to m
+(get m "a")                 ; prints 1, value of "a"
+(m "a")                     ; same, value of a
+;; maps with keywords as keys
+(def mk{:a 1 :b 2})          ; {:a 1, :b 2}
+(get mk :a)                  ; 1, value of :a
+(mk :a)                      ; 1, value of :a
+(:a mk)                      ; value of :a, NOTE reversed, is more common
+(assoc mk :c 3 :d 4)         ; Add :c and :d elements   
+(dissoc mk :a)               ; Remove element :a
+;; why use contains?
+(contains? mk :a)            ; true
+(def mkn {:a 1 :b 2 :d nil}) ; :d's value is nil
+(mkn :d)                     ; nil
+(mkn :e)                     ; also nil
+(contains? mkn :d)           ; true,  NOTE value nil, but exists
+(contains? mkn :e)           ; false, doesn't exist
+
+
+;; vectors are maps with integer keys
+(def v[1 2 3])               ; [1 2 3]
+(assoc v 1 99)               ; [1 99 3]
+(v 1)                        ; 2   
+(get v 1)                    ; 2
+;; keys and values
+(keys mk)                    ; (:a :b)
+(vals mk)                    ; (1 2)
+(keys m)                     ; ("a" "b")   
+(vals m)                     ; (1 2)
+{% endhighlight %}
+
+# Sets
+
+Set is membership. Element occurs once, either belongs or doesn't.
+
+{% highlight clojure %}
+
+;; sets
+(def s #{:a :b :c})          ; #{:c :b c}, a set, NOTE #
+(s :a)                       ; :a
+(:a s)                       ; :a
+(contains? s :a)             ; true
+(conj s :d)                  ; add :d
+(disj s :a)                  ; remove :a
+(#{:a :b :c} :a)             ; :a, proves set contains :a 
+(#{:a :b :c} :d)             ; nil, proves set does not contain :d
+
+{% endhighlight %}
+
+# Conditionals
+
+{% highlight clojure %}
+;; if expression
+(defn f[c](if c (println "True")(println "False"))) ; 
+(f true)                                     ; True
+(f 1)                                        ; True
+(f false)                                    ; False
+;; 'if' is expression, returns "True" or "False"
+(defn f[c](if c "True" "False"))               
+;; test equality
+(= 1 1)                                      ; true   
+(= 1 2)                                      ; false
+(= 1 1 1 1)                                  ; true
+;; test inequality
+(not= 1 2)                                   ; true
+(> 5 4 3)                                    ; true         
+(> 3 4 5)                                    ; false         
+(< 5 4 3)                                    ; false         
+(< 3 4 5)                                    ; true
+;; test type
+(number? 1)                                  ; true
+(string? "a")                                ; true
+(keyword? :a)                                ; true
+(map? {:a 1})                                ; true
+(vector? [1])                                ; true
+(not true)                                   ; false
+(not false)                                  : true
+(or true false)                              ; true
+(and true false)                          no fI No    ; false
+;; and or short-circuit
+(or true (println "Reached"))                ; true
+(or false (println "Reached"))               ; Reached, nil
+{% endhighlight %}
+
+Truthy - everything except false, nil and true
+
+Falsy - false, nil
+
+`if` can evaluate only one expression.
+
+Combine `if` with `do` for multiple statements
+
+{% highlight clojure %}
+
+;; if with multiple statements
+(defn check-sum[sum]
+    (if (= sum 0)                                      ; using if
+        (do                                            ; using do 
+            (println "Sum is zero")
+            (println "Not a good sign")
+            0.0)
+        (do                                            ; else part 
+            (println "Sum is not zero")
+            (println "Good sign")
+            sum)))
+(check-sum 0)   ; prints "Sum is zero", "Not a good sign"
+(check-sum 10)  ; prints "Sum is not zero", "Good sign"
+
+{% endhighlight %}
+
+Use `when` for multiple statements with one leg
+
+{% highlight clojure %}
+;; when with mutiple statements in one leg
+(defn check-product[product]
+    (when (= product 0 )             ; using when
+        (println "Product is 0")
+        (println "Nothing more to do")))
+(check-product 0) ; prints "Product is 0", "Nothing more to do"
+{% endhighlight %}
+
+Use `cond` in place of nested ifs
+
+{% highlight clojure %}
+(defn check-state[temp]
+    (cond
+        (<= temp 0) "Ice"   ; predicate and expression
+        (and (>= temp 0) (< temp 100)) "Water"
+        :else "Vapour"))        ; catch all 
+(check-state -10) ; Ice
+(check-state 0)   ; Ice
+(check-state 10)  ; Water
+(check-state 100) ; Vapour
+{% endhighlight %}
+
+Or `case` if evaluating a single variable and not a complex predicate
+
+{% highlight clojure %}
+(defn check-status[status]
+    (case status                    ; evaluating status
+        :bronze "nice"              ; has to be a constant
+        :silver "good"
+        :gold   "great"
+        "unknown"))
+(check-status :silver)  ; good
+{% endhighlight %}
+
+Catching exceptions
+
+{% highlight clojure %}
+(defn catch-exception[]
+    (try
+        (/ 0 0)
+        (catch ArithmeticException e (println "Caught division by zero")))) ; e can be anything
+(catch-exception)  ; Caught division by zero
+{% endhighlight %}
+
+Throwing exception
+
+{% highlight clojure %}
+
+(defn throw-exception[x]
+    (when (= x true) 
+        (throw                          ; throw 
+            (ex-info "You wanted exception right?" {:input x})))) ; set exception info
+(throw-exception true)
+{% endhighlight %}

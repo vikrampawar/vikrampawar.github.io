@@ -1,0 +1,37 @@
+---
+layout: post
+title:  "Lisp 1 "
+date:   2018-10-16 23:00:00 +0100
+categories: lisp
+---
+
+Notes from 'Practical common lisp'
+
+
+Simple list expression 10. Every expression evaluates to some result.
+
+It is a self-evaluating object. So are strings like "Hello, World"
+
+Anything in parenthesis is a list
+
+`(+ 2 3)`
+
++ is a function
+2 and 3 evaluate to themselves
+
+`format` function takes at least two parameters, first one 't' implies output is to standard output. The second is the string. It has side effects
+
+`NIL` is false and or null
+
+defun defines a function
+
+`(defun hello-world() (format t "hello, world"))`
+
+Can be called as 
+
+`(hello-world)`
+
+functions return the value of the last expression evaluated
+
+
+

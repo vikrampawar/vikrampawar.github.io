@@ -1,4 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-18T23:13:26+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Clojure - Intermediate</title><link href="http://localhost:4000/lisp/2018/10/18/Closure-2.html" rel="alternate" type="text/html" title="Clojure - Intermediate" /><published>2018-10-18T19:00:00+01:00</published><updated>2018-10-18T19:00:00+01:00</updated><id>http://localhost:4000/lisp/2018/10/18/Closure-2</id><content type="html" xml:base="http://localhost:4000/lisp/2018/10/18/Closure-2.html">&lt;h3 id=&quot;clojure---functions&quot;&gt;Clojure - Functions&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-20T19:11:40+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Site Reliability Engineering</title><link href="http://localhost:4000/sre/2018/10/20/sre-1.html" rel="alternate" type="text/html" title="Site Reliability Engineering" /><published>2018-10-20T12:00:00+01:00</published><updated>2018-10-20T12:00:00+01:00</updated><id>http://localhost:4000/sre/2018/10/20/sre-1</id><content type="html" xml:base="http://localhost:4000/sre/2018/10/20/sre-1.html">&lt;p&gt;Notes from SRE books&lt;/p&gt;
+
+&lt;p&gt;Site Reliability Engineering - Book 1&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;“Hope is not a strategy”&lt;/p&gt;
+
+&lt;p&gt;Sysadmin approach to service management. Team size grows with scale&lt;/p&gt;
+
+&lt;p&gt;dev want change and ops wants stability, goals at conflict and they are divided&lt;/p&gt;
+
+&lt;p&gt;SRE - Software engineer’s approach to operations - automate. Systems run automatically, not just automated. So, the SRE spends time in development. SRE number scales sublinearly with size of the system.&lt;/p&gt;
+
+&lt;p&gt;Responsible for availability, latency, performance, efficiency, change management, monitoring, emergency response, and capacity planning&lt;/p&gt;
+
+&lt;h1 id=&quot;engineering&quot;&gt;Engineering&lt;/h1&gt;
+
+&lt;p&gt;Focus on Engineering&lt;/p&gt;
+
+&lt;p&gt;Blame-free postmortem culture&lt;/p&gt;
+
+&lt;h1 id=&quot;velocity&quot;&gt;Velocity&lt;/h1&gt;
+
+&lt;p&gt;Pursue maximum change velocity. Meaningful reliability target 99.99 vs 100%. Error budget 1 - availability target. Outage is expected - innovation.&lt;/p&gt;
+
+&lt;h1 id=&quot;monitoring&quot;&gt;Monitoring&lt;/h1&gt;
+
+&lt;p&gt;Software to interpret alerts and involve humans only if they have to take action.&lt;/p&gt;
+
+&lt;p&gt;Alerts - for humans, Tickets - human buy no immediate action, Logging - forensic purpose.&lt;/p&gt;
+
+&lt;h1 id=&quot;emergency-response&quot;&gt;Emergency response&lt;/h1&gt;
+
+&lt;p&gt;Mean time to repair - MTTR time to get the system back
+Playbook recording best practices ahead of time.&lt;/p&gt;
+
+&lt;h1 id=&quot;change-management&quot;&gt;Change management&lt;/h1&gt;
+
+&lt;p&gt;70% of outages result of changes in a live system&lt;/p&gt;
+
+&lt;p&gt;Automate progressive rollout, detecting problem and roll back.&lt;/p&gt;
+
+&lt;h1 id=&quot;demand-forecasting-and-capacity-planning&quot;&gt;Demand forecasting and capacity planning&lt;/h1&gt;
+
+&lt;p&gt;lead time, load testing.&lt;/p&gt;
+
+&lt;h1 id=&quot;provisioning&quot;&gt;Provisioning&lt;/h1&gt;
+
+&lt;p&gt;Riskier than load shifting (# per hour)&lt;/p&gt;
+
+&lt;p&gt;#Efficiency and performance&lt;/p&gt;
+
+&lt;p&gt;Monitor and modify service to improve performance.&lt;/p&gt;
+
+&lt;h2 id=&quot;production-environment-at-google&quot;&gt;Production environment at Google&lt;/h2&gt;
+
+&lt;p&gt;Servers can be on any machine, resoure allocation is handled by Borg (cluster operating system).&lt;/p&gt;
+
+&lt;p&gt;Server : software implements service vs binary that accepts network connection&lt;/p&gt;
+
+&lt;h1 id=&quot;system-software-organises-hardware&quot;&gt;System software organises hardware&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Fill later&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;embracing-risk&quot;&gt;Embracing Risk&lt;/h1&gt;
+
+&lt;h2 id=&quot;site-reliability-engineering---book-2&quot;&gt;Site Reliability Engineering - Book 2&lt;/h2&gt;
+
+&lt;h1 id=&quot;background-on-devops&quot;&gt;Background on devops&lt;/h1&gt;
+
+&lt;p&gt;No more silos&lt;/p&gt;
+
+&lt;p&gt;Accidents are normal&lt;/p&gt;
+
+&lt;p&gt;Change should be gradual. Small and frequent.&lt;/p&gt;
+
+&lt;p&gt;Tooling and culture are interrelated&lt;/p&gt;
+
+&lt;p&gt;Measurement is crucial&lt;/p&gt;
+
+&lt;h1 id=&quot;background-on-sre&quot;&gt;Background on SRE&lt;/h1&gt;
+
+&lt;p&gt;SRE coined by Ben Treynor Sloss, Google.&lt;/p&gt;
+
+&lt;p&gt;Operations is a Software Problem&lt;/p&gt;
+
+&lt;p&gt;Manage by Service Level Objectives (SLOs)&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from SRE books</summary></entry><entry><title type="html">Openshift basics</title><link href="http://localhost:4000/lisp/2018/10/20/Openshift-1.html" rel="alternate" type="text/html" title="Openshift basics" /><published>2018-10-20T12:00:00+01:00</published><updated>2018-10-20T12:00:00+01:00</updated><id>http://localhost:4000/lisp/2018/10/20/Openshift-1</id><content type="html" xml:base="http://localhost:4000/lisp/2018/10/20/Openshift-1.html">&lt;h1 id=&quot;placeholder&quot;&gt;Placeholder&lt;/h1&gt;
+
+&lt;h2 id=&quot;openshift&quot;&gt;Openshift&lt;/h2&gt;
+
+&lt;p&gt;Servicemesh - network of microservices&lt;/p&gt;</content><author><name></name></author><summary type="html">Placeholder</summary></entry><entry><title type="html">Clojure - Intermediate</title><link href="http://localhost:4000/lisp/2018/10/18/Closure-2.html" rel="alternate" type="text/html" title="Clojure - Intermediate" /><published>2018-10-18T19:00:00+01:00</published><updated>2018-10-18T19:00:00+01:00</updated><id>http://localhost:4000/lisp/2018/10/18/Closure-2</id><content type="html" xml:base="http://localhost:4000/lisp/2018/10/18/Closure-2.html">&lt;h3 id=&quot;clojure---functions&quot;&gt;Clojure - Functions&lt;/h3&gt;
 
 &lt;p&gt;Everything around functions&lt;/p&gt;
 
@@ -711,266 +804,4 @@ example
 
 &lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Pipeline_(software)&quot;&gt;Pipeline software&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.enterpriseintegrationpatterns.com/patterns/messaging/PipesAndFilters.html&quot;&gt; EAI pipes and filters&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Pipeline architecture pattern</summary></entry><entry><title type="html">Software Architecture Fundamentals - 5 : Architecture patterns</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 5 : Architecture patterns" /><published>2018-10-14T17:58:00+01:00</published><updated>2018-10-14T17:58:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-5.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
-
-&lt;p&gt;History of Patterns movement&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.amazon.co.uk/Pattern-Language-Buildings-Construction-Environmental/dp/0195019199/ref=sr_1_1?ie=UTF8&amp;amp;qid=1539541549&amp;amp;sr=8-1&amp;amp;keywords=a+pattern+language&quot;&gt;Design patterns in Architecture Book&lt;/a&gt; by Christopher Alexander 1977&lt;/p&gt;
-
-&lt;p&gt;GoF book 1984&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Traditional layered architecture&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Presentation Layer
-Business Layer
-Persistence Layer
-Database Layer&lt;/p&gt;
-
-&lt;p&gt;Layers are closed.&lt;/p&gt;
-
-&lt;p&gt;Go from one layer to another.&lt;/p&gt;
-
-&lt;p&gt;Information flows down. Never up.&lt;/p&gt;
-
-&lt;p&gt;Separation of concerns.&lt;/p&gt;
-
-&lt;p&gt;Layers of isolation&lt;/p&gt;
-
-&lt;p&gt;Database can  be changed from DB2 or Oracle. First two layers won’t change.&lt;/p&gt;
-
-&lt;p&gt;Persistence Layer changes, it does not affect other layers.&lt;/p&gt;
-
-&lt;p&gt;Active record mixes Persistence and Business layers.&lt;/p&gt;
-
-&lt;p&gt;Architecture sinkhole. Too many layers of abstraction.&lt;/p&gt;
-
-&lt;p&gt;Variations and hybrids, services layer comes between Business and Persistence layers. It is open, it can go direct to Database layer.&lt;/p&gt;
-
-&lt;p&gt;presentation to managed bean -&amp;gt; business object -&amp;gt;&lt;/p&gt;
-
-&lt;p&gt;Good general purpose architecture - particularly with J2EE&lt;/p&gt;
-
-&lt;p&gt;Easy to implement, test and govern&lt;/p&gt;
-
-&lt;p&gt;Good starting point for most systems&lt;/p&gt;
-
-&lt;p&gt;Not suitable for a Trading application&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Event-driven architecture - EDA/SEDA&lt;/strong&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt; Event-&amp;gt;process-&amp;gt;process-&amp;gt;process
-          &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-           -&amp;gt;process-&amp;gt;process &amp;lt;- event
-                          &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-                           -&amp;gt;process&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;3 types of topology&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Event processor topology&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# Kicked off by event, and then mediated by Event processor&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Asynchronous IBM message flow follows this pattern&lt;/span&gt;
-Event -&amp;gt; Event queue -&amp;gt; Event processor -&amp;gt; Event topic -&amp;gt; process
-                              &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-                               -&amp;gt; Event topic -&amp;gt; process 
-                                         &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-                                          -&amp;gt; process&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Allows orchestration, mediation, transformation&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Broker topology&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# Kicked off by Event, there's no event queue or event processor/mediator&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# IBM Publish Subscribe follows this pattern&lt;/span&gt;
-Event  -&amp;gt; Event topic&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;on message broker&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; -&amp;gt; process
-                                              &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-                                               -&amp;gt; Event topic -&amp;gt; process 
-                                                     &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-                                                      -&amp;gt; process&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;em&gt;Brokerless topology&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# No broker, more complicated, process need to know which processes &lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# they need to communicate with&lt;/span&gt;
-Event  -&amp;gt;  process -&amp;gt; process
-                &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-                 -&amp;gt; process &amp;lt;- Event
-                        &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-                         -&amp;gt; process&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;em&gt;Example&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# One way fire and forget&lt;/span&gt;
-
-&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;motorist address change event&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
-&lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Customer processor] 
-         &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;address change&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;quote process] &lt;span class=&quot;nt&quot;&gt;-------&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;recal quote&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-------&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;notification process]
-                           &lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;                                           /
-                            &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;claims process] &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;claims update&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;------&lt;/span&gt; 
-                                                                        &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-                                                                         &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;adjustment process]       &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Fire and forget&lt;/p&gt;
-
-&lt;p&gt;Highly decoupled and distributed&lt;/p&gt;
-
-&lt;p&gt;Highly scalable&lt;/p&gt;
-
-&lt;p&gt;High degree of complexity&lt;/p&gt;
-
-&lt;p&gt;Good for event-based business models and business processes&lt;/p&gt;
-
-&lt;p&gt;Not good for processes which require high degree of data sharing, orchestration, and reuse&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Service-oriented architecture&lt;/strong&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;business services BS1 BS2 BS3  ..
-
-message bus
-   process chreographer
-   service orchestrator
-
-enterprise service ES1 ES2 ES3..
-application services AS1  &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; infrastructure services IS1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;em&gt;business services template&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; 		: abstract
-owner 		: business &lt;span class=&quot;nb&quot;&gt;users
-&lt;/span&gt;granularity : course-grained
-scope 		: enterprise-level
-notes 		: contains names&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Placing an order, a trade.
-Abstract, not linked to any tech - BPEL, WSDL, XML&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;enterprise services template&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; 		: concrete
-owner 		: architect / shared services team
-granularity : course-grained
-scope 		: enterprise-level
-notes 		: custom or vendor implementation
-			  one-to-one or many-to-one relationship with BS&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;CreateCustomer
-CalculateQuote&lt;/p&gt;
-
-&lt;p&gt;Granularity is the hard part&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;application services template&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; 		: concrete
-owner 		: application development team
-granularity : fine-grained
-scope 		: application-level
-notes 		: &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;addDriver
-addVehicle
-getInventoryCount&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;infrastructure services template&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; 		: concrete
-owner 		: application development team
-granularity : fine-grained
-scope 		: enterprise-level
-notes 		: supports application and enterprise service
-			  non business functionality&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;writeAuditLog
-checkUserAccess
-writeErrorLog
-singleSignon&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;message bus&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;process choreography&lt;/p&gt;
-
-&lt;p&gt;service orientation&lt;/p&gt;
-
-&lt;p&gt;service registry&lt;/p&gt;
-
-&lt;p&gt;protocol transformation&lt;/p&gt;
-
-&lt;p&gt;message enhancement&lt;/p&gt;
-
-&lt;p&gt;message transformation&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;example&lt;/em&gt;&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;BS           CreateQuote
-                |
-MB          &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; message bus &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-            /          &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-ES   Create Customer   Calc Quote
-         /      &lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;          &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-AS  AddDriver AddVehicle    CheckDrivingRecord
-           &lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;    &lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;         / 
-IS           WriteAuditTrail&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Good pattern for understanding and implementing business processes and services&lt;/p&gt;
-
-&lt;p&gt;very high level of complexity&lt;/p&gt;
-
-&lt;p&gt;difficult to implement due to complex tools, hype, misconceptions, and heavy business user involvement&lt;/p&gt;
-
-&lt;p&gt;SOA is a pattern, not an implementation of a vendor.&lt;/p&gt;
-
-&lt;p&gt;good for pattern for large, complex, heterogeneous businesses that have a large number of common services (e.g., insurance)&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;References&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Event-driven_architecture&quot;&gt;Wikipedia (Event Driven Architecture )&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://soa.sys-con.com/node/738704&quot;&gt;Creating an Effective SOA Service Taxonomy&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Don’t forget it’s all about data&lt;/p&gt;
-
-&lt;p&gt;Data is spread around the enterprise, there is no system of record. Whose’s data is right? Users are protective about data. Data consolidation is difficult to do.&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.</summary></entry><entry><title type="html">Software Architecture Fundamentals - 4 : Architecting for change</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-4.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 4 : Architecting for change" /><published>2018-10-14T17:46:00+01:00</published><updated>2018-10-14T17:46:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-4</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-4.html">&lt;p&gt;Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.&lt;/p&gt;
-
-&lt;p&gt;Business in constant change&lt;/p&gt;
-
-&lt;p&gt;Technologies in constant change&lt;/p&gt;
-
-&lt;p&gt;Architectural agility&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Technique 1 : Reduce dependencies&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Use a Messaging/Bus/Adapters/Architectural Pattern to reduce dependencies&lt;/p&gt;
-
-&lt;p&gt;Components can evolve independently&lt;/p&gt;
-
-&lt;p&gt;Downsides : Solution becomes more complex, performance goes down.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Technique 2 : Standards&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Industry Standards&lt;/p&gt;
-
-&lt;p&gt;Corporate Standards&lt;/p&gt;
-
-&lt;p&gt;De-facto Standards&lt;/p&gt;
-
-&lt;p&gt;Large resource pool, although be wary of average resources, requires good hiring practices.&lt;/p&gt;
-
-&lt;p&gt;Better integration&lt;/p&gt;
-
-&lt;p&gt;Feasibility (in budget)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Technique 3 : Product agnostic approach&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Avoid vendor lock-in using anti-corruption layers&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Technique 4 : Domain specific architecture&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Generic architecture is difficult to change&lt;/p&gt;
-
-&lt;p&gt;Limits scope -&amp;gt; drivers, requirements, business direction, industry trends&lt;/p&gt;
-
-&lt;p&gt;Trading -&amp;gt; high performance architecture&lt;/p&gt;
-
-&lt;p&gt;Insurance –&amp;gt; Shared?&lt;/p&gt;
-
-&lt;p&gt;Business goals, requirements, drivers and industry trends should drive architecture.&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from the Software Architecture Fundamentals a video series on Safari books online - continued.</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://www.enterpriseintegrationpatterns.com/patterns/messaging/PipesAndFilters.html&quot;&gt; EAI pipes and filters&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Pipeline architecture pattern</summary></entry></feed>

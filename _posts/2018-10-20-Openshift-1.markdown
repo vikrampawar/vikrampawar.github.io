@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Openshift basics"
+date:   2018-10-20 12:00:00 +0100
+categories: lisp
+---
+
+# Placeholder 
+
+## Openshift
+
+Servicemesh - network of microservices
+

@@ -1,0 +1,114 @@
+---
+layout: post
+title:  "Site Reliability Engineering"
+date:   2018-10-20 12:00:00 +0100
+categories: sre
+---
+
+Notes from SRE books
+
+Site Reliability Engineering - Book 1 
+
+## Introduction 
+
+"Hope is not a strategy"
+
+Sysadmin approach to service management. Team size grows with scale
+
+dev want change and ops wants stability, goals at conflict and they are divided
+
+SRE - Software engineer's approach to operations - automate. Systems run automatically, not just automated. So, the SRE spends time in development. SRE number scales sublinearly with size of the system.
+
+Responsible for availability, latency, performance, efficiency, change management, monitoring, emergency response, and capacity planning 
+
+
+# Engineering
+
+Focus on Engineering
+
+Blame-free postmortem culture
+
+# Velocity 
+
+Pursue maximum change velocity. Meaningful reliability target 99.99 vs 100%. Error budget 1 - availability target. Outage is expected - innovation.
+
+# Monitoring 
+
+Software to interpret alerts and involve humans only if they have to take action.
+
+Alerts - for humans, Tickets - human buy no immediate action, Logging - forensic purpose.
+
+# Emergency response
+
+Mean time to repair - MTTR time to get the system back
+Playbook recording best practices ahead of time.
+
+# Change management
+
+70% of outages result of changes in a live system
+
+Automate progressive rollout, detecting problem and roll back.
+
+# Demand forecasting and capacity planning
+
+lead time, load testing.
+
+# Provisioning
+
+Riskier than load shifting (# per hour)
+
+
+#Efficiency and performance
+
+Monitor and modify service to improve performance.
+
+
+## Production environment at Google
+
+
+Servers can be on any machine, resoure allocation is handled by Borg (cluster operating system).
+
+Server : software implements service vs binary that accepts network connection 
+
+# System software organises hardware
+
+> Fill later
+
+
+# Embracing Risk
+
+
+
+
+
+
+
+
+
+
+
+## Site Reliability Engineering - Book 2
+
+
+# Background on devops
+
+No more silos
+
+Accidents are normal
+
+Change should be gradual. Small and frequent.
+
+Tooling and culture are interrelated
+
+Measurement is crucial
+
+# Background on SRE
+
+SRE coined by Ben Treynor Sloss, Google.
+
+Operations is a Software Problem
+
+Manage by Service Level Objectives (SLOs)
+
+
+

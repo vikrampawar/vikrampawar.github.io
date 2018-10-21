@@ -57,3 +57,102 @@ Variadic function has
 {% endhighlight %}
 
 
+# Multimethod
+
+A mechanism to implement dispatching of functions. Similar to RouteToLabel.
+
+Our requirement is to take a message, determine its format, i.e., whether it's xml, json, dfdl or none and call a function that implements the specific transformation logic to handle it.
+
+First, decide what you want to call the common function. Here we'll call it `process-message`.
+
+We'll define a special `defmulti` which maps this common method name to a special dispatcher which we call a `router`. The method name comes first and then the dispatcher function name next.
+
+{% highlight clojure %}
+;; The multimethod maps the method name to the dispatcher
+(defmulti process-message router)
+{% endhighlight %}
+
+Next, define a regular function that acts as  a dispatcher which takes an argument and returns a label. Here, the router function looks at a message and figures out the format of the message, whether it's xml, json, dfdl and returns a label that identifies the format. It has a catch all label of default.
+
+{% highlight clojure %}
+;; Reads message, and dispatches to function that handles the format
+(defn router [message]
+    (cond
+        (contains? message :dfdl) :dfdl-message       ; message has key dfdl 
+        (contains? message :xml) :xml-message         ; message has key xml
+        (= (message :label) :json) :json-message      ; message has key label with value json 
+        :else :default ))                             ; catch all
+{% endhighlight %}
+
+Then define a method for each of the labels and the default label.
+
+{% highlight clojure %}
+;; processes dfdl messages
+(defmethod process-message :dfdl-message
+  [message]
+  {:destination "dfdl" :transformed-body (:payload message)})
+
+;; processes xml messages
+(defmethod process-message :xml-message
+  [message]
+  {:destination "xml" :transformed-body (:payload message)})
+
+;; processes json messages
+(defmethod process-message :json-message
+  [message]
+  {:destination "json" :transformed-body (:payload message)})
+
+;; processes the rest of the messages
+(defmethod process-message :default
+  [message]
+  {:destination "default" :transformed-body "Empty Body"})
+{% endhighlight %}
+
+Here is how you call it 
+
+{% highlight clojure %}
+;; Calling process-message
+(process-message { :xml "a" :payload "<order></order>"})
+(process-message { :label :json :payload "{order: "1234"}"})
+(process-message { :dfdl "a" :payload "1234,4567"})
+;; The output
+{:destination xml, :transformed-body <order></order>}
+{:destination json, :transformed-body {order: }
+{:destination dfdl, :transformed-body 1234,4567}
+{% endhighlight %}
+
+Defining a new router function is not necessary. We just need a function that takes the same input and gives back a label. 
+
+Suppose the message is like this `{ :type :cobol :payload "old cobol"}`.
+
+Remember label is a function that returns its value in the collection. 
+
+That is,  `(:type message)` gives back `:cobol`
+
+So, the label can be used as the dispatch function.
+
+Here's a variation of the process-message called process-message-type.
+
+The multifunction that takes the label :type instead of router as the dispatch function 
+
+{% highlight clojure %}
+;; use the :type instead of router
+(defmulti process-message-type :type )
+{% endhighlight %}
+
+A corresponding implementation for the type :cobol
+
+{% highlight clojure %}
+; process a message with :cobol type
+(defmethod process-message-type :cobol [message]
+    {:destination (:type message) :transformed-body "new cobol"})
+{% endhighlight %}
+
+Here's the call
+
+{% highlight clojure %}
+;; call
+(println (process-message-type { :type :cobol :payload "old cobol"}))
+;; output
+{:destination :cobol, :transformed-body new cobol}
+{% endhighlight %}

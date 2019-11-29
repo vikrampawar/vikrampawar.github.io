@@ -1,8 +1,29 @@
 ---
 layout: post
 title:  "A new post"
-date:   2019-11-29 19:18:50 +0100
+date:   2019-11-29 18:18:50 +0100
 categories: Github blogging
 ---
 
-Test
+I have not posted anything for about an year.
+I forgot how blogging with github works.
+Luckily it's not too much of a hassle to figure out how this works.
+
+To generate a new post, create a file name with the pattern
+ccyy-mm-dd-title.markdown and commit and push to github. 
+That's all. 
+
+
+Make sure you insert a layout at the top that resembles
+
+{% highlight bash%}
+---
+layout: post
+title:  "A new post"
+date:   2019-11-29 18:18:50 +0100
+categories: Github blogging
+---
+{% endhighlight %}
+
+You can go to this post using the link
+[A new post](https://vikrampawar.github.io/github/blogging/2019/11/29/New-Post.html)

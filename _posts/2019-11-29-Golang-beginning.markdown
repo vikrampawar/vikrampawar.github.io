@@ -2,12 +2,12 @@
 layout: post
 title:  "Golang beginning"
 date:   2019-11-29 19:59:50 
-categories: Github blogging
+categories: Golang go
 ---
 
-I'm currently reading the book (The Go programming language)[https://www.gopl.io/].
+I'm currently reading the book [The Go programming language](https://www.gopl.io/).
 
-I'll write posts about my go journey. 
+I'll write posts about my Go journey here. 
 
 I'm interested to learn Go for the following reasons.
 
@@ -21,7 +21,7 @@ Go brings concurrent programming within easy reach. Concurrent programming is a 
 
 Go aims to have few features and one right way of doing things. This is essential for productivity. It enables us to move on to what we want to do with the language rather than constantly trying to find better ways of doing the same thing. 
 
-Go is geared for systems and backend programming. I have always worked in backend and mostly dealth with messages, queues, brokers and services. Go seems to be a good fit for programming in this domain.  
+Go is geared for systems and backend programming. I have always worked in backend and mostly dealt with messages, queues, brokers and services. Go seems to be a good fit for programming in this domain.  
 
 Go is a modern language and yet is already 10 years old. The creators had a good measure of all the current successful langauges and cherry-pick the features that were proved to be good in practice.
 

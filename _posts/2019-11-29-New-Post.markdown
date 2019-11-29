@@ -9,8 +9,8 @@ I have not posted anything for about an year.
 I forgot how blogging with github works.
 Luckily it's not too much of a hassle to figure out how this works.
 
-To generate a new post, create a file name with the pattern
-ccyy-mm-dd-title.markdown and commit and push to github. 
+To generate a new post, add a new file to the github repository called yourname.github.io. The file should match the pattern
+`ccyy-mm-dd-title.markdown` . Commit and push to github. For example the current post is called `2019-11-29-New-Post.markdown` and resides under the folder `_posts` within the repo `vikrampawar.githbub.io`. 
 That's all. 
 
 

@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Digital Certificates and Certificate Authority"
+date:   2018-10-24 19:00:00 +0100
+categories: Certificate
+---
+
+Certificate authorities (CA) issue digtal certificates.
+
+CA holds public key and identy of the user. The User keeps the corresponding private key.
+
+
+Four purposes - Encryption, Signature, Signature and Encryption, Signature and smarcard logon

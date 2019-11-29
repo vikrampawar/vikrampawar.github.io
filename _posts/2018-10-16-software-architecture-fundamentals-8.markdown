@@ -79,6 +79,81 @@ Architect only what is absolutely necessary. Let the architecture evolve
 
 Don't forget req, business etc change - so must architecture
 
+### Anti-Patterns 2
+
+## Arm-chair Architecture
+
+design not proven
+
+ivory tower 
+
+non-coding architects
+
+not involved in full project lifecycle
+
+stay current
+
+peer programming
+
+code reviews
+
+don't release architecture decisions too early
+
+be an integral part of the dev team
+
+
+## Playing with new toys
+
+Purpose?
+
+RDA - Resume driven architecture/development
+
+Proven? Be careful about being a pioneer.
+
+Overlap? 
+
+Feasibility?
+
+## Spider web architecture
+
+Large number of webservices that are not needed
+
+let requirements drive
+
+
+## Infinity architecture
+
+Over-generalized and infinitely-flexible. Hard to change
+
+Use domain-driven architectures to reduce scope
+
+Business requirements, goals, directions, industry trends
+{% highlight bash %}
+; flexible but also means no contract
+[component1] -> hashmap -> [component2]
+{% endhighlight %}
+
+
+## Groundhog day (Email driven architecture)
+
+Critical decisions are not communicated, forgotten.
+
+Same decision keeps getting discussed. Keeps questioning.
+
+Keep important decisions in a wiki (it evolves)
+
+
+## Stovepipe architecture
+
+Ad-hoc collection of ideas
+
+Lack of proper abstraction
+
+Lack of an integration solution
+
+Lack of architecture guidance
+
+Difficult to change
 
 
 

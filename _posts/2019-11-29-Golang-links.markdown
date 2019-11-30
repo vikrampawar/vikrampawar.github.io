@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Golang playground"
+title:  "Golang links"
 date:   2019-11-29 21:50:50 +0000
 categories: Golang links
 ---

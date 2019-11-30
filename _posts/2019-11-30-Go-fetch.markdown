@@ -5,33 +5,35 @@ date:   2019-11-30 10:00:50 +0000
 categories: Go http
 ---
 
-Here are few things you should know before you understand the program at the bottom.
+Here are a few things you should know before you understand the program at the bottom.
 
 You get the current time by `time.Now()` from the `time` package.
 
 Get time interval from `t1` until now by  `time.Since(t1)` which gives time in nanoseconds. 
 To get the time in seconds you have to call `Seconds()` method as in `time.Since(t1).Seconds()`
 
-To make a HTTP GET call use `Get` function from `http` package as `http.Get(url)`. 
+To make a HTTP GET call use `Get()` function from `http` package as `http.Get(url)`. 
 The result is a tuple of two variables. 
 First is the resp of type `*http.Response` and the second is error.
 
 To get access to the http response use Body of `*http.Response`.
 
-To copy from src to dst use `io.Copy(dst, src`.
+To copy from src to dst use `io.Copy(dst, src)`.
 To discard, we can copy into something equivalent to `/dev/null` by setting the destination to `ioutil.Discard` of type `ioutil.devNull`.
 
-Declare and intialize a channel called `mychannel` by `mychannel:= make(chan string)` .
+Declare and intialize a channel called `mychannel` that can send or receive strings by `mychannel:= make(chan string)` .
 Put `somestring` into the channel by `mychannel <- somestring`
 Receive from channel by `somestring <- mychannel`
 Declare a parameter of function to be a channel for strings by `mychannel chan <- string`.
 
-Now the different bits make some sense, it's time to look at what the below program does.
-The program takes a url slice( ~ array) and for each url it makes a HTTP GET call. It counts the time taken for each HTTP call and the total time taken. For each url, it start a separate go routine. The go routine puts the results whether happy path or error response into a channel. 
-Finally it receives everything from the channel. 
+Now that the different bits make some sense, it's time to look at what the below program does.
+The program takes a url slice( ~ array) and for each url it makes a HTTP GET call. It counts the time taken for each HTTP call and the total time taken. For each url, it starts a separate go routine. The go routine puts the results whether happy path or error response into a channel. 
+Finally, it receives everything from the channel. 
 The program ends when all expected responses are taken from the channel.
 
 {% highlight go%}
+// Program demonstrates some basic Go
+// constructs to fetch urls concurrently
 package main
 
 import (

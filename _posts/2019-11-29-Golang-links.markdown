@@ -5,6 +5,10 @@ date:   2019-11-29 21:50:50 +0000
 categories: Golang links
 ---
 
+[Go language specification](https://golang.org/ref/spec)
+
+[Go Doc](https://godoc.org/)
+
 [Go by example](https://gobyexample.com) has a list of simple go programs that demonstrates the basic language features.
 
 [GopherJS](https://github.com/gopherjs/gopherjs) compiles Go code into JavaScript. This is 

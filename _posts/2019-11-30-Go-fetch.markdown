@@ -1,0 +1,118 @@
+---
+layout: post
+title:  "Go fetch"
+date:   2019-11-30 10:00:50 +0000
+categories: Go http
+---
+
+Here are few things you should know before you understand the program at the bottom.
+
+You get the current time by `time.Now()` from the `time` package.
+
+Get time interval from `t1` until now by  `time.Since(t1)` which gives time in nanoseconds. 
+To get the time in seconds you have to call `Seconds()` method as in `time.Since(t1).Seconds()`
+
+To make a HTTP GET call use `Get` function from `http` package as `http.Get(url)`. 
+The result is a tuple of two variables. 
+First is the resp of type `*http.Response` and the second is error.
+
+To get access to the http response use Body of `*http.Response`.
+
+To copy from src to dst use `io.Copy(dst, src`.
+To discard, we can copy into something equivalent to `/dev/null` by setting the destination to `ioutil.Discard` of type `ioutil.devNull`.
+
+Declare and intialize a channel called `mychannel` by `mychannel:= make(chan string)` .
+Put `somestring` into the channel by `mychannel <- somestring`
+Receive from channel by `somestring <- mychannel`
+Declare a parameter of function to be a channel for strings by `mychannel chan <- string`.
+
+Now the different bits make some sense, it's time to look at what the below program does.
+The program takes a url slice( ~ array) and for each url it makes a HTTP GET call. It counts the time taken for each HTTP call and the total time taken. For each url, it start a separate go routine. The go routine puts the results whether happy path or error response into a channel. 
+Finally it receives everything from the channel. 
+The program ends when all expected responses are taken from the channel.
+
+{% highlight go%}
+package main
+
+import (
+    "fmt"
+    "io"
+    "io/ioutil"
+    "net/http"
+    "reflect"
+    "time"
+)
+
+func main() {
+
+    // Time at the beginning
+    start := time.Now()
+
+    // Declare channel
+    ch := make(chan string)
+
+    // Create, initialize an array slice
+    urls := []string{"http://www.google.com", "http://www.news.ycombinator.com"}
+
+    fmt.Printf("urls provided : %s \n", urls)
+
+    for _, url := range urls[:] {
+        // start a go routine to fetch results on the channel
+        go fetch(url, ch)
+    }
+
+    for range urls[:] {
+        // receive from channel
+        fmt.Println(<-ch)
+
+        // The below doesn't work
+        // somestring := <-ch
+        // fmt.Printf("type of somestring : %s\n", reflect.TypeOf(somestring))
+
+    }
+
+    // Total time taken
+    fmt.Printf("%.2fs elapsed\n", time.Since(start).Seconds())
+}
+
+// Take a url, make a GET request, put
+// the error/happy path response
+// into a channel
+// Make sure the channel is populated
+// in all paths
+// there is no other effect of the call
+func fetch(url string, ch chan<- string) {
+
+    // See the type of channel
+    reflect.TypeOf(ch)
+
+    // get current time
+    start := time.Now()
+
+    // make http call
+    resp, err := http.Get(url)
+    fmt.Printf("Type of resp : %s\n", reflect.TypeOf(resp)) // type *http.Response
+    if err != nil {
+
+        // Create the error string
+        errmsg := fmt.Sprintf("Calling %s : %v", url, err)
+        // Put the error message on the channel
+        ch <- errmsg
+    }
+
+    fmt.Printf("Type of ioutil.Discard :%s \n", reflect.TypeOf(ioutil.Discard))
+    fmt.Printf("Type of resp.Body :%s \n", reflect.TypeOf(resp.Body))
+    nbytes, err := io.Copy(ioutil.Discard, resp.Body)
+    resp.Body.Close()
+    if err != nil {
+        ch <- fmt.Sprintf("Reading %s : %v", url, err)
+    }
+
+    // time elapsed
+    secs := time.Since(start).Seconds()
+    // put happy path response on to channel
+    ch <- fmt.Sprintf("%.2fs %7d %s", secs, nbytes, url)
+
+}
+
+{% endhighlight %}

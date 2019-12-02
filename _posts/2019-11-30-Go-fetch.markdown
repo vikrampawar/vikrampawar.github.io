@@ -5,7 +5,9 @@ date:   2019-11-30 10:00:50 +0000
 categories: Go http
 ---
 
-Here are a few things you should know before you understand the program at the bottom.
+This post is about a simple Go program that demonstrates how easy it is to execute tasks like fetching URLs concurrently. The program measures the time taken for the individual tasks and also the overall tasks so we can see that the tasks are in fact being executed in parallel. 
+
+First we look at the elements of the program that we need to understand before we look at the complete program.
 
 You get the current time by `time.Now()` from the `time` package.
 

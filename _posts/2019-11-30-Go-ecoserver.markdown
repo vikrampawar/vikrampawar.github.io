@@ -5,7 +5,9 @@ date:   2019-11-30 18:00:50 +0000
 categories: Go http
 ---
 
-Here are a few things you should know before you understand the program at the bottom.
+This post is about a simple Go program that acts as web server which sends back a response with details of the request. 
+
+First we look at the elements of the program that we need to understand before we look at the complete program.
 
 To run a server on port 8000 call the function `ListenAndServe()` in the `http` package. It takes the `host:8000` address string as the first parameter and a handler function as the second parameter which could be nil.
 
@@ -16,7 +18,7 @@ To log an error and exit with status 1, use `Fatal(msg)` method in `log` package
 Any request to the above server are dispatched to one of the calls to the function `HandleFunc(pattern string, handler func(ResponseWriter, *Request))`.
 Which of these is called depends on the url of the incoming request.
 
-The pattern '/' will catch all request coming to this server.
+The pattern '/' will catch all requests coming to this server.
 
 The function will have access to the whole request and will have to generate the response that will be sent to the server which the server will display as a result of the HTTP call.
 
@@ -26,7 +28,7 @@ The headers are accessible as the map `Header` on the request. We can iterate ov
 
 To write to the response writer, we can use the function `Fprintf(w io.Writer, format string, a ...interface{})` in the `fmt` package.
 
-If we need to check the success of a call and have no other need from a call, we can do the call assign the result to a variable and then check the error all in one line such as ` if err := r.ParseForm(); err!= nil { log.Print(err)}`
+If we need to check the success of a call and have no other need from a call, we can do the call, assign the result to a variable, and then check the error, all in one line such as ` if err := r.ParseForm(); err!= nil { log.Print(err)}`
 
 {% highlight go%}
 // Start a simple HTTP server that listens on

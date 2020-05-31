@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Go Proberbs"
+title:  "Go Proverbs"
 date:   2019-12-01 10:00:50 +0000
 categories: Go proverbs
 ---

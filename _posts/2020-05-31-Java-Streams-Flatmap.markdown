@@ -2,7 +2,7 @@
 layout: post
 title:  "Java Streams flatMap Demo"
 date:   2020-05-31 10:03:00 +0000
-categories: Java Streams Flatmap
+categories: #java #streams #flatmap
 ---
 
 The below example shows how we can use `flatMap()` to get the unique combination of two integers for all integers up to n. For n=3, this would be

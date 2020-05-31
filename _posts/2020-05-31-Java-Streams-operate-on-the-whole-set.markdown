@@ -2,7 +2,7 @@
 layout: post
 title:  "Java Streams operate on the whole set"
 date:   2020-05-31 16:00:00 +0000
-categories: Java Streams
+categories: #java #streams
 ---
 
 Streams can help us do a lot of processing that we would traditionally do using Collections. However, there are some crucial differences between the two.

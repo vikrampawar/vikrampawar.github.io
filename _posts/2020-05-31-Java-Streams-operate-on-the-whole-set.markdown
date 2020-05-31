@@ -27,7 +27,7 @@ First, obtain a stream of the range of integers using `IntStream.rangeClosed(1, 
 
 From this, obtain a stream of Integers using `boxed()`.
 
-From this, obtain all possible triplets using `flatMap()`. (See a demo of the (flatMap)[https://vikrampawar.github.io/java/streams/flatmap/2020/05/31/Java-Streams-Flatmap.html]
+From this, obtain all possible triplets using `flatMap()`. (See a demo of the [flatMap](https://vikrampawar.github.io/java/streams/flatmap/2020/05/31/Java-Streams-Flatmap.html)
 
 Then, filter only those that satisfy the equation.
 
@@ -78,5 +78,5 @@ public class PythogoreanTriplets {
 }
 ```
 
-The example is based on an example from the book (Modern Java Development)[https://www.amazon.co.uk/Modern-Java-Action-functional-programming/dp/1617293563/ref=sr_1_1?dchild=1&keywords=modern+java+development&qid=1590920080&sr=8-1]
+The example is based on an example from the book [Modern Java Development](https://www.amazon.co.uk/Modern-Java-Action-functional-programming/dp/1617293563/ref=sr_1_1?dchild=1&keywords=modern+java+development&qid=1590920080&sr=8-1)
 

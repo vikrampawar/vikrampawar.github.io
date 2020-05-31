@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Java Streams flatMap"
+title:  "Java Streams flatMap Demo"
 date:   2020-05-31 10:03:00 +0000
 categories: Java Streams Flatmap
 ---
@@ -36,8 +36,14 @@ flatMap(a -> IntStream.rangeClosed(a, 3)
 This would be the stream
 [1, 1] [1, 2] [1, 3] [2, 2] [2, 3] [3, 3].
 
+The complete program.
 
 ```java
+
+import java.util.stream.IntStream;
+public class FlatMapDemo {
+	public static void main(String[] args) {
+
 		System.out.println("\n\nStep 1 one primitive integer stream \n------");		
 		IntStream.rangeClosed(1, 3)  // one stream
 			.forEach(t -> System.out.print(t + " - primitive " +  ", "));
@@ -59,7 +65,8 @@ This would be the stream
 			.flatMap(a -> IntStream.rangeClosed(a, 3)				// flat map, one stream
 				.mapToObj( b -> new int[]{a, b}))
 			.forEach(t ->  System.out.println(t + " - " + t.getClass().getTypeName() + " Contents: " + t[0] + ", " + t[1]));
-
+	}
+}
 
 ```
 

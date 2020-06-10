@@ -14,6 +14,7 @@ Collection operations are imperative. They work on one item at a time. Stream op
 Consider the below java code. It produces the Pythogorean triplets in a given range of integers. These are numbers that satisfy the equation `a*a + b*b = c*c`. 
 
 ```java
+// Example
 IntStream.rangeClosed(1, 10)
 	.boxed() 
 	.flatMap(a -> IntStream.rangeClosed(a, 15) 

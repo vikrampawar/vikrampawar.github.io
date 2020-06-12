@@ -3,9 +3,9 @@ layout: post
 title:  "Same Repo On Both Bitbucket And Github"
 published : true
 description : 
+tags: #git #github #bitbucket
 date:   2020-06-11 19:00:00 +0000
 categories: #git #github #bitbucket
-tags: #git #github #bitbucket
 ---
 
 I used bitbucket as my main remote hub for some years now. The main reason was that we use bitbucket at work, so I was more familiar with it. The other reason of course was that I could host my private repositories there. Now Github also allows hosting of private repositories, so I wanted to add Github as another remote to my existing git repositories. Here is what I did.

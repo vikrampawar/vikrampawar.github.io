@@ -26,7 +26,7 @@ Before, I explain how the limit is applied, I'll have to explain what number `24
 
 This number is telling us that while using the address `192.168.100.14`, don't use the first 24 bits or the first 3 octets. That is, `192.168.100` are off limits. That leaves us with only the last octet, so only 256 possible values :( ! Imagine if this number was `31`, that leaves only `1` bit or two possibilities. 
 
-The 3 octets that we do not use, along with a a `0` for the fourth octet `192.168.100.0` represents something called a `routing prefix`. If you represent this routing prefix in the form `255.255.255.0`, it's called the `subnet mask` and logically represents the same thing.
+The 3 octets that we do not use, along with a `0` for the fourth octet `192.168.100.0` represents something called a `routing prefix`. If you represent this routing prefix in the form `255.255.255.0`, it's called the `subnet mask` and logically represents the same thing.
 
 
 

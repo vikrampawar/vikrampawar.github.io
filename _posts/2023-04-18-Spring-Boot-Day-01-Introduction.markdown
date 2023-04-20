@@ -1,5 +1,5 @@
 ---
-title:  Starting a course on Spring Boot - Day 01  
+title:  Spring Boot Day 01 - Introduction
 published : true
 description : 
 tags: #spring-boot #java #course
@@ -8,15 +8,14 @@ categories: #java #spring-boot
 date:   2023-04-18 10:00:00 +0000
 ---
 
-Starting a Spring Boot course today. We'll continue from where we left off in December last year.
+Starting a Spring Boot course today. If you are interested in joining the course, please contact me. You'll find the links below.
 
 The required materials are in the following two repositories:
 
 1. [Spring Boot in 3 Weeks](https://github.com/rumq/spring-boot-in-3-weeks) : This repository is forked from Andy Olsen's repository. I've added a `slides/pdf` folder which contain pdf versions of the power point slides for easier viewing in VSCode.
 2. [Spring Boot Course](https://github.com/rumq/java-springboot-course) : This repository will contain any additional material we'll require during the course. It also contains folders for the different members who are attending the course.
 
-There is common notes created by the attendees and myself in this page [Common class notes learners](https://github.com/rumq/java-springboot-course/blob/main/pages/common-class-notes-learners.md).
-
+You'll find the common notes for the course [Common Class Notes](https://github.com/rumq/java-springboot-course/blob/main/pages/CommonClassNotes.md) 
 
 We'll be going through these slides and the corresponding demos for this course.
 

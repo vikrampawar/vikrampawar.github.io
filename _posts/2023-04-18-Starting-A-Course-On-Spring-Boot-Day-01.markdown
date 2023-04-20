@@ -43,5 +43,5 @@ We'll be going through these slides and the corresponding demos for this course.
 
 We've gone through the first 3 today, and looked at the 4rth on bean injection briefly. We'll start from there in the next class.
 
-Today's meeting is recorded. You can find the link to it here [Master Class Tech A B C D (2023-04-18 06:02 GMT+1)](https://drive.google.com/file/d/1Y66X-1sJSfrGhCemM0Ggh50nbCrNu8mj/view?usp=share_link).
+Today's meeting is recorded. You can find the link to it here [Spring Boot Day 01 Introduction](https://drive.google.com/file/d/1Y66X-1sJSfrGhCemM0Ggh50nbCrNu8mj/view?usp=share_link).
 

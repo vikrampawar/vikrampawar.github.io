@@ -1,11 +1,11 @@
 ---
 title:  Spring Boot Day 02 - Bean Dependency
-published : true
+published : true 
 description : 
 tags: #spring-boot #java #course
 layout: post
 categories: #java #spring-boot
-date:   2023-04-20 08:00:00 +0000
+date:   2023-04-20 07:00:00 +0000
 ---
 
 Today we've gone through [04_Beans_Dependency](https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/04_Beans_DependencyInjection.pptx.pdf).

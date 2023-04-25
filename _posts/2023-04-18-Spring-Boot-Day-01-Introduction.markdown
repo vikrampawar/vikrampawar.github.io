@@ -1,5 +1,5 @@
 ---
-title:  Spring Boot Day 01 - Introduction
+title:  Spring Boot Course 
 published : true
 description : 
 tags: #spring-boot #java #course
@@ -8,14 +8,14 @@ categories: #java #spring-boot
 date:   2023-04-18 10:00:00 +0000
 ---
 
-Starting a Spring Boot course today. If you are interested in joining the course, please contact me. You'll find the links below.
+Starting a Spring Boot course today. 
+If you are interested in joining the course, please contact me. 
+You'll find the links below.
 
 The required materials are in the following two repositories:
 
 1. [Spring Boot in 3 Weeks](https://github.com/rumq/spring-boot-in-3-weeks) : This repository is forked from Andy Olsen's repository. I've added a `slides/pdf` folder which contain pdf versions of the power point slides for easier viewing in VSCode.
 2. [Spring Boot Course](https://github.com/rumq/java-springboot-course) : This repository will contain any additional material we'll require during the course. It also contains folders for the different members who are attending the course.
-
-You'll find the common notes for the course [Common Class Notes](https://github.com/rumq/java-springboot-course/blob/main/pages/CommonClassNotes.md) 
 
 We'll be going through these slides and the corresponding demos for this course.
 
@@ -40,7 +40,6 @@ We'll be going through these slides and the corresponding demos for this course.
 17. [17_Authentication_OAUTH2](https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/17_Authentication_OAUTH2.pptx.pdf)
 18. [18_Testing](https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/18_Testing.pptx.pdf)
 
-We've gone through the first 3 today, and looked at the 4rth on bean injection briefly. We'll start from there in the next class.
 
-Today's meeting is recorded. You can find the link to it here [Spring Boot Day 01 Introduction](https://drive.google.com/file/d/1Y66X-1sJSfrGhCemM0Ggh50nbCrNu8mj/view?usp=share_link).
-
+The meetings are recorded.
+You can find the notes and the links to the recording on the README file in the course repository [Spring Boot Course](https://github.com/rumq/java-springboot-course).

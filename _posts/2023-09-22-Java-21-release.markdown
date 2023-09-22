@@ -5,7 +5,7 @@ description :
 tags: #java 
 layout: post
 categories: #java 
-date:   2022-09-22 07:00:00 +0000
+date:   2022-09-23 07:00:00 +0000
 ---
 
 Java 21 is released. The following have caught my attention

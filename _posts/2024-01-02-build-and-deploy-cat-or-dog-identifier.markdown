@@ -1,6 +1,6 @@
 ---
 title:  Build and Deploy a Cat or Dog identifier
-published : false
+published : true
 description : 
 tags: #fastai #llm ##classifier 
 layout: post

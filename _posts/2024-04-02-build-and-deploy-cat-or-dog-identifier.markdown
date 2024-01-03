@@ -11,7 +11,7 @@ date:   2024-04-02 18:00:00 +0000
 I've recently started exploring AI and machine learning. I found this course by FastAI called [Practical Deep Learning](https://course.fast.ai/). I'm going through this course now. 
 
 One of the first things I learned is how to build a model and deploy it to a website. In this post, I'll document the steps I took to build and deploy an AI model that identifies whether an image is that of a cat or a dog.
-The end result will be a web application that will allow users to upload an image and the application will identify whether the image is that of a cat or a dog.
+The end result will be a web application that will allow users to upload an image and the application will identify whether the image is that of a cat or a dog. You'll not need to know anything about AI or machine learning to follow along.
 
 In the python and AI community most of the work is done in Jupyter Notebooks.
 In this post, I'll be referring to the notebooks I've created for this project.
@@ -47,7 +47,10 @@ When you execute this notebook, you'll end up with a web application that runs l
 
 ## Create a space on Hugging Face
 
-Create a [new space](https://huggingface.co/spaces) on Hugging Face. Open an account first. Then click the option to create a new space. Select `Gradio` as the SDK and the free option for hardware. You'll then be shown the steps to follow.
+ Open an account on Hugging Face, if you don't already have it. Go to [spaces](https://huggingface.co/spaces). Then click the option to create a new space. Select `Gradio` as the SDK and the free option for hardware. You'll then be shown the steps to follow. We'll follow the exact steps, and change the contents of the `app.py` file. It may be a good idea to just follow the steps with the default `app.py` to get familiar with the process.
 
-## Deploy the model to Hugging Face
+ Each space has its own git repository. To be able to push changes to it, we should have access. You can either use Access Tokens or SSH keys. I prefer SSH keys. To generate an SSH key, follow the steps [here](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh). Once you have the SSH key, add it to your Hugging Face account. You can do this by going to your profile and clicking on the SSH keys tab. 
 
+## Deploy the web application to Hugging Face
+
+When we created the space on Hugging Face, it creates a git repository for us. We'll clone this repository to our local machine. We'll then copy the `app.py` file we created in the previous step to this repository. We'll then commit and push the changes to the repository. This will trigger a build on Hugging Face. Once the build is complete, we'll be able to access the web application from the URL provided by Hugging Face.

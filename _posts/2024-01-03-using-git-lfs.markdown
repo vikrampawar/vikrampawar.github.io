@@ -5,7 +5,7 @@ description :
 tags: #git #lfs
 layout: post
 categories: #git #lfs
-date:   2024-04-03 18:00:00 +0000
+date:   2024-01-03 18:00:00 +0000
 ---
 
 [Git LFS](https://git-lfs.com/) is an extension to git that allows us to track large files. It does this by storing the large files in a separate location and storing a pointer to the file in the git repository. This allows us to keep the git repository small and still be able to track large files.

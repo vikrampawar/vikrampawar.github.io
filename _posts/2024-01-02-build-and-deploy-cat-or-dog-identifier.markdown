@@ -5,7 +5,7 @@ description :
 tags: #fastai #llm ##classifier 
 layout: post
 categories: #fastai #llm #classifier
-date:   2024-04-02 18:15:00 +0000
+date:   2024-01-02 18:15:00 +0000
 ---
 
 I've recently started exploring AI and machine learning. I found this course by FastAI called [Practical Deep Learning](https://course.fast.ai/). I'm going through this course now. 

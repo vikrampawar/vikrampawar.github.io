@@ -96,7 +96,7 @@ scikit-image
 ```
 We'll copy the `model.pkl` file to the repository. 
 
-The `model.pkl` files are usually large. So, we'll have to use [git-lfs](https://git-lfs.github.com/) to push it to the repository. 
+The `model.pkl` files are usually large. So, we'll have to use [git-lfs](https://git-lfs.github.com/) to push it to the repository. You can find the steps to install and use git-lfs [here](https://vikrampawar.github.io/2024/01/03/using-git-lfs.html).
 
 You should have the following files in the repository. Note that the `.png` files are the examples we'll use to test the application. We'll then push the changes to the repository.
 

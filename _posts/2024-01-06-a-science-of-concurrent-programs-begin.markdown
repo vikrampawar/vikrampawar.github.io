@@ -24,7 +24,6 @@ Refreshing basics and in the process getting acquainted with LaTeX.
 The symbols
 
 $$
-
 \\ 
  \lnot \quad  negation \: not \qquad \Rightarrow implies  
 \\ 
@@ -39,7 +38,6 @@ $$
 \lnot TRUE \equiv FALSE
 \\
 \not FALSE \equiv TRUE
-
 $$
 
 And
@@ -124,6 +122,5 @@ $$
 \\
 Transitivity : \qquad
 \vDash (A \Rightarrow B) \land (B \Rightarrow C) \Rightarrow (A \Rightarrow C)
-
 $$
 

@@ -1,893 +1,323 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-21T09:45:12+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Site Reliability Engineering</title><link href="http://localhost:4000/sre/2018/10/20/sre-1.html" rel="alternate" type="text/html" title="Site Reliability Engineering" /><published>2018-10-20T12:00:00+01:00</published><updated>2018-10-20T12:00:00+01:00</updated><id>http://localhost:4000/sre/2018/10/20/sre-1</id><content type="html" xml:base="http://localhost:4000/sre/2018/10/20/sre-1.html">&lt;p&gt;Notes from SRE books&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://0.0.0.0:3001/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:3001/" rel="alternate" type="text/html" /><updated>2025-06-14T11:32:58+01:00</updated><id>http://0.0.0.0:3001/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Restarting My Blog with Claude Code: How AI Made Jekyll Setup Effortless</title><link href="http://0.0.0.0:3001/2025/06/14/restarting-blog-with-claude-code.html" rel="alternate" type="text/html" title="Restarting My Blog with Claude Code: How AI Made Jekyll Setup Effortless" /><published>2025-06-14T11:00:00+01:00</published><updated>2025-06-14T11:00:00+01:00</updated><id>http://0.0.0.0:3001/2025/06/14/restarting-blog-with-claude-code</id><content type="html" xml:base="http://0.0.0.0:3001/2025/06/14/restarting-blog-with-claude-code.html"><![CDATA[<p>After years of sporadic blogging, I’m back. But this time was different – instead of the usual painful process of remembering how Jekyll works, updating dependencies, and debugging setup issues, the entire experience was smooth and effortless. Why? Because I had Claude Code as my coding assistant.</p>
 
-&lt;p&gt;Site Reliability Engineering - Book 1&lt;/p&gt;
+<h2 id="the-problem-blogging-restart-friction">The Problem: Blogging Restart Friction</h2>
 
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<p>Every time I’ve tried to restart blogging in the past, it’s been the same story. My local Jekyll setup would be broken, dependencies outdated, and I’d spend hours just trying to get <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> to work. By the time I got the technical hurdles sorted, my motivation to actually write had evaporated.</p>
 
-&lt;p&gt;“Hope is not a strategy”&lt;/p&gt;
+<p>This time, I simply told Claude Code: “I have started this a long time ago on another machine. I don’t think I have local setup for this. Can you gather info from the web to find out if I need to update in anyway, and how to setup locally.”</p>
 
-&lt;p&gt;Sysadmin approach to service management. Team size grows with scale&lt;/p&gt;
+<h2 id="what-claude-code-did">What Claude Code Did</h2>
 
-&lt;p&gt;dev want change and ops wants stability, goals at conflict and they are divided&lt;/p&gt;
+<p>In less than 10 minutes, Claude Code:</p>
 
-&lt;p&gt;SRE - Software engineer’s approach to operations - automate. Systems run automatically, not just automated. So, the SRE spends time in development. SRE number scales sublinearly with size of the system.&lt;/p&gt;
+<ol>
+  <li><strong>Analyzed my codebase</strong> - Examined my Jekyll site structure, Gemfile, and configuration</li>
+  <li><strong>Researched current requirements</strong> - Fetched up-to-date information from GitHub Pages documentation</li>
+  <li><strong>Identified what was outdated</strong> - My Jekyll 3.8.4 was old, I was using direct Jekyll gem instead of github-pages gem, and Ruby requirements had changed</li>
+  <li><strong>Fixed my Gemfile</strong> - Updated it to use the github-pages gem for compatibility</li>
+  <li><strong>Handled the setup process</strong> - Updated Bundler, installed dependencies, resolved version conflicts</li>
+  <li><strong>Debugged issues</strong> - When Jekyll failed due to Liquid syntax errors in my documentation, it quickly identified and fixed them</li>
+  <li><strong>Got the server running</strong> - Had my blog accessible at localhost:3000</li>
+</ol>
 
-&lt;p&gt;Responsible for availability, latency, performance, efficiency, change management, monitoring, emergency response, and capacity planning&lt;/p&gt;
+<h2 id="the-technical-details">The Technical Details</h2>
 
-&lt;h1 id=&quot;engineering&quot;&gt;Engineering&lt;/h1&gt;
+<p>Here’s what was wrong and how Claude Code fixed it:</p>
 
-&lt;p&gt;Focus on Engineering&lt;/p&gt;
+<h3 id="outdated-dependencies">Outdated Dependencies</h3>
+<ul>
+  <li><strong>Problem</strong>: Using Jekyll 3.8.4 (GitHub Pages now uses 3.10.0)</li>
+  <li><strong>Solution</strong>: Switched to <code class="language-plaintext highlighter-rouge">github-pages</code> gem which automatically pulls in the right versions</li>
+</ul>
 
-&lt;p&gt;Blame-free postmortem culture&lt;/p&gt;
+<h3 id="gemfile-configuration">Gemfile Configuration</h3>
+<p><strong>Before:</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"jekyll"</span><span class="p">,</span> <span class="s2">"~&gt; 3.8.4"</span>
+</code></pre></div></div>
 
-&lt;h1 id=&quot;velocity&quot;&gt;Velocity&lt;/h1&gt;
+<p><strong>After:</strong></p>
 
-&lt;p&gt;Pursue maximum change velocity. Meaningful reliability target 99.99 vs 100%. Error budget 1 - availability target. Outage is expected - innovation.&lt;/p&gt;
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"github-pages"</span><span class="p">,</span> <span class="ss">group: :jekyll_plugins</span>
+</code></pre></div></div>
 
-&lt;h1 id=&quot;monitoring&quot;&gt;Monitoring&lt;/h1&gt;
+<h3 id="ruby-version-compatibility">Ruby Version Compatibility</h3>
+<ul>
+  <li><strong>Problem</strong>: GitHub Pages now requires Ruby 2.7.0+ (uses 3.3.4)</li>
+  <li><strong>Solution</strong>: Verified my Ruby 3.1.4 was compatible and updated all dependencies</li>
+</ul>
 
-&lt;p&gt;Software to interpret alerts and involve humans only if they have to take action.&lt;/p&gt;
+<h3 id="liquid-syntax-errors">Liquid Syntax Errors</h3>
+<p>When Jekyll failed with cryptic errors about unclosed highlight tags, Claude Code quickly identified that my newly created CLAUDE.md file had unescaped Liquid syntax and fixed it using proper raw tags.</p>
 
-&lt;p&gt;Alerts - for humans, Tickets - human buy no immediate action, Logging - forensic purpose.&lt;/p&gt;
+<h2 id="what-this-means-for-my-blogging">What This Means for My Blogging</h2>
 
-&lt;h1 id=&quot;emergency-response&quot;&gt;Emergency response&lt;/h1&gt;
+<p>Now that AI can handle the technical drudgery, I can focus on what I actually want to do: write and share ideas. This is particularly relevant as I dive deeper into AI tools and coding assistants.</p>
 
-&lt;p&gt;Mean time to repair - MTTR time to get the system back
-Playbook recording best practices ahead of time.&lt;/p&gt;
+<h2 id="my-ai-learning-journey">My AI Learning Journey</h2>
 
-&lt;h1 id=&quot;change-management&quot;&gt;Change management&lt;/h1&gt;
+<p>I want to document my exploration of AI tools, particularly:</p>
+<ul>
+  <li><strong>Coding assistants</strong> like Claude Code, GitHub Copilot, and Cursor</li>
+  <li><strong>How AI changes development workflows</strong> and what skills become more/less important</li>
+  <li><strong>Practical AI applications</strong> beyond just code generation</li>
+  <li><strong>The evolving landscape</strong> of AI tools and how to choose between them</li>
+</ul>
 
-&lt;p&gt;70% of outages result of changes in a live system&lt;/p&gt;
+<p>The irony isn’t lost on me that my first post about exploring AI was itself made possible by AI.</p>
 
-&lt;p&gt;Automate progressive rollout, detecting problem and roll back.&lt;/p&gt;
+<h2 id="why-blog-again">Why Blog Again?</h2>
 
-&lt;h1 id=&quot;demand-forecasting-and-capacity-planning&quot;&gt;Demand forecasting and capacity planning&lt;/h1&gt;
+<p>Three main reasons:</p>
 
-&lt;p&gt;lead time, load testing.&lt;/p&gt;
+<ol>
+  <li><strong>Track my learning publicly</strong> - The AI space moves fast, and writing helps me process and remember what I’m learning</li>
+  <li><strong>Share practical insights</strong> - Beyond the hype, what actually works day-to-day?</li>
+  <li><strong>Document the journey</strong> - I’m curious how my thinking about AI evolves over time</li>
+</ol>
 
-&lt;h1 id=&quot;provisioning&quot;&gt;Provisioning&lt;/h1&gt;
+<p>Previously, blogging felt like a chore because of all the setup friction and editing overhead. Now with AI handling the technical hassles and helping with writing polish, it feels sustainable again.</p>
 
-&lt;p&gt;Riskier than load shifting (# per hour)&lt;/p&gt;
+<h2 id="looking-forward">Looking Forward</h2>
 
-&lt;p&gt;#Efficiency and performance&lt;/p&gt;
+<p>This is just the beginning. I plan to write regularly about my experiments with AI tools, both successes and failures. If you’re also exploring this space, I hope these posts are useful.</p>
 
-&lt;p&gt;Monitor and modify service to improve performance.&lt;/p&gt;
+<p>Next up: A deeper dive into Claude Code specifically and how it’s changing my development workflow.</p>
 
-&lt;h2 id=&quot;production-environment-at-google&quot;&gt;Production environment at Google&lt;/h2&gt;
+<hr />
 
-&lt;p&gt;Servers can be on any machine, resoure allocation is handled by Borg (cluster operating system).&lt;/p&gt;
+<p><em>P.S. - Yes, Claude Code helped me write and polish this post too. Meta? Absolutely. Useful? Definitely.</em></p>]]></content><author><name></name></author><summary type="html"><![CDATA[How Claude Code turned what used to be a painful blog resurrection into a smooth 10-minute setup experience]]></summary></entry><entry><title type="html">A Science of Concurrent Programs - Begin</title><link href="http://0.0.0.0:3001/2024/01/06/a-science-of-concurrent-programs-begin.html" rel="alternate" type="text/html" title="A Science of Concurrent Programs - Begin" /><published>2024-01-06T06:00:00+00:00</published><updated>2024-01-06T06:00:00+00:00</updated><id>http://0.0.0.0:3001/2024/01/06/a-science-of-concurrent-programs-begin</id><content type="html" xml:base="http://0.0.0.0:3001/2024/01/06/a-science-of-concurrent-programs-begin.html"><![CDATA[<p>I have started reading the book <a href="https://lamport.azurewebsites.net/tla/science.pdf">A Science of Concurrent progam PDF</a>. Don’t remember where I got it from, but am interested after reading the first few pages.</p>
 
-&lt;p&gt;Server : software implements service vs binary that accepts network connection&lt;/p&gt;
+<p>I’ve come across Leslie Lamport, the author, first when I was reading about <a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)">Consensus</a> and then it lead to <a href="https://lamport.azurewebsites.net/pubs/time-clocks.pdf">time &amp; clocks</a>. There are several more reasons to pay attention to Leslie Lamport’s work, one more I just learnt today that ‘LA’ in LaTeX is for Lamport in recognition of his contribution to LaTeX.</p>
 
-&lt;h1 id=&quot;system-software-organises-hardware&quot;&gt;System software organises hardware&lt;/h1&gt;
+<p>I want to read this book so that I am able to think mathematically of programs in general. As a professional programmer, there aren’t many opportunities to think about programs mathematically.</p>
 
-&lt;blockquote&gt;
-  &lt;p&gt;Fill later&lt;/p&gt;
-&lt;/blockquote&gt;
+<p>Also, this will be an excuse for me to get more familiar with LaTeX.</p>
 
-&lt;h1 id=&quot;embracing-risk&quot;&gt;Embracing Risk&lt;/h1&gt;
+<p>I’ve created <a href="https://github.com/vikrampawar/pdfs/tree/main/2024/science-of-concurrent-programs">github</a> repo folder to keep the PDF and the notes.</p>
 
-&lt;h2 id=&quot;site-reliability-engineering---book-2&quot;&gt;Site Reliability Engineering - Book 2&lt;/h2&gt;
+<p>Refreshing basics and in the process getting acquainted with LaTeX.</p>
 
-&lt;h1 id=&quot;background-on-devops&quot;&gt;Background on devops&lt;/h1&gt;
+<p>Link to the below page as markdown <a href="https://github.com/vikrampawar/pdfs/blob/main/2024/science-of-concurrent-programs/OrdinaryMath.md">here</a>.</p>
 
-&lt;p&gt;No more silos&lt;/p&gt;
+<p><img src="2024-01-06-11-06-07.png" alt="" /></p>]]></content><author><name></name></author><summary type="html"><![CDATA[I have started reading the book A Science of Concurrent progam PDF. Don’t remember where I got it from, but am interested after reading the first few pages.]]></summary></entry><entry><title type="html">Using Git Large File Storage (LFS)</title><link href="http://0.0.0.0:3001/2024/01/03/using-git-lfs.html" rel="alternate" type="text/html" title="Using Git Large File Storage (LFS)" /><published>2024-01-03T18:00:00+00:00</published><updated>2024-01-03T18:00:00+00:00</updated><id>http://0.0.0.0:3001/2024/01/03/using-git-lfs</id><content type="html" xml:base="http://0.0.0.0:3001/2024/01/03/using-git-lfs.html"><![CDATA[<p><a href="https://git-lfs.com/">Git LFS</a> is an extension to git that allows us to track large files. It does this by storing the large files in a separate location and storing a pointer to the file in the git repository. This allows us to keep the git repository small and still be able to track large files.</p>
 
-&lt;p&gt;Accidents are normal&lt;/p&gt;
+<p>To install it, we’ll use <a href="https://brew.sh/">brew</a> that’s available for both Mac and Linux.</p>
 
-&lt;p&gt;Change should be gradual. Small and frequent.&lt;/p&gt;
+<p>Install git lfs</p>
 
-&lt;p&gt;Tooling and culture are interrelated&lt;/p&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>git-lfs
+</code></pre></div></div>
 
-&lt;p&gt;Measurement is crucial&lt;/p&gt;
+<p>Check if a git repository has any git lfs files</p>
 
-&lt;h1 id=&quot;background-on-sre&quot;&gt;Background on SRE&lt;/h1&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git lfs ls-files
+</code></pre></div></div>
 
-&lt;p&gt;SRE coined by Ben Treynor Sloss, Google.&lt;/p&gt;
+<p>To see how to add a large file, let’s initialize an empty git repository</p>
 
-&lt;p&gt;Operations is a Software Problem&lt;/p&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init <span class="nb">test
+cd test</span>
+</code></pre></div></div>
 
-&lt;p&gt;Manage by Service Level Objectives (SLOs)&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from SRE books</summary></entry><entry><title type="html">Openshift basics</title><link href="http://localhost:4000/lisp/2018/10/20/Openshift-1.html" rel="alternate" type="text/html" title="Openshift basics" /><published>2018-10-20T12:00:00+01:00</published><updated>2018-10-20T12:00:00+01:00</updated><id>http://localhost:4000/lisp/2018/10/20/Openshift-1</id><content type="html" xml:base="http://localhost:4000/lisp/2018/10/20/Openshift-1.html">&lt;h1 id=&quot;placeholder&quot;&gt;Placeholder&lt;/h1&gt;
+<p>Add a large file to the repository</p>
 
-&lt;h2 id=&quot;openshift&quot;&gt;Openshift&lt;/h2&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> ~/tmp/model.pkl <span class="nb">test</span>/
 
-&lt;p&gt;Servicemesh - network of microservices&lt;/p&gt;</content><author><name></name></author><summary type="html">Placeholder</summary></entry><entry><title type="html">Clojure - Intermediate</title><link href="http://localhost:4000/lisp/2018/10/18/Closure-2.html" rel="alternate" type="text/html" title="Clojure - Intermediate" /><published>2018-10-18T19:00:00+01:00</published><updated>2018-10-18T19:00:00+01:00</updated><id>http://localhost:4000/lisp/2018/10/18/Closure-2</id><content type="html" xml:base="http://localhost:4000/lisp/2018/10/18/Closure-2.html">&lt;h3 id=&quot;clojure---functions&quot;&gt;Clojure - Functions&lt;/h3&gt;
+</code></pre></div></div>
 
-&lt;p&gt;Everything around functions&lt;/p&gt;
+<p>Track the file using git lfs</p>
 
-&lt;p&gt;Multi-arity function can respond to different sets of arguments. Single-arity takes one set of arguments, multy-arity takes more than one set of arguments&lt;/p&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git lfs track <span class="s2">"model.pkl"</span>
+</code></pre></div></div>
+<p>This creates a file called <code class="language-plaintext highlighter-rouge">.gitattributes</code> that contains the following line</p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; multi-arity function , two argument sets&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; parameter expression has an extra ()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greet&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; args set 1 'person'&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; args set 2 'greeting' and 'person'&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;greet&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;vikram&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;           &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; hello vikram&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;greet&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;morning&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;vikram&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; morning vikram&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>model.pkl <span class="nv">filter</span><span class="o">=</span>lfs <span class="nv">diff</span><span class="o">=</span>lfs <span class="nv">merge</span><span class="o">=</span>lfs <span class="nt">-text</span>
+</code></pre></div></div>
 
-&lt;p&gt;To reduce redundancy, the function can call itself when its called with fewer arguments&lt;/p&gt;
+<p>Then, you can add the files to git as usual <code class="language-plaintext highlighter-rouge">git add .</code>.
+At this stage, you can check if the file is being tracked by git lfs using <code class="language-plaintext highlighter-rouge">git lfs ls-files</code></p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; reduce redundancy&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; all call the one with maximum arity&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>❯ git lfs ls-files
+e7d28f7f26 <span class="k">*</span> model.pkl
+</code></pre></div></div>]]></content><author><name></name></author><summary type="html"><![CDATA[Git LFS is an extension to git that allows us to track large files. It does this by storing the large files in a separate location and storing a pointer to the file in the git repository. This allows us to keep the git repository small and still be able to track large files.]]></summary></entry><entry><title type="html">Build and Deploy a Cat or Dog identifier</title><link href="http://0.0.0.0:3001/2024/01/02/build-and-deploy-cat-or-dog-identifier-copy.html" rel="alternate" type="text/html" title="Build and Deploy a Cat or Dog identifier" /><published>2024-01-02T18:15:00+00:00</published><updated>2024-01-02T18:15:00+00:00</updated><id>http://0.0.0.0:3001/2024/01/02/build-and-deploy-cat-or-dog-identifier%20copy</id><content type="html" xml:base="http://0.0.0.0:3001/2024/01/02/build-and-deploy-cat-or-dog-identifier-copy.html"><![CDATA[<p>I’ve recently started exploring AI and machine learning. I found this course by FastAI called <a href="https://course.fast.ai/">Practical Deep Learning</a>. I’m going through this course now.</p>
 
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greet-reduce-redundancy&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;greet-reduce-redundancy&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; elf &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greeting&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+<p>One of the first things I learned is how to build a model and deploy it to a website. In this post, I’ll document the steps we can take to build and deploy an AI model that identifies whether an image is that of a cat or a dog.
+The end result will be a web application that will allow users to upload an image and the application will identify whether the image is that of a cat or a dog.</p>
 
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;greet-reduce-redundancy&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;vikram&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;           &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; hello vikram&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;greet-reduce-redundancy&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;morning&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;vikram&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; morning vikram&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<p>Here is a link to the completed web application <a href="https://huggingface.co/spaces/bhetal/cats_or_dogs_identifier">Cat or Dog Identifier</a>.</p>
 
-&lt;p&gt;Function that takes infinite arguments, uses &amp;amp;, called varargs or variadic functions, they have single argument set&lt;/p&gt;
+<p><img src="2024-01-03-20-15-58.png" alt="" /></p>
 
-&lt;p&gt;Variadic function has&lt;/p&gt;
+<p>In the python and AI community most of the work is done in Jupyter Notebooks.
+In this post, I’ll be referring to the notebooks I’ve created for this project.</p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;               &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; takes many arguments, the space after &amp;amp; is mandatory&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Gobbled &quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; all arguments&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; first argument &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pig&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; Gobbled (1 2 3), 1 &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+<h2 id="train-the-model-and-export-it">Train the model and export it</h2>
 
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; get the first argument&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;smart-pig&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;smart-pig&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; 1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<p>The first notebook is called <a href="https://github.com/vikrampawar/cat-or-dog-identifier/blob/main/fastai_cats_or_dogs_build_export.ipynb">Fastai Cats or Dogs build and export model</a>. It’s also available on Kaggle and is called <a href="https://www.kaggle.com/code/vikrampawar/fastai-cats-or-dogs">fastai cats or dogs</a>.</p>
 
-&lt;h1 id=&quot;multimethod&quot;&gt;Multimethod&lt;/h1&gt;
+<p>In this notebook, we’ll download the images of cats and dogs from the oxford pets dataset.</p>
 
-&lt;p&gt;A mechanism to implement dispatching of functions. Similar to RouteToLabel.&lt;/p&gt;
+<p>We’ll then divide the images into training and validation sets. These are input to the model we’ll be building. The training set is used to train the model and the validation set is used to validate the model.</p>
 
-&lt;p&gt;Our requirement is to take a message, determine its format, i.e., whether it’s xml, json, dfdl or none and call a function that implements the specific transformation logic to handle it.&lt;/p&gt;
+<p>Training just involves showing the model the images and telling it whether the image is that of a cat or a dog. The model will then learn to identify the features that distinguish a cat from a dog.</p>
 
-&lt;p&gt;First, decide what you want to call the common function. Here we’ll call it &lt;code class=&quot;highlighter-rouge&quot;&gt;process-message&lt;/code&gt;.&lt;/p&gt;
+<p>Validation is done by showing the model images from the validation set and asking it to identify whether the image is that of a cat or a dog. The model will then tell us whether it thinks the image is that of a cat or a dog. We’ll then compare the model’s prediction with the actual label of the image to determine how accurate the model is.</p>
 
-&lt;p&gt;We’ll define a special &lt;code class=&quot;highlighter-rouge&quot;&gt;defmulti&lt;/code&gt; which maps this common method name to a special dispatcher which we call a &lt;code class=&quot;highlighter-rouge&quot;&gt;router&lt;/code&gt;. The method name comes first and then the dispatcher function name next.&lt;/p&gt;
+<p>To cut short the time it takes to do the training, we’ll start with a model that has already been trained on a large number of images. This model is called a pre-trained model. We’ll then fine tune this model to identify cats and dogs.</p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; The multimethod maps the method name to the dispatcher&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defmulti&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;router&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<p>Once the model is trained, we’ll save it to a file called <code class="language-plaintext highlighter-rouge">model.pkl</code>. These are usually called pickle files. We’ll then use this file to deploy the model to a web application.</p>
 
-&lt;p&gt;Next, define a regular function that acts as  a dispatcher which takes an argument and returns a label. Here, the router function looks at a message and figures out the format of the message, whether it’s xml, json, dfdl and returns a label that identifies the format. It has a catch all label of default.&lt;/p&gt;
+<p>When you execute this notebook, you’ll end up with a file called <code class="language-plaintext highlighter-rouge">model.pkl</code>. This is the file we’ll use in the next step.</p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; Reads message, and dispatches to function that handles the format&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;router&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;cond&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;contains?&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:dfdl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:dfdl-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;       &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; message has key dfdl &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;contains?&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:xml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:xml-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; message has key xml&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:json-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; message has key label with value json &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:else&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:default&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                             &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; catch all&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<h2 id="create-a-web-application-that-uses-the-model">Create a web application that uses the model</h2>
 
-&lt;p&gt;Then define a method for each of the labels and the default label.&lt;/p&gt;
+<p>For this, we’ll use another notebook called <a href="https://github.com/vikrampawar/cat-or-dog-identifier/blob/main/fastai_cats_or_dogs_run_gradio.ipynb">Fastai Cats or Dogs - Web App</a>.</p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; processes dfdl messages&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defmethod&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:dfdl-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:destination&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dfdl&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:transformed-body&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:payload&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)})&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+<p>In this notebook, we import the <code class="language-plaintext highlighter-rouge">model.pkl</code> file we created in the previous notebook. 
+We then create a function that takes an image as input and returns the prediction of the model.
+We’ll use this prediction to display the result on a web page.
+For this, we’ll make use of a library called <a href="https://www.gradio.app/">Gradio</a>. Gradio allows us to create a web application with just the prediction function as input.</p>
 
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; processes xml messages&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defmethod&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:xml-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:destination&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;xml&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:transformed-body&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:payload&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)})&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+<p>When you execute this notebook, you’ll end up with a web application that runs locally.</p>
 
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; processes json messages&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defmethod&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:json-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:destination&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;json&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:transformed-body&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:payload&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)})&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+<h2 id="create-a-space-on-hugging-face">Create a space on Hugging Face</h2>
 
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; processes the rest of the messages&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defmethod&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:default&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:destination&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;default&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:transformed-body&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Empty Body&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<p>We’ll open an account on Hugging Face, if we don’t already have it and then go to <a href="https://huggingface.co/spaces">spaces</a> to create a new space. We’ll Select <code class="language-plaintext highlighter-rouge">Gradio</code> as the SDK and the free option for hardware. It will show the steps to follow.</p>
 
-&lt;p&gt;Here is how you call it&lt;/p&gt;
+<p>Each space has its own git repository. It contains a file called <code class="language-plaintext highlighter-rouge">app.py</code>. This is the file that contains the code for the web application.
+We’ll clone the repository to our local machine, create a the default <code class="language-plaintext highlighter-rouge">app.py</code> as suggested on the page and push it to the repository. This will trigger a build on Hugging Face. Once the build is complete, we’ll be able to access the web application from the URL provided by Hugging Face.</p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; Calling process-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;process-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:xml&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:payload&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;order&amp;gt;&amp;lt;/order&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;process-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:label&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:json&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:payload&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{order: &quot;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1234&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;process-message&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:dfdl&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:payload&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1234,4567&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; The output&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:destination&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xml,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:transformed-body&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;&amp;lt;order&amp;gt;&amp;lt;/order&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:destination&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:transformed-body&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:destination&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dfdl,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:transformed-body&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1234&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;,4567&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<p>To be able to push changes to it, we should have access. We can either use Access Tokens or SSH keys. I prefer SSH keys. To generate an SSH key, we can follow the steps from Github <a href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh">here</a>. Once we have the SSH key, we can add it to your Hugging Face SSH keys tab on the profile page.</p>
 
-&lt;p&gt;Defining a new router function is not necessary. We just need a function that takes the same input and gives back a label.&lt;/p&gt;
+<p><img src="2024-01-03-09-14-59.png" alt="" /></p>
 
-&lt;p&gt;Suppose the message is like this &lt;code class=&quot;highlighter-rouge&quot;&gt;{ :type :cobol :payload &quot;old cobol&quot;}&lt;/code&gt;.&lt;/p&gt;
+<h2 id="deploy-the-web-application-to-hugging-face">Deploy the web application to Hugging Face</h2>
 
-&lt;p&gt;Remember label is a function that returns its value in the collection.&lt;/p&gt;
+<p>Now we have a way to deploy the web application, we’ll update the <code class="language-plaintext highlighter-rouge">app.py</code> to run our application. For this, we’ll have to extract and copy the relevant code from the notebook we created earlier.</p>
 
-&lt;p&gt;That is,  &lt;code class=&quot;highlighter-rouge&quot;&gt;(:type message)&lt;/code&gt; gives back &lt;code class=&quot;highlighter-rouge&quot;&gt;:cobol&lt;/code&gt;&lt;/p&gt;
+<p>Our <code class="language-plaintext highlighter-rouge">app.py</code> file has the below code</p>
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">fastai.vision.all</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="n">gr</span>
 
-&lt;p&gt;So, the label can be used as the dispatch function.&lt;/p&gt;
+<span class="c1"># determines if it's a cat from first letter
+</span><span class="k">def</span> <span class="nf">is_cat</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">isupper</span><span class="p">()</span> 
 
-&lt;p&gt;Here’s a variation of the process-message called process-message-type.&lt;/p&gt;
+<span class="c1"># load the model 
+</span><span class="n">learn</span> <span class="o">=</span> <span class="n">load_learner</span><span class="p">(</span><span class="s">'model.pkl'</span><span class="p">)</span>
 
-&lt;p&gt;The multifunction that takes the label :type instead of router as the dispatch function&lt;/p&gt;
+<span class="n">categories</span> <span class="o">=</span> <span class="p">(</span><span class="s">'Dog'</span><span class="p">,</span> <span class="s">'Cat'</span><span class="p">)</span>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; use the :type instead of router&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defmulti&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process-message-type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="n">pred</span><span class="p">,</span><span class="n">pred_idx</span><span class="p">,</span><span class="n">probs</span> <span class="o">=</span> <span class="n">learn</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">probs</span><span class="p">)))</span>
 
-&lt;p&gt;A corresponding implementation for the type :cobol&lt;/p&gt;
+<span class="c1"># show it in a gradio interface
+</span><span class="n">examples</span> <span class="o">=</span> <span class="p">[</span> <span class="s">'cat1.png'</span><span class="p">,</span> <span class="s">'dog1.png'</span><span class="p">,</span> <span class="s">'python1.png'</span><span class="p">]</span>
+<span class="n">gr</span><span class="p">.</span><span class="n">Interface</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">gr</span><span class="p">.</span><span class="n">Image</span><span class="p">(),</span> <span class="n">outputs</span><span class="o">=</span><span class="n">gr</span><span class="p">.</span><span class="n">Label</span><span class="p">(),</span> <span class="n">examples</span><span class="o">=</span><span class="n">examples</span><span class="p">).</span><span class="n">launch</span><span class="p">()</span>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;; process a message with :cobol type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defmethod&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process-message-type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:cobol&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:destination&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:transformed-body&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;new cobol&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</code></pre></div></div>
 
-&lt;p&gt;Here’s the call&lt;/p&gt;
+<p>We’ll also have to install the libraries we used in the notebook. We can do this by adding the following lines to the <code class="language-plaintext highlighter-rouge">requirements.txt</code> file.</p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; call&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;process-message-type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:cobol&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:payload&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;old cobol&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; output&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:destination&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:cobol,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:transformed-body&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cobol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">Clojure - Functions</summary></entry><entry><title type="html">Clojure - Basics</title><link href="http://localhost:4000/lisp/2018/10/17/Closure-1.html" rel="alternate" type="text/html" title="Clojure - Basics" /><published>2018-10-17T21:00:00+01:00</published><updated>2018-10-17T21:00:00+01:00</updated><id>http://localhost:4000/lisp/2018/10/17/Closure-1</id><content type="html" xml:base="http://localhost:4000/lisp/2018/10/17/Closure-1.html">&lt;h2 id=&quot;clojure&quot;&gt;Clojure&lt;/h2&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fastai
+scikit-image
+</code></pre></div></div>
+<p>We’ll copy the <code class="language-plaintext highlighter-rouge">model.pkl</code> file to the repository.</p>
 
-&lt;h1 id=&quot;basic&quot;&gt;Basic&lt;/h1&gt;
+<p>The <code class="language-plaintext highlighter-rouge">model.pkl</code> files are usually large. So, we’ll have to use <a href="https://git-lfs.github.com/">git-lfs</a> to push it to the repository. You can find the steps to install and use git-lfs <a href="https://vikrampawar.github.io/2024/01/03/using-git-lfs.html">here</a>.</p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; comment line&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello, World&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; prints &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;add&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;these&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;tog&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; concatenate&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;abcd&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; counts number of characters&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; valid values&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                         &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; add 1,2 and 3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;,2,3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                         &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; same, comma are whitespace&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                         &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; multiply 2, 3 and 4&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                        &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; 5&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                           &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; gives ratio 8/3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                       &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; gives quotient 2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                         &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; assign 2 to x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                   &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; assign 8 to x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[](&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                   &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; define function f&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;             &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; take param x, y&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<p>You should have the following files in the repository. Note that the <code class="language-plaintext highlighter-rouge">.png</code> files are the examples we’ll use to test the application. We’ll then push the changes to the repository.</p>
 
-&lt;p&gt;Define functions before you use them&lt;/p&gt;
+<p>This will trigger a build on Hugging Face. Once the build is complete, we’ll be able to access the web application from the URL provided by Hugging Face. You can also see all the files that make up the web application from the files tab.</p>
 
-&lt;p&gt;Don’t def and defn the same symbol&lt;/p&gt;
+<p><img src="2024-01-03-20-26-54.png" alt="" /></p>
 
-&lt;h1 id=&quot;vector-and-lists&quot;&gt;Vector and Lists&lt;/h1&gt;
+<p>Happy coding!</p>]]></content><author><name></name></author><summary type="html"><![CDATA[I’ve recently started exploring AI and machine learning. I found this course by FastAI called Practical Deep Learning. I’m going through this course now.]]></summary></entry><entry><title type="html">Spring Boot Course</title><link href="http://0.0.0.0:3001/2023/04/18/Spring-Boot-Day-01-Introduction.html" rel="alternate" type="text/html" title="Spring Boot Course" /><published>2023-04-18T11:00:00+01:00</published><updated>2023-04-18T11:00:00+01:00</updated><id>http://0.0.0.0:3001/2023/04/18/Spring-Boot-Day-01-Introduction</id><content type="html" xml:base="http://0.0.0.0:3001/2023/04/18/Spring-Boot-Day-01-Introduction.html"><![CDATA[<p>Starting a Spring Boot course today. 
+If you are interested in joining the course, please contact me. 
+You’ll find the links below.</p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojue&quot; data-lang=&quot;clojue&quot;&gt;;; vectors
-[ 1 2 3 4]              ; vector ordered collection of items
-[ &quot;a&quot; 1 true]           ; string number boolean
-(vector 1 2 3 4)        ; returns [1 2 3 4]
-(def items [1 2 3 4])   ; vector with 4 items
-items                   ; returns [1 2 3 4]
-(count items)           ; returns 4
-(first items)           ; returns 1
-(rest items)            ; returns sequence ( 2 3 4) not vector
-(rest (rest items))     ; returns (3 4)
-(rest [])               ; returns ()
-(rest [1])              ; returns ()
-(nth items 0)           ; returns 1 
-(items 0)               ; returns 1 
-(conj items 5)          ; conjunction returns [1 2 3 4 5] ; NOTE[]
-(cons 0 items)          ; construct returns ( 0 1 2 3 4 ) ; NOTE()&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<p>The required materials are in the following two repositories:</p>
 
-&lt;p&gt;Data-structures are Immutable and persistent which means fast almost-same copies can be produced.&lt;/p&gt;
+<ol>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks">Spring Boot in 3 Weeks</a> : This repository is forked from Andy Olsen’s repository. I’ve added a <code class="language-plaintext highlighter-rouge">slides/pdf</code> folder which contain pdf versions of the power point slides for easier viewing in VSCode.</li>
+  <li><a href="https://github.com/rumq/java-springboot-course">Spring Boot Course</a> : This repository will contain any additional material we’ll require during the course. It also contains folders for the different members who are attending the course.</li>
+</ol>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; lists&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;              &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; list ordered collection of items ; NOTE '&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                      &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; returns ()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                     &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; returns ()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; returns (1 2 3 4 [v])&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; returns (1 2 3 4)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;litems&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; list with 4 items&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;litems&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                  &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; returns (1 2 3 4)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;litems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; returns 1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rest&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;litems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;           &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; returns (2 3 4)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;nth&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;litems&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; returns 1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;litems&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;              &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; ClassCastException!&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;vector&quot;&gt;Vector&lt;/h1&gt;
-
-&lt;p&gt;A continuous chunk of memory.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# b contiguous to a, c contiguous to b ...&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;a][b][c]&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Accessing last element is quick&lt;/p&gt;
-
-&lt;p&gt;Adding an element at beginning involves reorg&lt;/p&gt;
-
-&lt;p&gt;conj adds at the end&lt;/p&gt;
-
-&lt;p&gt;More commonly used than lists.&lt;/p&gt;
-
-&lt;h1 id=&quot;list&quot;&gt;List&lt;/h1&gt;
-
-&lt;p&gt;A linked linst.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# a has pointer to b and a count, b has a pointer to c and count ...&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;a &lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;b count] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;b &lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;c count] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;c count]&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Accessing last element is slow, going from one to another takes time&lt;/p&gt;
-
-&lt;p&gt;Adding an element at beginning is easy, creating element and point to the first one in the original list.&lt;/p&gt;
-
-&lt;p&gt;conj adds at the beginning&lt;/p&gt;
-
-&lt;h1 id=&quot;map&quot;&gt;Map&lt;/h1&gt;
-
-&lt;p&gt;Map is a key value pair. Key can be string or keyword which starts with :&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; maps with string keys&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;b&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;               &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; prints {&quot;a&quot; 1, &quot;b&quot; 2},  map a to 1, b to 2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;hash-map&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;b&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; same map&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;b&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;       &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; same map assigned to m&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                 &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; prints 1, value of &quot;a&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                     &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; same, value of a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; maps with keywords as keys&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:b&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; {:a 1, :b 2}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mk&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                  &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; 1, value of :a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;mk&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                      &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; 1, value of :a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                      &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; value of :a, NOTE reversed, is more common&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;assoc&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mk&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:c&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:d&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; Add :c and :d elements   &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dissoc&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mk&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;               &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; Remove element :a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; why use contains?&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;contains?&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mk&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mkn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:b&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:d&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; :d's value is nil&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;mkn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                     &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; nil&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;mkn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                     &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; also nil&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;contains?&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mkn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;           &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true,  NOTE value nil, but exists&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;contains?&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mkn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;           &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; false, doesn't exist&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-
-
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; vectors are maps with integer keys&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;               &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; [1 2 3]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;assoc&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;99&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;               &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; [1 99 3]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                        &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; 2   &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; 2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; keys and values&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; (:a :b)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;vals&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; (1 2)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                     &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; (&quot;a&quot; &quot;b&quot;)   &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;vals&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                     &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; (1 2)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;sets&quot;&gt;Sets&lt;/h1&gt;
-
-&lt;p&gt;Set is membership. Element occurs once, either belongs or doesn’t.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; sets&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:b&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;          &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; #{:c :b c}, a set, NOTE #&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                       &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; :a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                       &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; :a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;contains?&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;             &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;conj&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                  &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; add :d&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;disj&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                  &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; remove :a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:b&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;             &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; :a, proves set contains :a &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:b&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;             &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; nil, proves set does not contain :d&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;conditionals&quot;&gt;Conditionals&lt;/h1&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; if expression&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;True&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;False&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                     &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; True&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                        &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; True&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; False&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; 'if' is expression, returns &quot;True&quot; or &quot;False&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;True&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;False&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;               
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; test equality&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                      &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true   &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                      &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; false&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                  &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; test inequality&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;not=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                   &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true         &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; false         &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; false         &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; test type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;number?&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                  &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;string?&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;keyword?&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;map?&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;vector?&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;not&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                   &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; false&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;not&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                  &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;or&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                              &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                          &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;no&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fI&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;No&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; false&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; and or short-circuit&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;or&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Reached&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;or&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Reached&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;               &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; Reached, nil&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                           &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; hello   &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                              &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; nil&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Truthy - everything except false, nil and true&lt;/p&gt;
-
-&lt;p&gt;Falsy - false, nil&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; can evaluate only one expression.&lt;/p&gt;
-
-&lt;p&gt;Combine &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;do&lt;/code&gt; for multiple statements&lt;/p&gt;
+<p>We’ll be going through these slides and the corresponding demos for this course.</p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; if with multiple statements&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;check-sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                      &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; using if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                            &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; using do &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Sum is zero&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Not a good sign&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                                            &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; else part &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Sum is not zero&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Good sign&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;check-sum&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; prints &quot;Sum is zero&quot;, &quot;Not a good sign&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;check-sum&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; prints &quot;Sum is not zero&quot;, &quot;Good sign&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<p><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/00-Welcome.pptx.pdf">Welcome</a></p>
 
-&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;when&lt;/code&gt; for multiple statements with one leg&lt;/p&gt;
+<ol>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/01_Introduction_to_Spring_Boot.pptx.pdf">01_Introduction_to_Spring_Boot</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/02_Creating_Simple_App.pptx.pdf">02_Creating_Simple_App</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/03_Creating_Web_App.pptx.pdf">03_Creating_Web_App</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/04_Beans_DependencyInjection.pptx.pdf">04_Beans_Dependency</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/05_Injection_Techniques.pptx.pdf">05_Injection_Techniques</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/06_Configuration_Classes.pptx.pdf">06_Configuration_Classes</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/07_Spring_Boot_Techniques.pptx.pdf">07_Spring_Boot_Techniques</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/08_Integrating_Data_Sources.pptx.pdf">08_Integrating_Data_Sources</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/09_Querying_Modifying_Entities.pptx.pdf">09_Querying_Modifying_Entities</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/10_Spring_Data_Repositories.pptx.pdf">10_Spring_Data_Repositories</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/11_Simple_Rest_Services.pptx.pdf">11_Simple_Rest_Services</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/12_Full_Rest_Services.pptx.pdf">12_Full_Rest_Services</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/13_Consuming_Rest_Services.pptx.pdf">13_Consuming_Rest_Services</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/14_Messaging_Kafka.pptx.pdf">14_Messaging_Kafka</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/15_Containerization.pptx.pdf">15_Containerization</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/16_SpringCloudMicroservices.pptx.pdf">16_SpringCloudMicroservices</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/17_Authentication_OAUTH2.pptx.pdf">17_Authentication_OAUTH2</a></li>
+  <li><a href="https://github.com/rumq/spring-boot-in-3-weeks/blob/master/slides/pdfs/18_Testing.pptx.pdf">18_Testing</a></li>
+</ol>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;c1&quot;&gt;;; when with mutiple statements in one leg&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;check-product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;product&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;             &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; using when&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Product is 0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Nothing more to do&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;check-product&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; prints &quot;Product is 0&quot;, &quot;Nothing more to do&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<p>The meetings are recorded.
+You can find the notes and the links to the recording on the README file in the course repository <a href="https://github.com/rumq/java-springboot-course">Spring Boot Course</a>.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Starting a Spring Boot course today. If you are interested in joining the course, please contact me. You’ll find the links below.]]></summary></entry><entry><title type="html">Kakfa Learning Resources Notion Database</title><link href="http://0.0.0.0:3001/2023/04/14/Kafka-learning-resources.html" rel="alternate" type="text/html" title="Kakfa Learning Resources Notion Database" /><published>2023-04-14T18:00:00+01:00</published><updated>2023-04-14T18:00:00+01:00</updated><id>http://0.0.0.0:3001/2023/04/14/Kafka-learning-resources</id><content type="html" xml:base="http://0.0.0.0:3001/2023/04/14/Kafka-learning-resources.html"><![CDATA[<p>Today I’ve created a notion database to keep track of all the resources I’ve found useful for learning Kafka. I’ll keep adding to it as I find more resources.</p>
 
-&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;cond&lt;/code&gt; in place of nested ifs&lt;/p&gt;
+<p>Here is the publicly accessible link to the database - <a href="https://sincere-wildflower-595.notion.site/409619ed704344e38af90c26df8a1774?v=e111c8100a7e45ec9b933b762dc31d90">Kafka Learning Resources Notion Database</a>.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Today I’ve created a notion database to keep track of all the resources I’ve found useful for learning Kafka. I’ll keep adding to it as I find more resources.]]></summary></entry><entry><title type="html">Java 21 release</title><link href="http://0.0.0.0:3001/2022/09/23/Java-21-release.html" rel="alternate" type="text/html" title="Java 21 release" /><published>2022-09-23T08:00:00+01:00</published><updated>2022-09-23T08:00:00+01:00</updated><id>http://0.0.0.0:3001/2022/09/23/Java-21-release</id><content type="html" xml:base="http://0.0.0.0:3001/2022/09/23/Java-21-release.html"><![CDATA[<p>Java 21 is released. The following have caught my attention</p>
+<ul>
+  <li>It’s an LTS, and from now on LTS will be released every 2 years</li>
+  <li>Java virtual threads (Project Loom) is now part of the JDK</li>
+  <li>Data oriented programming is now possible with improvements in Pattern matching, sealed classes, records, text blocks, and switch expressions.</li>
+</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[Java 21 is released. The following have caught my attention It’s an LTS, and from now on LTS will be released every 2 years Java virtual threads (Project Loom) is now part of the JDK Data oriented programming is now possible with improvements in Pattern matching, sealed classes, records, text blocks, and switch expressions.]]></summary></entry><entry><title type="html">Efficiency and Abundance</title><link href="http://0.0.0.0:3001/2020/06/16/Abundance-Efficiency-Redundancy.html" rel="alternate" type="text/html" title="Efficiency and Abundance" /><published>2020-06-16T21:00:00+01:00</published><updated>2020-06-16T21:00:00+01:00</updated><id>http://0.0.0.0:3001/2020/06/16/Abundance-Efficiency-Redundancy</id><content type="html" xml:base="http://0.0.0.0:3001/2020/06/16/Abundance-Efficiency-Redundancy.html"><![CDATA[<p>When you have scarcity, efficiency is a virtue. It allows you to make the most of your resources. However, if you have abundance, efficiency is no longer a virtue in the same respect.</p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;check-state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;cond&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Ice&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; predicate and expression&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Water&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:else&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Vapour&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; catch all &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;check-state&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;-10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; Ice&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;check-state&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; Ice&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;check-state&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; Water&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;check-state&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; Vapour&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<p>Efficiency is hard. It is unpleasant to be efficient. It requires a lot more discipline. So, efficiency is rare. We are not efficient if there is no compelling need. That is, we abandon efficiency, as soon as we understand that efficiency is no longer making the difference.</p>
 
-&lt;p&gt;Or &lt;code class=&quot;highlighter-rouge&quot;&gt;case&lt;/code&gt; if evaluating a single variable and not a complex predicate&lt;/p&gt;
+<p>Now, let us see where these ideas make sense. In the early days of computing, resources were limited. So, efficiency was important. People tried to save resources every way they could. So, a lot of applications that were developed were developed with razor sharp focus on not wasting any resource, i.e, everything was made as efficient as was possible. So computing or developing software was not pleasant, not many people could do it, or wanted to do it.</p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;check-status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                    &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; evaluating status&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:bronze&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nice&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;              &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; has to be a constant&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:silver&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;good&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:gold&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;great&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;unknown&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;check-status&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:silver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; good&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<p>But as computing resources became cheaper, and abundant, there was no longer the need to be very efficient in many types of development. It was okay if your program consumes 10 times, 100 times more memory, or disk space, or it does totally unnecessary work, many times over. It became possible, easy, and pleasant to write software this way that met the real needs of business.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[When you have scarcity, efficiency is a virtue. It allows you to make the most of your resources. However, if you have abundance, efficiency is no longer a virtue in the same respect.]]></summary></entry><entry><title type="html">What is a Message?</title><link href="http://0.0.0.0:3001/2020/06/16/What-Is-A-Message.html" rel="alternate" type="text/html" title="What is a Message?" /><published>2020-06-16T19:00:00+01:00</published><updated>2020-06-16T19:00:00+01:00</updated><id>http://0.0.0.0:3001/2020/06/16/What-Is-A-Message</id><content type="html" xml:base="http://0.0.0.0:3001/2020/06/16/What-Is-A-Message.html"><![CDATA[<p>What is a <code class="language-plaintext highlighter-rouge">Message</code>?</p>
 
-&lt;p&gt;Catching exceptions&lt;/p&gt;
+<p>Here is a good definition of a <a href="https://www.enterpriseintegrationpatterns.com/patterns/messaging/Message.html">Message</a>.</p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;catch-exception&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ArithmeticException&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Caught division by zero&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; e can be anything&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;catch-exception&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; Caught division by zero&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+<p>I want to develop your intuition about a <code class="language-plaintext highlighter-rouge">Message</code>, so I’ll elaborate this concept.</p>
 
-&lt;p&gt;Throwing exception&lt;/p&gt;
+<p><code class="language-plaintext highlighter-rouge">Message</code> is an overused word. I want to develop intuition about a <code class="language-plaintext highlighter-rouge">Message</code> as used in Software Development.</p>
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;throw-exception&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;throw&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                          &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; throw &lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ex-info&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;You wanted exception right?&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:input&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}))))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;; set exception info&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;throw-exception&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">Clojure</summary></entry><entry><title type="html">Lisp 1</title><link href="http://localhost:4000/lisp/2018/10/16/lisp-1.html" rel="alternate" type="text/html" title="Lisp 1 " /><published>2018-10-16T23:00:00+01:00</published><updated>2018-10-16T23:00:00+01:00</updated><id>http://localhost:4000/lisp/2018/10/16/lisp-1</id><content type="html" xml:base="http://localhost:4000/lisp/2018/10/16/lisp-1.html">&lt;p&gt;Notes from ‘Practical common lisp’&lt;/p&gt;
+<p>Now let us suppose two people Alice and Bob want to communicate. If Alice shouts at Bob, we can’t say Alice has given a <code class="language-plaintext highlighter-rouge">Message</code> to Bob. If instead, Alice tells Charlie something about Bob, and Charlie goes and tells it to Bob, we can say Charlie has passed on a <code class="language-plaintext highlighter-rouge">Message</code> to Bob.</p>
 
-&lt;p&gt;Simple list expression 10. Every expression evaluates to some result.&lt;/p&gt;
+<p>What is the difference between the two situations? Of course, I introduced Charlie. But, Alice could have written the same thing in a piece of paper and sent that to Bob, or Alice could have sent an email or a text that has the same content, and in all these cases, we would say that Alice has sent Bob, a <code class="language-plaintext highlighter-rouge">Message</code>.</p>
 
-&lt;p&gt;It is a self-evaluating object. So are strings like “Hello, World”&lt;/p&gt;
+<p>So, the fundamental thing that makes a <code class="language-plaintext highlighter-rouge">Message</code> a <code class="language-plaintext highlighter-rouge">Message</code> is that it leaves one person and then goes to another person. It has an independent existence outside of both people. And, because it leaves one person and then goes to another person, a <code class="language-plaintext highlighter-rouge">Message</code> by necessity needs to have the following information for it to be considered a <code class="language-plaintext highlighter-rouge">Message</code>.</p>
 
-&lt;p&gt;Anything in parenthesis is a list&lt;/p&gt;
+<p>It needs to have the information about where is it coming from, where is it going to, what is it about, and finally the actual content. These are called <code class="language-plaintext highlighter-rouge">Sender</code>, <code class="language-plaintext highlighter-rouge">Recipient</code>, <code class="language-plaintext highlighter-rouge">Type</code> (Subject) and <code class="language-plaintext highlighter-rouge">Payload</code>, respectively. The <code class="language-plaintext highlighter-rouge">Sender</code>, <code class="language-plaintext highlighter-rouge">Recipient</code> and <code class="language-plaintext highlighter-rouge">Type</code> are grouped together as a <code class="language-plaintext highlighter-rouge">Header</code>.</p>
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(+ 2 3)&lt;/code&gt;&lt;/p&gt;
+<p>The same concept is used when information leaves one Application and goes to another Application.</p>
 
-&lt;ul&gt;
-  &lt;li&gt;is a function
-2 and 3 evaluate to themselves&lt;/li&gt;
-&lt;/ul&gt;
+<p>An email, or a text, that we send is a <code class="language-plaintext highlighter-rouge">Message</code>. It has a <code class="language-plaintext highlighter-rouge">Header</code>, i.e, <code class="language-plaintext highlighter-rouge">Sender</code>, <code class="language-plaintext highlighter-rouge">Recipient</code> and <code class="language-plaintext highlighter-rouge">Type</code> along with the <code class="language-plaintext highlighter-rouge">Payload</code>.</p>
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;format&lt;/code&gt; function takes at least two parameters, first one ‘t’ implies output is to standard output. The second is the string. It has side effects&lt;/p&gt;
+<p>A <code class="language-plaintext highlighter-rouge">Message</code> can be a lot more things, it can have a lot more information, but the <code class="language-plaintext highlighter-rouge">Header</code> and the <code class="language-plaintext highlighter-rouge">Payload</code> are the absolute minimum information that it needs to have for it to be able to leave one person or an Application, be independent, and reach the right <code class="language-plaintext highlighter-rouge">Recipient</code>.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[What is a Message?]]></summary></entry><entry><title type="html">What is a CIDR</title><link href="http://0.0.0.0:3001/2020/06/15/What-Is-A-CIDR_Asublime-vscode-eclipse-select-tab.html" rel="alternate" type="text/html" title="What is a CIDR" /><published>2020-06-15T08:00:00+01:00</published><updated>2020-06-15T08:00:00+01:00</updated><id>http://0.0.0.0:3001/2020/06/15/What-Is-A-CIDR_Asublime-vscode-eclipse-select-tab</id><content type="html" xml:base="http://0.0.0.0:3001/2020/06/15/What-Is-A-CIDR_Asublime-vscode-eclipse-select-tab.html"><![CDATA[<p>The Wikipedia link is here <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless Inter-domain Routing</a></p>
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NIL&lt;/code&gt; is false and or null&lt;/p&gt;
+<p>And here is the basic information you need to know.</p>
 
-&lt;p&gt;defun defines a function&lt;/p&gt;
+<p>A CIDR identifies a machine connected to a network.</p>
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(defun hello-world() (format t &quot;hello, world&quot;))&lt;/code&gt;&lt;/p&gt;
+<p>An example CIDR for IPV4 address looks like this <code class="language-plaintext highlighter-rouge">192.168.100.14/24</code>.</p>
 
-&lt;p&gt;Can be called as&lt;/p&gt;
+<p>The numbers <code class="language-plaintext highlighter-rouge">192</code>, <code class="language-plaintext highlighter-rouge">168</code>, <code class="language-plaintext highlighter-rouge">100</code>, <code class="language-plaintext highlighter-rouge">14</code> are four octets. An octet represents <code class="language-plaintext highlighter-rouge">8</code> bits. We use four octets, so we are using <code class="language-plaintext highlighter-rouge">32</code> bits to represent the machine.</p>
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(hello-world)&lt;/code&gt;&lt;/p&gt;
+<p>A bit can have two possibilities either <code class="language-plaintext highlighter-rouge">0</code> or <code class="language-plaintext highlighter-rouge">1</code>. So, an octet can have 256 (2 ** 8) values, starting from 0 and ending with 255, which means 4 octets can represent 4,294,967,296 possibilities (2 ** 32).</p>
 
-&lt;p&gt;functions return the value of the last expression evaluated&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from ‘Practical common lisp’</summary></entry><entry><title type="html">Software Architecture Fundamentals - 8 : Architecture Anti-patterns 1</title><link href="http://localhost:4000/anti-patterns/2018/10/16/software-architecture-fundamentals-8.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 8 : Architecture Anti-patterns 1" /><published>2018-10-16T22:00:00+01:00</published><updated>2018-10-16T22:00:00+01:00</updated><id>http://localhost:4000/anti-patterns/2018/10/16/software-architecture-fundamentals-8</id><content type="html" xml:base="http://localhost:4000/anti-patterns/2018/10/16/software-architecture-fundamentals-8.html">&lt;h2 id=&quot;architecture-anti-patterns&quot;&gt;Architecture Anti-patterns&lt;/h2&gt;
+<p>But, the number after the <code class="language-plaintext highlighter-rouge">/</code> puts a limit on this.</p>
 
-&lt;p&gt;More Anti-patterns than patterns&lt;/p&gt;
+<p>Before, I explain how the limit is applied, I’ll have to explain what number <code class="language-plaintext highlighter-rouge">24</code> means. The number <code class="language-plaintext highlighter-rouge">24</code> could also have been represented as 4 octets. If we did, it would look like <code class="language-plaintext highlighter-rouge">255.255.255.0</code>. The number <code class="language-plaintext highlighter-rouge">24</code> is a compact way of representing these 4 octets. Are you wondering how these are equivalent? The value <code class="language-plaintext highlighter-rouge">255</code> when represented by a an octet (8 bits) looks like this <code class="language-plaintext highlighter-rouge">11111111</code>. So <code class="language-plaintext highlighter-rouge">255.255.255.0</code> would be <code class="language-plaintext highlighter-rouge">11111111.11111111.11111111.00000000</code>. I put <code class="language-plaintext highlighter-rouge">.</code> in between for readability. As you can see, this big number has <code class="language-plaintext highlighter-rouge">24</code> leading bits set to <code class="language-plaintext highlighter-rouge">1</code>. That’s the link between the two representations.</p>
 
-&lt;p&gt;We repeatedly do that produces negative results&lt;/p&gt;
+<p>This number is telling us that while using the address <code class="language-plaintext highlighter-rouge">192.168.100.14</code>, don’t use the first 24 bits or the first 3 octets. That is, <code class="language-plaintext highlighter-rouge">192.168.100</code> are off limits. That leaves us with only the last octet, so only 256 possible values :( ! Imagine if this number was <code class="language-plaintext highlighter-rouge">31</code>, that leaves only <code class="language-plaintext highlighter-rouge">1</code> bit or two possibilities.</p>
 
-&lt;h2 id=&quot;architecture-by-implication&quot;&gt;Architecture by implication&lt;/h2&gt;
-
-&lt;p&gt;Systems lacking clearly documented&lt;/p&gt;
-
-&lt;p&gt;What architecture pattern are you using?&lt;/p&gt;
-
-&lt;p&gt;What client model is most appropriate?&lt;/p&gt;
-
-&lt;p&gt;Does the hardware or os matter?&lt;/p&gt;
-
-&lt;p&gt;How do you handle component integration?&lt;/p&gt;
-
-&lt;p&gt;What communication protocols will you used?&lt;/p&gt;
-
-&lt;p&gt;Is the solutions even feasible given the skills, budget and time?&lt;/p&gt;
-
-&lt;p&gt;How secure does the system need to be?&lt;/p&gt;
-
-&lt;p&gt;Does the system need to scale?&lt;/p&gt;
-
-&lt;p&gt;How much performance is needed from the system?&lt;/p&gt;
-
-&lt;p&gt;How available the system needs to be?&lt;/p&gt;
-
-&lt;p&gt;Maintainability?&lt;/p&gt;
-
-&lt;p&gt;Be careful about over-confidence&lt;/p&gt;
-
-&lt;p&gt;Remember that agile methodologies are not a substitute for creating an architecture.&lt;/p&gt;
-
-&lt;h2 id=&quot;covering-your-assets&quot;&gt;Covering your assets&lt;/h2&gt;
-
-&lt;p&gt;Continuing to document and present alternatives without ever making an architecture decision&lt;/p&gt;
-
-&lt;p&gt;Architect has to present alternatives, clearly articulate the pros and cons of each, and recommend the best solution for the situation&lt;/p&gt;
-
-&lt;h2 id=&quot;witches-brew--design-by-committee&quot;&gt;Witches brew / Design by committee&lt;/h2&gt;
-
-&lt;p&gt;Architectures are designed by groups resulting in a complex mixture of ideas and lack of clear vision&lt;/p&gt;
-
-&lt;h2 id=&quot;gold-plating&quot;&gt;Gold plating&lt;/h2&gt;
-
-&lt;p&gt;Continuing to define the architecture well past the point which the extra effort is adding any value&lt;/p&gt;
-
-&lt;p&gt;Too many details hide the core principles and standards&lt;/p&gt;
-
-&lt;p&gt;Commonly leads to the analysis paralysis anti-pattern&lt;/p&gt;
-
-&lt;p&gt;increases costs, adds no value&lt;/p&gt;
-
-&lt;p&gt;No big-picture, difficult to understand&lt;/p&gt;
-
-&lt;h2 id=&quot;vendor-king&quot;&gt;Vendor king&lt;/h2&gt;
-
-&lt;p&gt;product-dependent architecture&lt;/p&gt;
-
-&lt;p&gt;Vendor app as a service, use message bus&lt;/p&gt;
-
-&lt;h2 id=&quot;bing-bang-architecture&quot;&gt;Bing bang architecture&lt;/h2&gt;
-
-&lt;p&gt;Defining at the beginning when we know little about the system&lt;/p&gt;
-
-&lt;p&gt;Architect only what is absolutely necessary. Let the architecture evolve&lt;/p&gt;
-
-&lt;p&gt;Don’t forget req, business etc change - so must architecture&lt;/p&gt;</content><author><name></name></author><summary type="html">Architecture Anti-patterns</summary></entry><entry><title type="html">Software Architecture Fundamentals - 7 : Design patterns</title><link href="http://localhost:4000/design/patterns/2018/10/16/software-architecture-fundamentals-7.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 7 : Design patterns" /><published>2018-10-16T21:50:00+01:00</published><updated>2018-10-16T21:50:00+01:00</updated><id>http://localhost:4000/design/patterns/2018/10/16/software-architecture-fundamentals-7</id><content type="html" xml:base="http://localhost:4000/design/patterns/2018/10/16/software-architecture-fundamentals-7.html">&lt;h2 id=&quot;strategy-pattern&quot;&gt;Strategy pattern&lt;/h2&gt;
-
-&lt;p&gt;Define a family of algorithm, encapsulate each one, and make them interchangeable&lt;/p&gt;
-
-&lt;h2 id=&quot;command-pattern&quot;&gt;Command pattern&lt;/h2&gt;
-
-&lt;p&gt;Encapsulate a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.&lt;/p&gt;
-
-&lt;p&gt;This is not required in a language that has closures, as the required block of code can be sent directly to the method.&lt;/p&gt;
-
-&lt;h2 id=&quot;good-and-bad-of-patterns&quot;&gt;Good and bad of patterns&lt;/h2&gt;
-
-&lt;p&gt;Good common vocabulary&lt;/p&gt;
-
-&lt;p&gt;Design guide&lt;/p&gt;
-
-&lt;p&gt;Terrible implementation guide&lt;/p&gt;
-
-&lt;p&gt;Not a panacea&lt;/p&gt;
-
-&lt;p&gt;Terrible religion&lt;/p&gt;
-
-&lt;p&gt;Combination of patterns are useful&lt;/p&gt;
-
-&lt;p&gt;You may not use patterns because it inhibits your creativity&lt;/p&gt;
-
-&lt;h2 id=&quot;patterns-today&quot;&gt;Patterns today&lt;/h2&gt;
-
-&lt;p&gt;Many “classic” GoF patterns encapsulated or deprecated by language evolution&lt;/p&gt;
-
-&lt;p&gt;Iterator Command&lt;/p&gt;
-
-&lt;p&gt;Paradigms beyond just object-orientation&lt;/p&gt;
-
-&lt;p&gt;Language dictates the patterns&lt;/p&gt;
-
-&lt;p&gt;OOP are large and coarse-grained - end up making data structures&lt;/p&gt;
-
-&lt;p&gt;blub developer&lt;/p&gt;
-
-&lt;p&gt;understand the idiomatic patterns for your language/platform&lt;/p&gt;
-
-&lt;p&gt;clarity vs obscurity&lt;/p&gt;</content><author><name></name></author><summary type="html">Strategy pattern</summary></entry><entry><title type="html">Microservices - Chapter 1</title><link href="http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1.html" rel="alternate" type="text/html" title="Microservices - Chapter 1" /><published>2018-10-15T22:15:00+01:00</published><updated>2018-10-15T22:15:00+01:00</updated><id>http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1</id><content type="html" xml:base="http://localhost:4000/microservices/2018/10/15/micro-services-oreilly-c1.html">&lt;p&gt;Notes from Microservices - Oreilly, chapter 1&lt;/p&gt;
-
-&lt;h2 id=&quot;what-are-microservices&quot;&gt;What are microservices?&lt;/h2&gt;
-
-&lt;p&gt;Domain driven design Eric evans&lt;/p&gt;
-
-&lt;p&gt;Continuous deployment&lt;/p&gt;
-
-&lt;p&gt;Hexagonal architecture Alistair Cockburn’s&lt;/p&gt;
-
-&lt;p&gt;Virtualization platforms&lt;/p&gt;
-
-&lt;p&gt;Small teams&lt;/p&gt;
-
-&lt;p&gt;Systems at scale&lt;/p&gt;
-
-&lt;h2 id=&quot;small-and-focused-on-doing-one-thing-well&quot;&gt;Small and focused on doing one thing well&lt;/h2&gt;
-
-&lt;p&gt;Robert C Martin Single responsibility principle. Keep things that change for the same reason together and separate those things that change for different reasons.&lt;/p&gt;
-
-&lt;p&gt;Service boundaries align with business boundaries&lt;/p&gt;
-
-&lt;p&gt;How small?&lt;/p&gt;
-
-&lt;h2 id=&quot;autonomous&quot;&gt;Autonomous&lt;/h2&gt;
-
-&lt;p&gt;Communication between services via network calls.&lt;/p&gt;
-
-&lt;p&gt;Avoid tight coupling and allow separation of services&lt;/p&gt;
-
-&lt;h2 id=&quot;key-benefits&quot;&gt;Key benefits&lt;/h2&gt;
-
-&lt;h1 id=&quot;technology-heterogeneity&quot;&gt;Technology heterogeneity&lt;/h1&gt;
-
-&lt;p&gt;Netflix and Twitter use JVM&lt;/p&gt;
-
-&lt;h1 id=&quot;resilience&quot;&gt;Resilience&lt;/h1&gt;
-
-&lt;p&gt;Service boundary becomes a bulkhead - problem is isolated it’s not cascaded.&lt;/p&gt;
-
-&lt;h1 id=&quot;scaling&quot;&gt;Scaling&lt;/h1&gt;
-
-&lt;p&gt;Scale only the required services - cost saving.&lt;/p&gt;
-
-&lt;p&gt;Gilt online fasion retailer embraces microservices.&lt;/p&gt;
-
-&lt;h1 id=&quot;ease-of-deployment&quot;&gt;Ease of deployment&lt;/h1&gt;
-
-&lt;p&gt;Smaller change, easy identification of issues and rollback.&lt;/p&gt;
-
-&lt;h1 id=&quot;organizational-alignment&quot;&gt;Organizational alignment&lt;/h1&gt;
-
-&lt;p&gt;Smaller teams&lt;/p&gt;
-
-&lt;h1 id=&quot;composability&quot;&gt;Composability&lt;/h1&gt;
-
-&lt;h1 id=&quot;optimizing-for-replaceability&quot;&gt;Optimizing for Replaceability&lt;/h1&gt;
-
-&lt;p&gt;Rewrite services.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-about-service-oriented-architecture&quot;&gt;What about Service-Oriented Architecture&lt;/h2&gt;
-
-&lt;p&gt;SOA not practical&lt;/p&gt;
-
-&lt;h2 id=&quot;other-decompositional-techniques&quot;&gt;Other decompositional techniques&lt;/h2&gt;
-
-&lt;h1 id=&quot;shared-libraries&quot;&gt;Shared libraries&lt;/h1&gt;
-
-&lt;p&gt;No technological heterogeneity.&lt;/p&gt;
-
-&lt;p&gt;Different parts cannot be scaled.&lt;/p&gt;
-
-&lt;p&gt;Reduced ability to deploy in isolation.&lt;/p&gt;
-
-&lt;h1 id=&quot;modules&quot;&gt;Modules&lt;/h1&gt;
-
-&lt;p&gt;OSGI - Open source gateway initiative&lt;/p&gt;
-
-&lt;p&gt;Java doesn’t have modules?!&lt;/p&gt;
-
-&lt;p&gt;Erland has modules&lt;/p&gt;
-
-&lt;p&gt;Modular decomposition within process boundary doesn’t happen in practice.&lt;/p&gt;</content><author><name></name></author><summary type="html">Notes from Microservices - Oreilly, chapter 1</summary></entry><entry><title type="html">Basic cryptography concepts</title><link href="http://localhost:4000/cryptography/security/keys/2018/10/15/basic-key-concepts.html" rel="alternate" type="text/html" title="Basic cryptography concepts" /><published>2018-10-15T20:15:00+01:00</published><updated>2018-10-15T20:15:00+01:00</updated><id>http://localhost:4000/cryptography/security/keys/2018/10/15/basic-key-concepts</id><content type="html" xml:base="http://localhost:4000/cryptography/security/keys/2018/10/15/basic-key-concepts.html">&lt;h2 id=&quot;cryptography&quot;&gt;Cryptography&lt;/h2&gt;
-
-&lt;p&gt;Notes from &lt;em&gt;Understanding the digital world&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Caesar cipher shifts letters by 3 positions&lt;/p&gt;
-
-&lt;p&gt;The rot13 algorithm shifts letters by 13 positions.&lt;/p&gt;
-
-&lt;p&gt;Mary, Queen of Scots beheaded in 1587 as her code was cracked.&lt;/p&gt;
-
-&lt;p&gt;To keep contents private, the contents are scrambled which is called encryption. This is done using a secret which is called a &lt;em&gt;key&lt;/em&gt;. The key is then used to unscramble or decrypt the contents.&lt;/p&gt;
-
-&lt;p&gt;Frequency analysis is used to crack substitution cyphers as the above.&lt;/p&gt;
-
-&lt;p&gt;Security by obscurity never works.&lt;/p&gt;
-
-&lt;h1 id=&quot;secret-key-cryptography&quot;&gt;Secret-key cryptography&lt;/h1&gt;
-
-&lt;p&gt;This is aka symmetric-key cryptography.&lt;/p&gt;
-
-&lt;p&gt;The key is secret and it used for encryption and decryption.&lt;/p&gt;
-
-&lt;p&gt;Data encryption standard - DES
-Advanced encryption standard - AES&lt;/p&gt;
-
-&lt;p&gt;Key distribution is a problem, as each party must have it.&lt;/p&gt;
-
-&lt;p&gt;Key proliferation is a problem as a new one is needed for each new party.&lt;/p&gt;
-
-&lt;h1 id=&quot;public-key-cryptography&quot;&gt;Public-key cryptography&lt;/h1&gt;
-
-&lt;p&gt;Each person has a pair - private key and public key. Message encrypted by one can be decrypted by other and vice-versa.&lt;/p&gt;
-
-&lt;p&gt;A encrypts using B’s public key. B decrypts using corresponding private key.&lt;/p&gt;
-
-&lt;p&gt;B encrypts using A’s public key. A decrypts using corresponding private key.&lt;/p&gt;
-
-&lt;p&gt;No shared secrets - no distribution problem.&lt;/p&gt;
-
-&lt;p&gt;Browser generates temporary symmetric key, encrypts using server’s public key. Server decrypts using it’s private key. Then the browser and server can use symmetric key for further exchanges.&lt;/p&gt;
-
-&lt;p&gt;Is slow. So used in step 1, then symmetric key used for next step which is orders of magnitude quicker.&lt;/p&gt;
-
-&lt;p&gt;For digital signing, A would encrypt using A’s private key. It’s to show that the content has come from A and not others. It’s not for encryption as it can be decrypted using A’s public key. To encrypt, A will first encrypt using B’s public key and then sign by encrypting with A’s private key. B decrypts with A’s public key to verify it’s from A and then decrypts using B’s private key to see the contents.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;public key encryption possibilities&lt;/strong&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;A&lt;/th&gt;
-      &lt;th&gt;B&lt;/th&gt;
-      &lt;th&gt;Goal&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Encrypt by B’s public key&lt;/td&gt;
-      &lt;td&gt;Decrypt by B’s private key&lt;/td&gt;
-      &lt;td&gt;A encrypts A’s text&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Encrypt by A’s private key&lt;/td&gt;
-      &lt;td&gt;Decrypt by A’s public key&lt;/td&gt;
-      &lt;td&gt;A signs A’s text&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Encrypt by A’s private key and encrypt by B’s public key&lt;/td&gt;
-      &lt;td&gt;Decrypt by A’s public key and decrypt by B’s private key&lt;/td&gt;
-      &lt;td&gt;A signs A’s text and encrypts&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;em&gt;Forward secrecy&lt;/em&gt; : Each message encrypted with one time password.&lt;/p&gt;
-
-&lt;p&gt;RSA algorithm generates large &amp;gt; 500 digit composite which is a product of equal sized primes and uses these to create the public and private keys. The prime numbers are required to decrypt the messages.&lt;/p&gt;
-
-&lt;p&gt;Is slow. Message digest or cryptographic hash is a faster method of indirect signing.&lt;/p&gt;
-
-&lt;p&gt;A fixed-length sequence of bits, the digest or hash is generated from text. It’s computationally infeasible to generate a text that has the same digest. A slight change in text will change half the bits in the digest.&lt;/p&gt;
-
-&lt;p&gt;Message digest algorithms - MD5 (128 bit), SHA (160 bits), SHA-2 &amp;amp; SHA-3 (224-512 bits) &lt;br /&gt;
-Servers prove identity by presenting a certificate issued by a certificate authority.&lt;/p&gt;</content><author><name></name></author><summary type="html">Cryptography</summary></entry><entry><title type="html">Software Architecture Fundamentals - 6 : Architecture patterns 2</title><link href="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6.html" rel="alternate" type="text/html" title="Software Architecture Fundamentals - 6 : Architecture patterns 2" /><published>2018-10-14T22:11:00+01:00</published><updated>2018-10-14T22:11:00+01:00</updated><id>http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6</id><content type="html" xml:base="http://localhost:4000/architecture/2018/10/14/software-architecture-fundamentals-6.html">&lt;h2 id=&quot;pipeline-architecture-pattern&quot;&gt;Pipeline architecture pattern&lt;/h2&gt;
-
-&lt;p&gt;a.k.a pipes and filter architecture&lt;/p&gt;
-
-&lt;p&gt;roots from OS&lt;/p&gt;
-
-&lt;h1 id=&quot;pipes&quot;&gt;pipes&lt;/h1&gt;
-
-&lt;p&gt;Connects different filters and transfers data&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;pipe         filter         pipe
-&lt;span class=&quot;nt&quot;&gt;------&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; transformation] &lt;span class=&quot;nt&quot;&gt;-------&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;uni-directional only&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;usually  point-point for high performance, but could be message-based for scalability&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;payload can be any type (text, bytes, object)&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;useful for smaller deterministic systems with a distinct processing flow&lt;/p&gt;
-
-&lt;p&gt;filters can easily be added and removed&lt;/p&gt;
-
-&lt;p&gt;provides for high level of decoupling&lt;/p&gt;
-
-&lt;p&gt;supports evolutionary design&lt;/p&gt;
-
-&lt;p&gt;able to easily adapt to changing requirements&lt;/p&gt;
-
-&lt;p&gt;can easily be incorporated into another pattern&lt;/p&gt;
-
-&lt;h1 id=&quot;filters&quot;&gt;filters&lt;/h1&gt;
-
-&lt;p&gt;Receives data, does something on it and pushes it on to the next filter&lt;/p&gt;
-
-&lt;p&gt;self-contained and independent from other filters&lt;/p&gt;
-
-&lt;p&gt;perform one single very specific task&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;4 different filter types
-             producer    &lt;span class=&quot;nt&quot;&gt;-----pipe-------&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; starting point, outbound only
-  &lt;span class=&quot;nt&quot;&gt;--pipe--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;  transformer &lt;span class=&quot;nt&quot;&gt;-----pipe-------&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; input, processing, output     
-  &lt;span class=&quot;nt&quot;&gt;--pipe--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;  tester      - - &lt;span class=&quot;nt&quot;&gt;-pipe-&lt;/span&gt; - - -&amp;gt; input, discard or pass-thru
-  &lt;span class=&quot;nt&quot;&gt;--pipe--&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;  consumer                      ending point, inbound only       
-
-example
-
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;input reader&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;P&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--raw&lt;/span&gt; data--&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;converter&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Tr&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--xml&lt;/span&gt; data--&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;reducer&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Tr&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; 
-                                                                             |
-                 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;input processor&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;C&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt;&amp;lt;&lt;span class=&quot;nt&quot;&gt;--validator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Te&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;scoped xml data] &amp;lt;&lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;pipeline-vs-event-driven&quot;&gt;pipeline vs event-driven&lt;/h1&gt;
-
-&lt;p&gt;pipeline&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;synchronous data filtering&lt;/li&gt;
-  &lt;li&gt;single target&lt;/li&gt;
-  &lt;li&gt;simple single purpose filters&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;event-driven&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;asynchronous event processing&lt;/li&gt;
-  &lt;li&gt;multiple targets for events&lt;/li&gt;
-  &lt;li&gt;complex multi-purpose processors&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;microkernel-architecture&quot;&gt;Microkernel architecture&lt;/h2&gt;
-
-&lt;p&gt;architectural components&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;core system&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;minimal functionality to run the system&lt;/li&gt;
-  &lt;li&gt;general business rules and logic&lt;/li&gt;
-  &lt;li&gt;doesn’t contain customer processing&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;plugin module&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;standalone independent module&lt;/li&gt;
-  &lt;li&gt;specific additional rules or logic&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Example: Eclipse&lt;/p&gt;
-
-&lt;p&gt;core : claims processing&lt;/p&gt;
-
-&lt;p&gt;plugins : CA, NY, GA etc&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;useful for systems that have custom processing or processing is susceptible to change&lt;/li&gt;
-  &lt;li&gt;plug-in modules can easily be added and removed&lt;/li&gt;
-  &lt;li&gt;supports evolutionary design&lt;/li&gt;
-  &lt;li&gt;easily adapts to change in requirements&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;space-based-architecture&quot;&gt;Space based architecture&lt;/h2&gt;
-
-&lt;h1 id=&quot;traditional-scaling&quot;&gt;Traditional scaling&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/scaling.jpeg&quot; alt=&quot;Scaling&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;space-scaling&quot;&gt;Space scaling&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/space.jpeg&quot; alt=&quot;Space&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;processing-unit&quot;&gt;Processing Unit&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/img/processing-unit.jpeg&quot; alt=&quot;Processing Unit&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;features&quot;&gt;Features&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;it’s all about variable scalability&lt;/li&gt;
-  &lt;li&gt;good for applications that have variable load or inconsistent peak times&lt;/li&gt;
-  &lt;li&gt;not a good fit for traditional large-scale relational database systems&lt;/li&gt;
-  &lt;li&gt;relatively complex and expensive pattern to implement&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;links&quot;&gt;Links&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Space-based_architecture&quot;&gt; Wikipedia Space based architecture&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Pipeline_(software)&quot;&gt;Pipeline software&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.enterpriseintegrationpatterns.com/patterns/messaging/PipesAndFilters.html&quot;&gt; EAI pipes and filters&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Pipeline architecture pattern</summary></entry></feed>
+<p>The 3 octets that we do not use, along with a <code class="language-plaintext highlighter-rouge">0</code> for the fourth octet <code class="language-plaintext highlighter-rouge">192.168.100.0</code> represents something called a <code class="language-plaintext highlighter-rouge">routing prefix</code>. If you represent this routing prefix in the form <code class="language-plaintext highlighter-rouge">255.255.255.0</code>, it’s called the <code class="language-plaintext highlighter-rouge">subnet mask</code> and logically represents the same thing.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[The Wikipedia link is here Classless Inter-domain Routing]]></summary></entry></feed>

@@ -5,7 +5,7 @@ description: "How Claude Code turned what used to be a painful blog resurrection
 tags: #blogging #ai #claude #jekyll #github-pages #coding-assistant
 layout: post
 categories: #ai #blogging #development
-date: 2025-06-14 10:00:00 +0000
+date: 2025-06-14 12:00:00 +0000
 ---
 
 After years of sporadic blogging, I'm back. But this time was different – instead of the usual painful process of remembering how Jekyll works, updating dependencies, and debugging setup issues, the entire experience was smooth and effortless. Why? Because I had Claude Code as my coding assistant.

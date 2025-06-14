@@ -24,9 +24,14 @@ github_username:  vikrampawar
 
 # Build settings
 markdown: kramdown
-theme: minima
+remote_theme: jekyll/minima
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme
+
+# Minima theme settings
+minima:
+  skin: auto
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

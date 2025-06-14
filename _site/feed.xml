@@ -1,4 +1,91 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://0.0.0.0:3000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:3000/" rel="alternate" type="text/html" /><updated>2025-06-14T11:57:33+01:00</updated><id>http://0.0.0.0:3000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">A Science of Concurrent Programs - Begin</title><link href="http://0.0.0.0:3000/2024/01/06/a-science-of-concurrent-programs-begin.html" rel="alternate" type="text/html" title="A Science of Concurrent Programs - Begin" /><published>2024-01-06T06:00:00+00:00</published><updated>2024-01-06T06:00:00+00:00</updated><id>http://0.0.0.0:3000/2024/01/06/a-science-of-concurrent-programs-begin</id><content type="html" xml:base="http://0.0.0.0:3000/2024/01/06/a-science-of-concurrent-programs-begin.html"><![CDATA[<p>I have started reading the book <a href="https://lamport.azurewebsites.net/tla/science.pdf">A Science of Concurrent progam PDF</a>. Don’t remember where I got it from, but am interested after reading the first few pages.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://0.0.0.0:3000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:3000/" rel="alternate" type="text/html" /><updated>2025-06-14T12:01:21+01:00</updated><id>http://0.0.0.0:3000/feed.xml</id><title type="html">bits</title><subtitle>Pieces on bits</subtitle><entry><title type="html">Restarting My Blog with Claude Code: How AI Made Jekyll Setup Effortless</title><link href="http://0.0.0.0:3000/2025/06/14/restarting-blog-with-claude-code.html" rel="alternate" type="text/html" title="Restarting My Blog with Claude Code: How AI Made Jekyll Setup Effortless" /><published>2025-06-14T11:00:00+01:00</published><updated>2025-06-14T11:00:00+01:00</updated><id>http://0.0.0.0:3000/2025/06/14/restarting-blog-with-claude-code</id><content type="html" xml:base="http://0.0.0.0:3000/2025/06/14/restarting-blog-with-claude-code.html"><![CDATA[<p>After years of sporadic blogging, I’m back. But this time was different – instead of the usual painful process of remembering how Jekyll works, updating dependencies, and debugging setup issues, the entire experience was smooth and effortless. Why? Because I had Claude Code as my coding assistant.</p>
+
+<h2 id="the-problem-blogging-restart-friction">The Problem: Blogging Restart Friction</h2>
+
+<p>Every time I’ve tried to restart blogging in the past, it’s been the same story. My local Jekyll setup would be broken, dependencies outdated, and I’d spend hours just trying to get <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> to work. By the time I got the technical hurdles sorted, my motivation to actually write had evaporated.</p>
+
+<p>This time, I simply told Claude Code: “I have started this a long time ago on another machine. I don’t think I have local setup for this. Can you gather info from the web to find out if I need to update in anyway, and how to setup locally.”</p>
+
+<h2 id="what-claude-code-did">What Claude Code Did</h2>
+
+<p>In less than 10 minutes, Claude Code:</p>
+
+<ol>
+  <li><strong>Analyzed my codebase</strong> - Examined my Jekyll site structure, Gemfile, and configuration</li>
+  <li><strong>Researched current requirements</strong> - Fetched up-to-date information from GitHub Pages documentation</li>
+  <li><strong>Identified what was outdated</strong> - My Jekyll 3.8.4 was old, I was using direct Jekyll gem instead of github-pages gem, and Ruby requirements had changed</li>
+  <li><strong>Fixed my Gemfile</strong> - Updated it to use the github-pages gem for compatibility</li>
+  <li><strong>Handled the setup process</strong> - Updated Bundler, installed dependencies, resolved version conflicts</li>
+  <li><strong>Debugged issues</strong> - When Jekyll failed due to Liquid syntax errors in my documentation, it quickly identified and fixed them</li>
+  <li><strong>Got the server running</strong> - Had my blog accessible at localhost:3000</li>
+</ol>
+
+<h2 id="the-technical-details">The Technical Details</h2>
+
+<p>Here’s what was wrong and how Claude Code fixed it:</p>
+
+<h3 id="outdated-dependencies">Outdated Dependencies</h3>
+<ul>
+  <li><strong>Problem</strong>: Using Jekyll 3.8.4 (GitHub Pages now uses 3.10.0)</li>
+  <li><strong>Solution</strong>: Switched to <code class="language-plaintext highlighter-rouge">github-pages</code> gem which automatically pulls in the right versions</li>
+</ul>
+
+<h3 id="gemfile-configuration">Gemfile Configuration</h3>
+<p><strong>Before:</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"jekyll"</span><span class="p">,</span> <span class="s2">"~&gt; 3.8.4"</span>
+</code></pre></div></div>
+
+<p><strong>After:</strong></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"github-pages"</span><span class="p">,</span> <span class="ss">group: :jekyll_plugins</span>
+</code></pre></div></div>
+
+<h3 id="ruby-version-compatibility">Ruby Version Compatibility</h3>
+<ul>
+  <li><strong>Problem</strong>: GitHub Pages now requires Ruby 2.7.0+ (uses 3.3.4)</li>
+  <li><strong>Solution</strong>: Verified my Ruby 3.1.4 was compatible and updated all dependencies</li>
+</ul>
+
+<h3 id="liquid-syntax-errors">Liquid Syntax Errors</h3>
+<p>When Jekyll failed with cryptic errors about unclosed highlight tags, Claude Code quickly identified that my newly created CLAUDE.md file had unescaped Liquid syntax and fixed it using proper raw tags.</p>
+
+<h2 id="what-this-means-for-my-blogging">What This Means for My Blogging</h2>
+
+<p>Now that AI can handle the technical drudgery, I can focus on what I actually want to do: write and share ideas. This is particularly relevant as I dive deeper into AI tools and coding assistants.</p>
+
+<h2 id="my-ai-learning-journey">My AI Learning Journey</h2>
+
+<p>I want to document my exploration of AI tools, particularly:</p>
+<ul>
+  <li><strong>Coding assistants</strong> like Claude Code, GitHub Copilot, and Cursor</li>
+  <li><strong>How AI changes development workflows</strong> and what skills become more/less important</li>
+  <li><strong>Practical AI applications</strong> beyond just code generation</li>
+  <li><strong>The evolving landscape</strong> of AI tools and how to choose between them</li>
+</ul>
+
+<p>The irony isn’t lost on me that my first post about exploring AI was itself made possible by AI.</p>
+
+<h2 id="why-blog-again">Why Blog Again?</h2>
+
+<p>Three main reasons:</p>
+
+<ol>
+  <li><strong>Track my learning publicly</strong> - The AI space moves fast, and writing helps me process and remember what I’m learning</li>
+  <li><strong>Share practical insights</strong> - Beyond the hype, what actually works day-to-day?</li>
+  <li><strong>Document the journey</strong> - I’m curious how my thinking about AI evolves over time</li>
+</ol>
+
+<p>Previously, blogging felt like a chore because of all the setup friction and editing overhead. Now with AI handling the technical hassles and helping with writing polish, it feels sustainable again.</p>
+
+<h2 id="looking-forward">Looking Forward</h2>
+
+<p>This is just the beginning. I plan to write regularly about my experiments with AI tools, both successes and failures. If you’re also exploring this space, I hope these posts are useful.</p>
+
+<p>Next up: A deeper dive into Claude Code specifically and how it’s changing my development workflow.</p>
+
+<hr />
+
+<p><em>P.S. - Yes, Claude Code helped me write and polish this post too. Meta? Absolutely. Useful? Definitely.</em></p>]]></content><author><name></name></author><summary type="html"><![CDATA[How Claude Code turned what used to be a painful blog resurrection into a smooth 10-minute setup experience]]></summary></entry><entry><title type="html">A Science of Concurrent Programs - Begin</title><link href="http://0.0.0.0:3000/2024/01/06/a-science-of-concurrent-programs-begin.html" rel="alternate" type="text/html" title="A Science of Concurrent Programs - Begin" /><published>2024-01-06T06:00:00+00:00</published><updated>2024-01-06T06:00:00+00:00</updated><id>http://0.0.0.0:3000/2024/01/06/a-science-of-concurrent-programs-begin</id><content type="html" xml:base="http://0.0.0.0:3000/2024/01/06/a-science-of-concurrent-programs-begin.html"><![CDATA[<p>I have started reading the book <a href="https://lamport.azurewebsites.net/tla/science.pdf">A Science of Concurrent progam PDF</a>. Don’t remember where I got it from, but am interested after reading the first few pages.</p>
 
 <p>I’ve come across Leslie Lamport, the author, first when I was reading about <a href="https://en.wikipedia.org/wiki/Consensus_(computer_science)">Consensus</a> and then it lead to <a href="https://lamport.azurewebsites.net/pubs/time-clocks.pdf">time &amp; clocks</a>. There are several more reasons to pay attention to Leslie Lamport’s work, one more I just learnt today that ‘LA’ in LaTeX is for Lamport in recognition of his contribution to LaTeX.</p>
 
@@ -233,20 +320,4 @@ You can find the notes and the links to the recording on the README file in the 
 
 <p>This number is telling us that while using the address <code class="language-plaintext highlighter-rouge">192.168.100.14</code>, don’t use the first 24 bits or the first 3 octets. That is, <code class="language-plaintext highlighter-rouge">192.168.100</code> are off limits. That leaves us with only the last octet, so only 256 possible values :( ! Imagine if this number was <code class="language-plaintext highlighter-rouge">31</code>, that leaves only <code class="language-plaintext highlighter-rouge">1</code> bit or two possibilities.</p>
 
-<p>The 3 octets that we do not use, along with a <code class="language-plaintext highlighter-rouge">0</code> for the fourth octet <code class="language-plaintext highlighter-rouge">192.168.100.0</code> represents something called a <code class="language-plaintext highlighter-rouge">routing prefix</code>. If you represent this routing prefix in the form <code class="language-plaintext highlighter-rouge">255.255.255.0</code>, it’s called the <code class="language-plaintext highlighter-rouge">subnet mask</code> and logically represents the same thing.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[The Wikipedia link is here Classless Inter-domain Routing]]></summary></entry><entry><title type="html">Select any open tab in Sublime, VS Code, and Eclipse with ease</title><link href="http://0.0.0.0:3000/2020/06/12/sublime-vscode-eclipse-select-tab.html" rel="alternate" type="text/html" title="Select any open tab in Sublime, VS Code, and Eclipse with ease" /><published>2020-06-12T19:00:00+01:00</published><updated>2020-06-12T19:00:00+01:00</updated><id>http://0.0.0.0:3000/2020/06/12/sublime-vscode-eclipse-select-tab</id><content type="html" xml:base="http://0.0.0.0:3000/2020/06/12/sublime-vscode-eclipse-select-tab.html"><![CDATA[<p>When working in text editors and IDEs, it’s natural to have several tabs open. To work efficiently with the tabs, it is good to be acquainted with the commands we can use to quickly move between the tabs.</p>
-
-<p>I use Eclipse extensively as I do development in Java and IBM ESQL. I have been using Sublime for quite some time, and I’ve recently started using VS Code. The first thing I did was to opt for Sublime key-bindings in VS Code. So the actual key-bindings of the commands I mention below may be different.</p>
-
-<p>Now coming to the topic of the post, first and basic way to work with tabs is to be able to cycle between the tabs.</p>
-
-<p>In Eclipse, I can cycle between the open tabs using <code class="language-plaintext highlighter-rouge">cntrl-F6</code>. In Sublime (and VS Code), I can use <code class="language-plaintext highlighter-rouge">ctrl-tab</code> and <code class="language-plaintext highlighter-rouge">ctrl-shift-tab</code>.</p>
-
-<p>The next level up would be to get a list of all the open tabs and select the one I want. In Eclipse, I can press <code class="language-plaintext highlighter-rouge">ctrl-e</code> to get a list of open tabs and then I can type a few characters to filter the list, and select the tab I want.</p>
-
-<p>Today, I discovered that I can use the same key combination <code class="language-plaintext highlighter-rouge">ctrl-e</code> in Sublime and it works exactly as in Eclipse.</p>
-
-<p>So, I suddenly began missing this in Sublime :). I searched and found this helpful <a href="https://stackoverflow.com/questions/38561302/is-there-a-shortcut-for-sublime-text-to-find-an-open-file-eclipse-ctrl-e">Stack Overflow link</a>. I implemented the suggestion and now I can use <code class="language-plaintext highlighter-rouge">ctrl-e</code> in Sublime as well and do the same thing.</p>
-
-<p>Only thing is that <code class="language-plaintext highlighter-rouge">ctrl-e</code> in Sublime actually does something called <code class="language-plaintext highlighter-rouge">slurp_find_string</code> which basically selects the word under cursor as the string to search for in a find command. I won’t be able to use it now unless I map it to a new key. I resist using new key combinations.  I never really use this command in that much in Sublime. So, I’ll leave it for now. I remember that I used to like a similar feature in Vim, where I could press ‘*’ and the cursor moves to next occurrence of the word under cursor.</p>
-
-<p>Sometimes using a new tool teaches us something that makes us look at familiar tools in a new light. So, although I know that all editors more or less do the same thing, I still play around with new ones to learn new things.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[When working in text editors and IDEs, it’s natural to have several tabs open. To work efficiently with the tabs, it is good to be acquainted with the commands we can use to quickly move between the tabs.]]></summary></entry></feed>
+<p>The 3 octets that we do not use, along with a <code class="language-plaintext highlighter-rouge">0</code> for the fourth octet <code class="language-plaintext highlighter-rouge">192.168.100.0</code> represents something called a <code class="language-plaintext highlighter-rouge">routing prefix</code>. If you represent this routing prefix in the form <code class="language-plaintext highlighter-rouge">255.255.255.0</code>, it’s called the <code class="language-plaintext highlighter-rouge">subnet mask</code> and logically represents the same thing.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[The Wikipedia link is here Classless Inter-domain Routing]]></summary></entry></feed>

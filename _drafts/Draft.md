@@ -85,6 +85,14 @@ There are also a lot of other factos in favour of claude code
 Over the comming weeks, I'll be using it extensively for my personal projects and oducmeting my journey.
 
 
+## command line
+
+
+- Keep focussed on commandline and claude code commandline as I'm writing several posts covering other topics
+- Coding assistants can do a lot of work themselves, however all work requires consuming tokens and processing them etc. So for many tasks, it makes sense to either use a commandline tools that works with text (grep, find etc) to both do the work precicely, quickly and and without using tokens. A lot of the time it makes sense to ask the agent to create this batch tool first. I don't know if claude code does create such scripts on the fly, but it's possible that it does. Even in my own workflow with claude code and also copilot a lot of the times, instead of asking the agent to do the work I ask it to create a batch script and then run it. All this work is more appropriate in a commandline, and of course all of the little batch tools will work well with other existing tools as they all have the simple pipe interface.
+- Commandline interfaces are good to read these days as they have color, and all the claude ai output is formatted nicely.
+- I can quickly find ways to improve it as it's like any other command line program which I find difficult with other agents that are not commandline.
+-  
 
 
 

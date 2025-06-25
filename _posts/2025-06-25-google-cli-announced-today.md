@@ -3,6 +3,8 @@ layout: post
 title: "Google's Gemini CLI: A New Contender in the AI Coding Assistant Arena"
 date: 2025-06-25 18:00:00 +0530
 categories: jekyll update
+description: "Google launches Gemini CLI, a powerful command-line AI assistant with 1M token context. My first impressions and comparison with Claude Code."
+tags: #ai #coding-assistants #gemini #claude-code #command-line #google #development-tools
 ---
 
 Just as I was settling into my workflow with Claude Code, Google dropped a bombshell: the [Gemini CLI](https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/). As a command-line enthusiast, this announcement immediately caught my attention. It feels like a direct competitor to what I've been using, and it has the potential to be a game-changer.

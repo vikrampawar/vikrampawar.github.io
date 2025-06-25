@@ -1,43 +1,60 @@
 ---
-title: Moving to Claude Code Max Plan
-published: false
-description: 
-tags: #claude-code #tools #productivity
+title: Moving to Claude Code Max Plan - Why I Made the Jump
+published: true
+description: After nearly three weeks of careful usage on the Starter plan, I decided to upgrade to Claude Code Max. Here's why the 5x price increase made sense for me.
+tags: #claude-code #tools #productivity #developer-tools
 layout: post
 categories: #tools #ai
-date: 2025-06-23 10:00:00 +0000
+date: 2025-06-23 08:00:00 +0000
 ---
 
+Today I upgraded to the Claude Code Max plan, and I wanted to share my reasoning behind this decision.
 
-Today I've upgraded to Max plan.
+## Life on the Starter Plan
 
-The basic starter plan has a 5 hour window after which it resets.
+The basic Starter plan operates on 5-hour windows that reset after each period. Since starting with Claude Code on June 5th, I've hit this limit fewer than 5 times. Each time, I only had to wait less than an hour for the reset, so the limitation wasn't particularly painful.
 
-I've only reached the limit less 5 times since I started using Claude Code on June 5th. And on every occasion I only had to wait for less than an hour or so before it reset. So didn't I feel the limitation.
+However, staying within these limits required careful planning and deliberate constraints:
 
-I was cautious in my usage and a few things helped me to stay within the limit and still be productive. 
+### My Starter Plan Strategy
 
-I'd start early so I can have two sessions during the work day. If I hit the limit soon in the first session, I know I'll have another session later.
+1. **Strategic Timing**: I'd start early in the day to ensure I could have two sessions during work hours. If I hit the limit in the first session, I knew I'd have another window later.
 
-I use only Sonnet never tried Opus.
+2. **Model Selection**: I exclusively used Sonnet, never trying Opus to conserve usage.
 
-I used only one terminal and reviewed the suggestions carefully when it suggested changes.
+3. **Conservative Usage**: 
+   - Used only one terminal at a time
+   - Carefully reviewed all suggested changes before implementing
+   - Only requested multiple parallel agents when nearing the 5-hour window or when I knew I wouldn't need Claude Code soon after
+   - Kept automatic edits disabled most of the time
 
-I only asked it to use multiple parallel agents when I was nearing the 5 hour window or when I was certain I won't get much time with Claude Code in the next 5 hour window.
+### The Silver Lining
 
-I did not turn automatic edits on most of the time.
+This measured pace actually helped me learn Claude Code more thoroughly. By watching and understanding each interaction, I developed a better sense of how to integrate it effectively into my workflows. Despite these constraints, I made significant progress on my development tasks.
 
-As I was learning to integrate Claude Code into my workflows, this slow pace helped to watch and learn about Claude Code.
+## Why Upgrade Now?
 
-Yet I think  I was able to use it sufficiently well and make good progress on my development tasks.
+Now that I have a solid understanding of Claude Code's capabilities, I'm ready to explore its more advanced features without constantly managing limitations:
 
-Now I have a good sense of it, so want to try out more advanced features.
+1. **Opus Without Worry**: I want to use the more powerful Opus model when tasks require it, without fear of burning through my allocation.
 
-First I want to be able to use Opus without worrying about limits.
+2. **Parallel Workflows**: I'm eager to try multiple agents working on single requests and run sessions across multiple terminals when it makes sense.
 
-Then I want to try out using multiple agents to work on a single request and also have sessions in multiple terminals whenever it makes sense.
+3. **Reduced Cognitive Load**: No more timing my sessions or rationing features - I can focus purely on the work.
 
-Even then I'd still be hesitating to go from £15 per month to £75 per month.
-The most expensive developer perk I enjoy now is the subscription I have to Oreilly Safari which is around £35. So this is a significant jump. The only reason I'm okay to do this is because of this single minded focus on Claude Code that I'm trying to cultivate as I mentioned in [post](2025-06-20-the-focus-experiment.markdown).
+## The Price Consideration
 
-I'll let you know if it was worth it in the future posts.
+The jump from £15 to £75 per month isn't trivial - it's a 5x increase. For context, my most expensive developer subscription until now has been O'Reilly Safari at around £35/month. 
+
+What made this decision easier was my commitment to the [single-minded focus experiment](2025-06-20-the-focus-experiment.markdown) I mentioned in a previous post. When you're deliberately concentrating on mastering one tool, the investment becomes more justifiable.
+
+## Looking Ahead
+
+Will the Max plan be worth the significant price increase? Time will tell. I'll be sharing my experiences in future posts, including:
+
+- How my usage patterns change without limits
+- Whether Opus delivers noticeably better results for complex tasks
+- If parallel agents truly accelerate development
+- The actual ROI in terms of productivity gains
+
+Stay tuned for the verdict!

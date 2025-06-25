@@ -46,7 +46,7 @@ Now that I have a solid understanding of Claude Code's capabilities, I'm ready t
 
 The jump from £15 to £75 per month isn't trivial - it's a 5x increase. For context, my most expensive developer subscription until now has been O'Reilly Safari at around £35/month. 
 
-What made this decision easier was my commitment to the [single-minded focus experiment](2025-06-20-the-focus-experiment.markdown) I mentioned in a previous post. When you're deliberately concentrating on mastering one tool, the investment becomes more justifiable.
+What made this decision easier was my commitment to the [single-minded focus experiment](/2025/06/19/the-focus-experiment/) I mentioned in a previous post. When you're deliberately concentrating on mastering one tool, the investment becomes more justifiable.
 
 ## Looking Ahead
 

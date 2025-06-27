@@ -1,32 +1,37 @@
 ---
 layout: post
-title: "Gemini CLI vs Claude Code: A Git Operations Comparison"
+title: "Gemini CLI vs Claude Code: Why Context Matters in Git Operations"
 date: 2025-06-27 18:00:00 +0000
 categories: #ai #tools #git
 tags: #gemini #claude #cli #development
 published: true
 ---
 
+When working with complex codebases, having an AI assistant that truly understands your intent can make the difference between a smooth workflow and hours of frustration. Today, I put Google's new Gemini CLI and Anthropic's Claude Code head-to-head on real-world git operations to see which one better understands developer needs.
 
-For the last few weeks, my main coding agent has been Claude Code. 
+## The Contenders
 
-As I mentioned in the previous [post]({% post_url 2025-06-25-google-cli-announced-today %}) , I have started experimenting with Gemini CLI, Google's answer to Claude Code.
+For the last few weeks, my main coding agent has been **Claude Code** - Anthropic's AI-powered CLI tool that helps with coding tasks. As I mentioned in the previous [post]({% post_url 2025-06-25-google-cli-announced-today %}), I have started experimenting with **Gemini CLI**, Google's answer to Claude Code.
 
-Today, for some of the tasks I tried both Claude Code and Gemini CLI.
+## Simple vs Complex: A Tale of Two Tasks
 
-For simple git operations like renaming the current branch both locally both were fairly comparable. 
+Today, I tested both tools on various git operations. For simple tasks like renaming the current branch, both were fairly comparable. 
 
-For a more complex tasks there was a clear difference. 
+However, for more complex tasks, there was a clear difference.
 
-I had some code in a branch of which I only wanted code from one particular file (a jupyter notebook) to be merged into the the current branch and make some modifications to it.
+## The Challenge: Selective Branch Merging
 
-So I asked both agents the following question:
+I faced a common but tricky scenario: I had a feature branch containing multiple changes, but I only needed to extract one specific Jupyter notebook from it. Before doing a selective merge, I wanted to understand exactly what changes the branch contained.
+
+**The Task**: Merge only specific files from a branch containing ETL (Extract, Transform, Load) pipeline changes - a critical operation when working with data engineering projects where you need to be surgical about what code gets promoted.
+
+I asked both agents the same question:
 
 *"if I merge 170869-etl-products what changes will that result in?"*
 
-My aim was to understand which files would be added, modified or deleted if I merged the branch `170869-etl-products` into the current branch.
+My goal was simple: understand which files would be added, modified, or deleted if I merged the branch `170869-etl-products` into the current branch.
 
-Claude Code's response was:
+### Claude Code's Response
 
 ```
 > if I merge 170869-etl-products what changes will that result in?
@@ -53,7 +58,7 @@ Claude Code's response was:
 
 ```
 
-Gemini CLI's response was:
+### Gemini CLI's Response
 
 ```
 > if I merge 170869-etl-products what changes will that result in?
@@ -77,20 +82,27 @@ Merging the 170869-etl-products branch will introduce a number of significant ch
   Overall, this merge will bring substantial improvements to the project's structure, automation, and data quality capabilities.
 ```
 
-Although Gemini CLI provided a more detailed overview of the changes, it did not give me the specific files that would be added, modified or deleted. 
+## The Critical Difference
 
-Claude Code, on the other hand, provided a clear list of files that would be affected by the merge, which was exactly what I needed. It's as if Claude Code understood the task better and knew what the reasonable response would be like an experienced developer.
+While Gemini CLI provided a high-level overview of architectural changes (dependency management, CI/CD improvements, data quality framework), it missed the mark on what I actually needed: **a concrete list of files that would change**.
 
+Claude Code, on the other hand, delivered exactly what an experienced developer would want:
+- Specific file paths organized by category
+- Clear indication of new vs modified files
+- Granular details that allow for informed decision-making
 
-I followed it up by asking for a plan of changes required to accomplish the main task. The query was:
+This difference became even more apparent in the follow-up task.
 
+## Round Two: Planning a Selective Extract
 
-*"ok, I just need the notebook etl_data_products.ipynb copied in sandboxes folder with the name products_extract.ipynb. I'm only interested in genrating a file with insert statements not in populating the postgis database from this script."*
+I then asked both tools to help me plan extracting just one notebook with modifications:
 
-Gemini CLI's response was:
+*"ok, I just need the notebook etl_data_products.ipynb copied in sandboxes folder with the name products_extract.ipynb. I'm only interested in generating a file with insert statements not in populating the postgis database from this script."*
+
+### Gemini CLI's Plan
 
 ```
-> ok, I just need the notebook etl_data_products.ipynb copied in sandboxes folder with the name products_extract.ipynb. I'm only interested in genrating a file with insert statements not in populating the postgis database from this script. what plan would you suggest. don't make any changes
+> ok, I just need the notebook etl_data_products.ipynb copied in sandboxes folder with the name products_extract.ipynb. I'm only interested in generating a file with insert statements not in populating the postgis database from this script. what plan would you suggest. don't make any changes
 
 ✦ Of course. Here is the plan I would suggest to accomplish that:
 
@@ -100,12 +112,12 @@ Gemini CLI's response was:
    3. Modify for SQL Generation: Finally, I will modify the new notebook to ensure it only generates the SQL INSERT statements. I will comment out the Python code responsible
 ```
 
-Claude Code was in plan mode and it's response was:
+### Claude Code's Plan (in Plan Mode)
 
 ```
 
 
-> ok, I just need the notebook etl_data_products.ipynb copied in sandboxes folder with the name products_extract.ipynb. I'm only interested in genrating a file with insert statements not in populating the postgis database from this script.                                                                                                                                                                               
+> ok, I just need the notebook etl_data_products.ipynb copied in sandboxes folder with the name products_extract.ipynb. I'm only interested in generating a file with insert statements not in populating the postgis database from this script.                                                                                                                                                                               
 ⏺ User approved Claude's plan:
   ⎿  Based on my analysis of the 170869-etl-products branch, here's my plan to create the requested notebook:
 
@@ -126,6 +138,34 @@ Claude Code was in plan mode and it's response was:
 ⏺ Update Todos
 ```
 
-It's clear that Gemini CLI is still in its early stages and has a long way to go before it can match the capabilities of Claude Code.
+## The Verdict: Understanding Developer Intent
 
+The difference in responses reveals a fundamental gap in how these tools understand developer workflows:
+
+### Where Claude Code Excels:
+1. **Specific Implementation Details**: Claude provided exact parameter changes (`execute=True` to `execute=False`)
+2. **Code-Level Understanding**: It knew which function calls to modify and how
+3. **Complete Solution Path**: The plan included cleanup steps like removing verification queries
+4. **Developer-Centric Thinking**: The response reads like advice from a senior developer
+
+### Where Gemini CLI Falls Short:
+1. **Generic Responses**: High-level steps without implementation specifics
+2. **Missing Context**: No mention of the specific PostGIS functions or parameters
+
+## Key Takeaways
+
+**For Simple Tasks**: Both tools are adequate for basic git operations like branch renaming or simple commits.
+
+**For Complex Tasks**: Claude Code demonstrates superior understanding of:
+- File-level git operations
+- Code modification requirements
+- Developer workflow patterns
+
+**The Bottom Line**: While Gemini CLI shows promise as Google's entry into AI-powered development tools, it currently lacks the nuanced understanding and developer-focused responses that make Claude Code feel like working with an experienced colleague.
+
+For now, when dealing with complex codebases and intricate git operations, Claude Code remains the more reliable choice. Gemini CLI has potential but needs significant improvements in understanding developer intent and providing actionable, specific guidance.
+
+---
+
+*Have you tried both tools? I'd love to hear about your experiences in the comments.*
 

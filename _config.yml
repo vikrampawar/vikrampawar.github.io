@@ -45,6 +45,7 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - CLAUDE.md
+  - GEMINI.md
 
 # Added by Vikram.
 defaults:

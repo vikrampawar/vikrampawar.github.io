@@ -10,7 +10,7 @@ date: 2025-06-27 07:00:00 +0000
 
 ## Discovery on the Train
 
-Yesterday, while commuting to work, I stumbled upon Anthropic's announcement about [creating AI-powered apps using Claude Artifacts](https://www.anthropic.com/news/build-artifacts). I'd be using Claude Code for any serious development work and follow the usual deployment model, but this seemed a good fit for  tiny utility apps that could be created quickly and shared easily. I couldn't resist trying it out right there on the train.
+Yesterday, while commuting to work, I discovered Anthropic's announcement about [creating AI-powered apps using Claude Artifacts](https://www.anthropic.com/news/build-artifacts). While I'd typically use Claude for serious development work with traditional deployment workflows, this new feature seemed perfect for rapidly building and sharing small utility apps. The concept was too intriguing to ignore—I had to try it right there on the train.
 
 ## First Attempt: The AI Study Buddy
 

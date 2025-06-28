@@ -2,7 +2,7 @@
 title: Anthropic Updates That Caught My Eye
 published: true
 description: Interesting discoveries from Anthropic's website
-tags: #anthropic #ai #updates
+tags: #anthropic #ai #updates #economics #research  
 layout: post
 categories: #ai #technology
 date: 2025-06-28 07:00:00 +0000

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Gemini CLI vs Claude Code: Why Context Matters in Git Operations"
+title: "Claude Code vs Gemini CLI: Which AI Assistant Actually Understands Git Workflows?"
 date: 2025-06-27 18:00:00 +0000
 categories: #ai #tools #git
 tags: #gemini #claude #cli #development

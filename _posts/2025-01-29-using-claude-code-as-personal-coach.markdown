@@ -1,11 +1,11 @@
 ---
 title: Using Claude Code as Personal Coach
-published: false
+published: true
 description: Exploring how Claude Code can serve as a personal development coach by analyzing journal entries
 tags: #claude-code #productivity #personal-development
 layout: post
 categories: #productivity #ai-tools
-date: 2025-01-29 07:00:00 +0000
+date: 2025-06-29 07:00:00 +0000
 ---
 
 As I'm focusing on Claude Code, I want to explore every possible way to integrate it into my daily workflows. 

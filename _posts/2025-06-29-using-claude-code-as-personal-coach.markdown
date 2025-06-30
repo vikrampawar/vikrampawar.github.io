@@ -27,7 +27,7 @@ Here's what it extracted:
 # Claude Code Focus (Starting June 2025)
 
   Main Objective:
-  - Become the most known person in the world using Claude Code effectively
+  - Use Claude Code effectively
   - Transform RUMQ into a Claude Code coaching consultancy
 
   Blog Posts Written:
@@ -52,7 +52,6 @@ Here's what it extracted:
   - Write a book on Claude Code
   - YouTube channel
   - Website showcasing Claude Code capabilities
-  - Offer hourly rate coaching with discounts
   - Assessment services for how people use AI
   - Prepare speeches (1 minute, 10 minute, 15 minute, and 1 hour versions)
 

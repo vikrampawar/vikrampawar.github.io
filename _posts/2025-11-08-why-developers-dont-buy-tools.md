@@ -8,8 +8,6 @@ tags: #developers #tools #software #product-development #decision-making
 categories: #technology #development
 ---
 
-# Why Developers Don't Buy Tools
-
 It is very difficult to get developers to buy dev tools.
 
 As somebody who can code reasonably well, and has a tonne of experience building products and software, I find it very hard to pay for software products.

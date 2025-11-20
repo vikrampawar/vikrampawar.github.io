@@ -8,8 +8,6 @@ tags: #ai #productivity #constraints #voice-input #future-of-work
 categories: #technology #productivity
 ---
 
-# The Two Constraints
-
 In my previous post about working with AI like an army of lieutenants, I talked about the human-in-the-loop being a limitation.
 
 The constraint was on the output side: reviewing the output generated from LLMs. The AI can generate at 10x or 100x speed, but you still need to review everything. Your review capacity caps your actual throughput.

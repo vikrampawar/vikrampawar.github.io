@@ -8,8 +8,6 @@ tags: #wispr #ai #productivity #workflow #future-of-work
 categories: #technology #productivity
 ---
 
-# The Flow State: Why Wispr + AI Changes Everything
-
 Yesterday I mentioned the real magic happens when you combine Wispr with AI. Here's what I mean:
 
 When you use Wispr properly:

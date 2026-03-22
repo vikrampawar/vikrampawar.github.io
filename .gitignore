@@ -3,4 +3,10 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 CLAUDE.md
+GEMINI.md
+.claude/
+_drafts/
+Dockerfile
+docker-compose.yml
+run-jekyll.sh
 keep.txt
